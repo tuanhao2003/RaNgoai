@@ -501,3 +501,72 @@ Ví dụ:
 Tôi là một lập trình viên phát triển trò chơi điện từ và hiện đang làm việc trên một trò chơi hành động nhiều. người chơi. Một trong những vấn đề tôi gặp phải là cần xây dựng một hệ thống ghép trận (matchmaking) thông minh, giúp ghép người chơi vào các trận đấu sao cho cân bằng về kỹ năng, giảm thời gian chờ đợi và tối ưu trải nghiệm tổng thể. 
 Dữ liệu đầu vào bao gồm danh sách người chơi đang chờ ghép trận, mỗi người có các thuộc tính như rank (xếp hạng), latency (độ trễ), và thời gian chờ. Tôi muốn bạn viết một chương trình Python thực hiện việc ghép trận tự động dựa trên các tiêu chí trên. 
 Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này, tôi muốn bạn viết ba chương trình Python khác nhau để giải quyết bài toán ghép trận. Sau đó, hãy giải thích ưu và nhược điểm của từng phương pháp.
+
+
+
+
+#~#~#~#~# Ví dụ thêm #~#~#~#~#
+##### 7:test reasoning #####
+Tôi là nhân viên làm việc cho một nông trại áp dụng công nghệ cao. Tôi đang phát triển một hệ thống quản lý tưới tiêu tự động được viết bằng ngôn ngữ Java nhằm giải quyết vấn đề hao hụt nhiên liệu khi tưới tiêu. Chức năng mà tôi đang phát triển là chức năng tính toán lượng nhiên liệu hao phí tối thiểu để thực hiện tưới nước cho toàn bộ các mảnh đất trong khu vườn. Tôi cần kiểm tra độ chính xác của chức năng này, việc kiểm tra này phải được làm một cách cẩn thận vì đây sẽ là một trong những chức năng cốt lõi giúp các chức năng khác hoạt động. 
+Hệ thống nhận vào số mảnh đất trong khu vườn, danh sách lượng nước cần thiết để tưới cho từng khu vực, danh sách hệ thống tưới với cấu trúc  `{bắt đầu, kết thúc, chi phí}`. Kết quả trả về là lượng nhiên liệu hao phí tối thiểu để tưới nước hết toàn bộ khu vườn.
+Một số ràng buộc cần phải tuân theo là: các dữ liệu đầu vào phải hợp lệ, danh sách hệ thống tưới là mảng hai chiều.
+Hãy thực hiện kiểm tra đầu ra của đoạn mã dưới đây bằng cách phân tích các trường hợp kiểm thử bên dưới, lý giải vì sao mỗi đầu vào lại cho ra kết quả tương ứng.
+Dưới đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.Arrays;
+
+public class WateringSystem {
+    public static int minCostWatering(int n, int[] water, int[][] systems) {
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+
+        for (int[] system : systems) {
+            int start = system[0];
+            int end = system[1];
+            int cost = system[2];
+
+            for (int i = end; i >= start; i--) {
+                if (dp[start - 1] != Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i], dp[start - 1] + cost);
+                }
+            }
+        }
+
+        return dp[n] == Integer.MAX_VALUE ? -1 : dp[n];
+    }
+
+    public static void main(String[] args) {
+    }
+}
+
+```
+Dưới đây là một số trường hợp kiểm thử:
+```java
+        int n1 = 5; 
+        int[] water1 = { 3, 4, 2, 5, 6 };
+        int[][] systems1 = {
+                { 1, 3, 10 },
+                { 2, 5, 15 },
+                { 4, 5, 5 }
+        };
+        System.out.println(minCostWatering(n1, water1, systems1));
+
+        int n2 = 6;
+        int[] water2 = { 2, 3, 5, 4, 6, 7 };
+        int[][] systems2 = {
+                { 1, 4, 12 },
+                { 3, 6, 18 },
+                { 2, 5, 10 }
+        };
+        System.out.println(minCostWatering(n2, water2, systems2)); 
+
+        int n3 = 4;
+        int[] water3 = { 1, 2, 3, 4 };
+        int[][] systems3 = {
+                { 1, 2, 5 },
+                { 3, 4, 6 },
+                { 1, 4, 8 }
+        };
+        System.out.println(minCostWatering(n3, water3, systems3));
+```
