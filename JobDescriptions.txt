@@ -1,0 +1,503 @@
+- Ae dựa vào template để làm mấy cái promp, mỗi người tự viết promp vô file txt của mình.
+- T nhận task xong t sẽ gõ lại mấy cái mà ae viết lên đó r đem nộp.
+- Mỗi task t nhận được 8$ chia lại cho ae 5$ t giữ 3$ tiền cò :)).
+- Ae làm kỹ kỹ xíu, không được trùng nhau tại trùng là nộp lại ko được. Chế lại lời văn cho nó khác xíu, mà đúng chính tả chứ đừng làm giống nhau quá t bị ban.
+- T nộp cái nào thì t thống kê lên file excel cho ae.
+- T lấy task xoay tua, ví dụ: nộp task 1 lấy promp của Lộc xong task 2 tới Khải,.... Nếu tới lượt mà ko có loại promp phù hợp thì t pass qua lượt người tiếp theo.
+- Khi làm promp ae ghi như dưới r bắt đầu làm, xong thì cách xuống 3 cái để làm cái tiếp theo:
+##### (Task số):(Thể loại) #####
+ví dụ: ##### 1:test reasoning #####
+- Code phải là code Java
+- Chỉ viết text, không trang trí j cả, có thể xuống dòng.
+- Viết xong dùng link sau để check xem có giống bot không, tốt nhất là nên sửa cho dưới 30%: https://app.gptzero.me/
+
+
+
+#~#~#~#~#~#~#~#~#~#
+Task chia làm 4 dạng: test reasoning, code refactoring, problem reflection, code generation.
+
+#~#~# Test reasoning #~#~#
+Này là task dạng yêu cầu con bot kiểm thử. Trong promp phải cung cấp code và test case
+Template (lựa mỗi phần một câu, biến tấu hoặc viết một câu khác cũng được nhưng mang nghĩa tương tự):
+
+[BACKGROUND]
+Tôi là một <vai trò>.
+
+Một công ty đang phát triển một <sản phẩm/dịch vụ>
+
+Nhóm của tôi đang làm việc trên một dự án <dự án cụ thể>
+
+Tôi là một nhà nghiên cứu trong lĩnh vực <lĩnh vực cụ thể>
+
+[CONTEXT]
+Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán <mô tả bài toán> trong bối cảnh <bối cảnh thực tế>. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+
+Trong quá trình phát triển một ứng dụng <loại ứng dụng> được viết bằng ngôn ngữ Java, tôi cần đảm bảo rằng kết quả đầu ra <tính chất quan trọng, ví dụ: chính xác, ổn định, hiệu suất cao>. 
+
+[INPUT]
+Hệ thống nhận vào <mô tả đầu vào>. Kết quả trả về là <Cấu trúc trả về>
+
+Đầu vào của hệ thống là ... . Sau khi nhập đầu vào hệ thống sẽ ... . Kết quả được trả về sau khi xử lý ....
+
+[RULES & CONSTRAINTS]
+Một số ràng buộc cần đảm bảo: <liệt kê các ràng buộc bằng cách sử dụng từ nối để diễn đạt tự nhiên>.
+
+Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: <liệt kê các ràng buộc bằng cách sử dụng từ nối để diễn đạt tự nhiên>.
+
+Để hệ thống có thể hoạt động tốt trong môi trường kiểm thử, cần phải đáp ứng các yêu cầu sau:...
+
+[GOAL/VALUE]
+Việc kiểm tra kỹ lưỡng các trường hợp đầu vào là rất quan trọng vì <tại sao việc kiểm tra này có giá trị>.
+
+Việc kiểm định này rât quan trọng vì <tại sao việc kiểm tra này có giá trị>.
+
+Nắm được qui trình đầu vào được chuyển đổi thành đầu ra sẽ giúp tôi <tại sao việc kiểm tra này có giá trị>.
+
+Bạn phải cẩn thận trong quá trình kiểm thử vì ...
+
+Việc kiểm thử phải được thực hiện một cách kỹ càng vì ...
+
+[CLEAR ASK]
+Hãy thực hiện kiểm tra đầu ra của đoạn mã dưới đây bằng cách phân tích các trường hợp kiểm thử bên dưới, lý giải vì sao mỗi đầu vào lại cho ra kết quả tương ứng. Dưới đây là đoạn mã mà tôi đã thực hiện. Đoạn mã này đã được tách ra riêng cho môi trường kiểm thử
+
+Hãy kiểm tra kết quả của đoạn mã dưới đây dự vào các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
+
+Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã bên dưới sau đó đưa ra kết quả và giải thích cho từng trường hợp.
+
+
+Ví dụ:
+##### 1:test reasoning #####
+Tôi là lập trình viên làm việc trong một công ty tài chính. Tôi được giao nhiệm vụ phát triển một hệ thống gợi ý giao dịch và cần tính các đường RSI. Tôi đã viết một chương trình sử dụng ngôn ngữ lập trình Java để giải quyết bài toán trên. Tôi cần đảm bảo tính chính xác và độ tin cậy của chương trình mà tôi đã viết vì thế tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên một vài tiêu chí cụ thể.
+Chương trình nhận vào một mảng đại diện cho các mức giá của một tài sản tài chính theo thời gian và một số nguyên đại diện cho số chu kỳ dùng để tính RSI. Kết quả trả về là một mảng chứa các chỉ số RSI được tính toán tương ứng với từng điểm dữ liệu và kết quả được in ra dưới dạng `"RSI[i] = <giá trị RSI>"`.
+Các ràng buộc mà đoạn mã này cần phải có là: mảng đại diện cho các mức giá của một tài sản tài chính theo thời gian phải có số lượng phần tử lớn hơn số chu kỳ dùng để tính RSI, số chu kỳ dùng để tính RSI phải là số nguyên dương, phải có ít nhất một sự thay đổi giá trong chu kỳ đầu tiên.
+Chương trình này nên được kiểm tra kỹ càng vì nó sẽ được dùng làm nền tảng để tôi phát triển tính năng rất quan trọng cho trang web công ty.
+Hãy cung cấp cho tôi đầu ra của các trường hợp kiểm thử dưới đây và giải thích vì sao có được đầu ra tương ứng. 
+
+Dưới đây là chương trình mà tôi đã viết:
+```java
+public class RSISeriesCalculator {
+
+    public static double[] calculateRSISeries(double[] prices, int period) {
+        if (prices == null || prices.length <= period) {
+            System.out.println("Mảng giá phải có số phần tử lớn hơn period.");
+            return null;
+        }
+
+        double[] rsiSeries = new double[prices.length];
+
+        for (int i = 0; i < period; i++) {
+            rsiSeries[i] = Double.NaN;
+        }
+
+        double sumGain = 0;
+        double sumLoss = 0;
+        for (int i = 1; i <= period; i++) {
+            double change = prices[i] - prices[i - 1];
+            if (change > 0) {
+                sumGain += change;
+            } else if (change < 0) {
+                sumLoss += Math.abs(change);
+            }
+        }
+        double averageGain = sumGain / period;
+        double averageLoss = sumLoss / period;
+
+        rsiSeries[period] = computeRSI(averageGain, averageLoss);
+
+        for (int i = period + 1; i < prices.length; i++) {
+            double change = prices[i] - prices[i - 1];
+            double currentGain = change > 0 ? change : 0;
+            double currentLoss = change < 0 ? Math.abs(change) : 0;
+
+            averageGain = (averageGain * (period - 1) + currentGain) / period;
+            averageLoss = (averageLoss * (period - 1) + currentLoss) / period;
+
+            rsiSeries[i] = computeRSI(averageGain, averageLoss);
+        }
+
+        return rsiSeries;
+    }
+
+    private static double computeRSI(double averageGain, double averageLoss) {
+        if (averageGain == 0 && averageLoss == 0) {
+            return 50;
+        }
+        if (averageLoss == 0) {
+            return 100;
+        }
+        if (averageGain == 0) {
+            return 0;
+        }
+        double RS = averageGain / averageLoss;
+        return Math.round((100 - (100 / (1 + RS))) * 100.0) / 100.0;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+
+Sau đây là các trường hợp kiểm thử cho đoạn mã trên:
+```java
+double[] prices = {10, 12, 14, 16, 18, 20, 22, 24};
+int period = 3;
+double[] rsiSeries = calculateRSISeries(prices, period);
+
+for (int i = 0; i < rsiSeries.length; i++) {
+    System.out.println("RSI[" + i + "] = " + rsiSeries[i]);
+}
+
+double[] prices = {50, 45, 40, 35, 30, 25, 20, 15};
+int period = 3;
+double[] rsiSeries = calculateRSISeries(prices, period);
+for (int i = 0; i < rsiSeries.length; i++) {
+    System.out.println("RSI[" + i + "] = " + rsiSeries[i]);
+}
+
+double[] prices = {10, 12, 11, 13, 12, 14, 13, 15};
+int period = 3;
+double[] rsiSeries = calculateRSISeries(prices, period);
+for (int i = 0; i < rsiSeries.length; i++) {
+    System.out.println("RSI[" + i + "] = " + rsiSeries[i]);
+}
+```
+
+
+
+##### 2:test reasoning #####
+Tôi là một kỹ sư phần mềm đang xây dựng một hệ thống phân tích mạng xã hội bằng Java. Mục tiêu của tôi là tìm ra nhóm bạn lớn nhất trong một mạng xã hội dựa trên dữ liệu về mối quan hệ bạn bè giữa các người dùng.
+Mạng xã hội này có `n` người dùng, mỗi người là một nút trong đồ thị và `m` mối quan hệ bạn bè, mỗi mối quan hệ là một cạnh nối hai nút lại với nhau. Một nhóm bạn được xác định là một thành phần liên thông trong đồ thị, tức là một tập hợp người dùng có thể kết nối với nhau trực tiếp hoặc gián tiếp thông qua các mối quan hệ bạn bè.
+Tôi đã viết một chương trình Java sử dụng thuật toán BFS (Duyệt theo chiều rộng) để tìm thành phần liên thông lớn nhất, tức là nhóm bạn có số lượng thành viên nhiều nhất. Tôi cần kiểm tra độ chính xác của chương trình bằng cách kiểm thử kết quả. Việc kiểm thử được thực hiện cẩn thận có thể giúp tôi quan sát luồng biến đổi của dữ liệu và giảm thiểu sai sót trong chương trình.
+Hãy thực hiện kiểm thử đoạn mã dưới đây dựa trên các trường hợp kiểm thử mà tôi cung cấp. Đưa ra kết quả và giải thích cụ thể cho từng trường hợp.
+Dưới đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.*;
+
+public class LargestFriendGroup {
+    static int n, m;
+    static List<List<Integer>> graph;
+    static boolean[] visited;
+
+    public static int bfs(int start) {
+        int size = 1;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(start);
+        visited[start] = true;
+
+        while (!queue.isEmpty()) {
+            int u = queue.poll();
+            for (int v : graph.get(u)) {
+                if (!visited[v]) {
+                    visited[v] = true;
+                    queue.add(v);
+                    size++;
+                }
+            }
+        }
+        return size;
+    }
+
+    public static int findLargestGroup() {
+        int maxSize = 0;
+        visited = new boolean[n + 1];
+
+        for (int i = 1; i <= n; i++) {
+            if (!visited[i]) {
+                maxSize = Math.max(maxSize, bfs(i));
+            }
+        }
+        return maxSize;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập số người dùng và số mối quan hệ: ");
+        n = scanner.nextInt();
+        m = scanner.nextInt();
+
+        graph = new ArrayList<>();
+        for (int i = 0; i <= n; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        System.out.println("Nhập danh sách mối quan hệ bạn bè:");
+        for (int i = 0; i < m; i++) {
+            int u = scanner.nextInt();
+            int v = scanner.nextInt();
+            graph.get(u).add(v);
+            graph.get(v).add(u);
+        }
+
+        System.out.println("Số lượng người lớn nhất trong một nhóm bạn: " + findLargestGroup());
+        scanner.close();
+    }
+}
+```
+Các trường hợp cần kiểm thử (nhập dữ liệu theo thứ tự):
+``` java
+// Trường hợp 1
+7 5  
+1 2  
+2 3  
+4 5  
+5 6  
+6 7  
+
+// Trường hợp 2
+6 5  
+1 2  
+2 3  
+3 4  
+4 5  
+5 6  
+
+// Trường hợp 3
+5 0  
+```
+
+
+
+#~#~# Code refactoring #~#~#
+Này là task dạng yêu cầu con bot tái cấu trúc lại code. Trong promp phải cung cấp code. Tái cấu trúc là lead bên t nói h có 2 cách phổ biến để làm là: yêu cầu con bot tách hàm, có thể sử dụng OOP để refactor kết hợp với design pattern phù hợp và lý giải. Hoặc là đầu tiên đưa ra một đoạn code, rồi nói nó tối ưu về thời gian hoặc không gian hoặc cả hai nhưng không thay đổi hành vi/chức năng của code (input và output vẫn như cũ).
+
+Template (lựa mỗi phần một câu, biến tấu hoặc viết một câu khác cũng được nhưng mang nghĩa tương tự):
+
+[BACKGROUND]
+Tôi là một <vai trò>.
+
+Một công ty đang phát triển một <sản phẩm/dịch vụ>
+
+Nhóm của tôi đang làm việc trên một dự án <dự án cụ thể>
+
+Tôi là một nhà nghiên cứu trong lĩnh vực <lĩnh vực cụ thể>
+
+[CONTEXT]
+Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán <mô tả bài toán> trong bối cảnh <bối cảnh thực tế>. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+
+Trong quá trình phát triển một ứng dụng <loại ứng dụng> được viết bằng ngôn ngữ Java, tôi cần đảm bảo rằng kết quả đầu ra <tính chất quan trọng, ví dụ: chính xác, ổn định, hiệu suất cao>. 
+
+[INPUT]
+Hệ thống nhận vào <mô tả đầu vào>. Kết quả trả về là <Cấu trúc trả về>
+
+Đầu vào của hệ thống là ... . Sau khi nhập đầu vào hệ thống sẽ ... . Kết quả được trả về sau khi xử lý ....
+
+[PROBLEM]
+Tuy nhiên ứng dụng của tôi vẫn còn một số hạn chế đó là ....
+
+Tuy đã hoạt động đúng mục đích nhưng ứng dụng vẫn cần một số cải tiến để giải quyết ....
+
+Hiện nay do ... nên hệ thống không còn phù hợp để đáp ứng ... vì thế ...
+
+[RULES & CONSTRAINTS]
+Một số ràng buộc cần đảm bảo khi tái cấu trúc: <liệt kê các ràng buộc bằng cách sử dụng từ nối để diễn đạt tự nhiên>.
+
+Hệ thống sau khi tái cấu trúc cần đáp ứng các yêu cầu sau: <liệt kê các ràng buộc bằng cách sử dụng từ nối để diễn đạt tự nhiên>.
+
+Để hệ thống có thể hoạt động tốt sau khi tái cấu trúc, cần phải đáp ứng các yêu cầu sau:...
+
+[GOAL/VALUE]
+Tôi muốn tái cấu trúc lại đoạn mã để sửa các trường hợp trên. Việc tái cấu trúc để sửa các trường hợp trên là rất quan trọng vì...
+
+Đoạn mã sau khi được tái cấu trúc sẽ.... Việc tái cấu trúc này nên được làm cẩn thận vì ...
+
+[CLEAR ASK]
+Hãy giúp tôi tái cấu trúc lại đoạn mã để giải quyết các vấn đề trên, các thay đổi và chỉnh sửa cần phải được tóm tắt ở cuối.
+
+Hãy thực hiện tái cấu trúc lại đoạn mã bằng cách .... Giải thích các thay đổi.
+
+
+Ví dụ:
+##### 3:code refactoring ##### (cái này t làm js tại task yêu cầu nhưng mà ae làm java đi)
+Tôi là một sinh viên năm thứ ba ngành công nghệ thông tin. Tôi đang làm một số bài tập giải thuật sử dụng ngôn ngữ Javascript, cụ thể tôi đang phát triển một hàm nhằm giải quyết bài toán tìm đường đi ngắn nhất từ vị trí ô `(0,0)` đến vị trí ô `(n-1,n-1)` trong một ma trận theo 8 hướng. 
+Hệ thống nhận vào một ma trận có chứa các giá trị 0 và 1, trong đó 0 là ô có thể đi được và 1 là ô bị chặn.
+Mặc dù đoạn mã đã hoạt động, nhưng vẫn còn một số vấn đề như sau: Tốc độ của đoạn mã vẫn còn khá chậm, tôi muốn đoạn mã chạy nhanh hơn và quản lý bộ nhớ tốt hơn. 
+Đoạn mã cần phải đáp ứng một số ràng buộc như sau: Ma trận chỉ chứa giá trị 0 và 1, Nếu không có đường đi từ điểm đầu đến điểm cuối thì trả về -1, Điểm đầu `(matrix[0][0])` và cuối `(matrix[n-1][n-1])` phải có giá trị là 0, Kết quả chỉ cần in ra độ dài đường đi.
+Hãy giúp tôi tái cấu trúc lại đoạn mã bên dưới để giải quyết các vấn đề được nêu bên trên, các thay đổi và chỉnh sửa không được chú thích trong mã mà cần phải được tóm tắt ở cuối.
+Dưới đây là đoạn mã mà tôi đã viết
+```javascript
+class ShortestSearch {
+    shortestPathMatrix(grid) {
+        const n = grid.length;
+        if (grid[0][0] === 1 || grid[n - 1][n - 1] === 1) return -1;
+
+        const directions = [
+            [-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]
+        ];
+
+        const queue = [[0, 0, 1]];
+        grid[0][0] = 1;
+
+        while (queue.length > 0) {
+            const [x, y, steps] = queue.shift();
+
+            if (x === n - 1 && y === n - 1) return steps;
+
+            for (const [dx, dy] of directions) {
+                const newX = x + dx;
+                const newY = y + dy;
+
+                if (newX >= 0 && newY >= 0 && newX < n && newY < n && grid[newX][newY] === 0) {
+                    queue.push([newX, newY, steps + 1]);
+                    grid[newX][newY] = 1;
+                }
+            }
+        }
+
+        return -1;
+    }
+}
+const grid = [
+    [0, 1, 0],
+    [1, 0, 0],
+    [1, 1, 0]
+];
+
+const solver = new ShortestSearch();
+console.log(solver.shortestPathMatrix(grid));
+```
+
+
+
+##### 4:code refactoring #####
+Tôi là thực tập sinh của một công ty công nghệ hoạt động về lĩnh vực giáo dục. Hiện tôi được giao nhiệm vụ nghiên cứu để phát triển hệ thống kiểm tra đạo văn. Tôi đã phát triển được một đoạn mã giúp kiểm tra mức độ giống nhau của hai chuỗi, đoạn mã được viết bằng ngôn ngữ Java và sẽ là nền tảng để tôi có thể phát triển thành một chức năng hoàn chỉnh.
+Đoạn mã của tôi nhận vào hai chuỗi và tiến hành so sánh hai chuỗi đó, kết quả trả về là tỉ lệ giống nhau giữa hai chuỗi. Tuy nhiên, đoạn mã của tôi còn một số hạn chế: nó sẽ bị chậm nếu chuỗi quá dài và khó được mở rộng hoặc tái sử dụng.
+Tôi muốn tái cấu trúc lại đoạn mã để sửa các trường hợp trên. Việc tái cấu trúc để sửa các trường hợp trên là rất quan trọng vì nó sẽ làm cho mã của tôi hoàn thiện hơn và có thể được sử dụng để phát triển thành chức năng hoàn chỉnh.
+Khi tái cấu trúc cần phải tuân theo các ràng buộc sau: đoạn mã phải có tốc độ xử lý nhanh hơn so với khi chưa tái cấu trúc, có thể được mở rộng và tái sử dụng một cách dễ dàng sau khi tái cấu trúc,...
+Hãy thực hiện tái cấu trúc lại đoạn mã bằng cách áp dụng lập trình hướng đối tượng và tối ưu tốc độ của đoạn mã mà không làm thay đổi chức năng của nó. Các thay đổi và chỉnh sửa phải được ghi ở cuối.
+Dưới đây là đoạn mã mà tôi đã thực hiện. 
+
+```java
+public class LiteratureCheck {
+    private static int longestSimilarityPerWord(String text1, String text2) {
+        int m = text1.length();
+        int n = text2.length();
+        int[][] dp = new int[m + 1][n + 1];
+
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[m][n]; 
+    }
+
+    private static double similarityCheck(String text1, String text2) {
+        int lss = longestSimilarityPerWord(text1, text2);
+        int maxLength = Math.max(text1.length(), text2.length());
+        return Double.parseDouble(String.format("%.2f", ((double) lss / maxLength) * 100));
+    }
+
+    public static void main(String[] args) {
+        System.out.println(similarityCheck("abc", "xyz")+" %");
+        System.out.println(similarityCheck("Tôi là đại chưởng quỹ", "Tôi muốn chơi MU đại thiên sứ")+" %");
+    }
+}
+```
+
+
+
+#~#~# Code generation #~#~#
+Này là task dạng yêu cầu con bot tạo ra code. Trong promp KHÔNG CẦN cung cấp code.
+
+Template (lựa mỗi phần một câu, biến tấu hoặc viết một câu khác cũng được nhưng mang nghĩa tương tự):
+
+[BACKGROUND]
+Tôi là một <vai trò>.
+
+Một công ty đang phát triển một <sản phẩm/dịch vụ>
+
+Nhóm của tôi đang làm việc trên một dự án <dự án cụ thể>
+
+Tôi là một nhà nghiên cứu trong lĩnh vực <lĩnh vực cụ thể>
+
+[CONTEXT]
+Trong quá trình ... tôi nhận thấy quy trình ... nên tôi cần một hệ thống có thể ... 
+
+Tôi cần phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán <mô tả bài toán> trong bối cảnh <bối cảnh thực tế>. 
+
+Trong quá trình phát triển một ứng dụng <loại ứng dụng> được viết bằng ngôn ngữ Java, tôi đang gặp khó khăn trong phần ... Tôi muốn bạn tạo cho tôi đoạn mã để ...
+
+[INPUT]
+Hệ thống nhận vào <mô tả đầu vào>. Kết quả trả về là <Cấu trúc trả về>
+
+Đầu vào của hệ thống là ... . Sau khi nhập đầu vào hệ thống sẽ ... . Kết quả được trả về sau khi xử lý ....
+
+[RULES & CONSTRAINTS]
+Hệ thống có một số ràng buộc cần đảm bảo: <liệt kê các ràng buộc bằng cách sử dụng từ nối để diễn đạt tự nhiên>.
+
+Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: <liệt kê các ràng buộc bằng cách sử dụng từ nối để diễn đạt tự nhiên>.
+
+[GOAL/VALUE]
+Việc triển khai hệ thống này là rất quan trọng vì....
+
+Tôi cần bạn tạo ra mã nguồn cho hệ thống của tôi. Mã nguồn phải được tạo ra một cách cẩn thận vì tôi cần đảm bảo hệ thống chấm điểm với độ chính xác là cao nhất.
+
+[CLEAR ASK]
+Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
+
+
+
+Ví dụ:
+##### 5:code generation #####
+(cái này lead đưa)
+Tôi là một nhà khoa học dữ liệu đang làm việc với chuỗi thời gian trong lĩnh vực tài chính. Tôi có một tập dữ liệu chứa giá cổ phiếu theo ngày, và tôi muốn tính toán đường trung bình động có trọng số theo hàm mũ (EWMA) để làm mượt dữ liệu và phát hiện xu hướng. Tuy nhiên, tôi không chỉ làm việc với một mã chứng khoán mà với nhiều mã khác nhau trong cùng một tập dữ liệu, vì vậy tôi cần một cách tiếp cận linh hoạt có thể áp dụng cho toàn bộ khung dữ liệu. Tôi cũng muốn có khả năng điều chỉnh hệ số suy giảm alpha để kiểm soát mức độ làm mượt. Hãy cung cấp cho tôi một chương trình Python có thể đọc tập dữ liệu CSV bao gồm các cột `Date`, `Stock' và 'Price`, sau đó tính toán EWMA cho từng mã chứng khoản trong đó và xuất kết quả dưới dạng tệp CSV mới. Chương trình phải đảm bảo tối ưu về hiệu suất khi làm việc với tập dữ liệu lớn.
+
+
+
+
+#~#~# problem reflection #~#~#
+Này là task dạng yêu cầu con bot đưa ra nhiều phương pháp tiếp cận vấn đề khác nhau. Trong promp KHÔNG CẦN cung cấp code.
+
+Template (lựa mỗi phần một câu, biến tấu hoặc viết một câu khác cũng được nhưng mang nghĩa tương tự):
+
+[BACKGROUND]
+Tôi là một <vai trò>.
+
+Một công ty đang phát triển một <sản phẩm/dịch vụ>
+
+Nhóm của tôi đang làm việc trên một dự án <dự án cụ thể>
+
+Tôi là một nhà nghiên cứu trong lĩnh vực <lĩnh vực cụ thể>
+
+[CONTEXT]
+Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán <mô tả bài toán> trong bối cảnh <bối cảnh thực tế>. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+
+Trong quá trình phát triển một ứng dụng <loại ứng dụng> được viết bằng ngôn ngữ Java, tôi cần đảm bảo rằng kết quả đầu ra <tính chất quan trọng, ví dụ: chính xác, ổn định, hiệu suất cao>. 
+
+[INPUT]
+Hệ thống nhận vào <mô tả đầu vào>. Kết quả trả về là <Cấu trúc trả về>
+
+Đầu vào của hệ thống là ... . Sau khi nhập đầu vào hệ thống sẽ ... . Kết quả được trả về sau khi xử lý ....
+
+[PROBLEM]
+Ban đầu tôi định dùng cách .... để ... nhưng cách này có một số nhược điểm là ... tôi cần vài cách tiếp cận khác để giải quyết vấn đề này.
+
+Hiện nay do ... nên hệ thống không còn phù hợp để đáp ứng ... vì thế ...
+
+[RULES & CONSTRAINTS]
+Hệ thống có một số ràng buộc cần đảm bảo: <liệt kê các ràng buộc bằng cách sử dụng từ nối để diễn đạt tự nhiên>.
+
+Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: <liệt kê các ràng buộc bằng cách sử dụng từ nối để diễn đạt tự nhiên>.
+
+[GOAL/VALUE]
+Việc tìm được nhiều các tiếp cận khác nhau cho bài toán này là rất quan trọng vì ...
+
+Liệu còn cách nào khác để tiếp cận vấn đề này không, nếu tôi muốn ... thì ...
+
+[CLEAR ASK]
+Hãy cho tôi một số phương pháp khác tốt hơn để tiếp cận vấn đề này.
+
+Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này, tôi muốn bạn ... để giải quyết ...
+
+
+
+Ví dụ:
+##### 6:problem reflection #####
+Tôi là một lập trình viên phát triển trò chơi điện từ và hiện đang làm việc trên một trò chơi hành động nhiều. người chơi. Một trong những vấn đề tôi gặp phải là cần xây dựng một hệ thống ghép trận (matchmaking) thông minh, giúp ghép người chơi vào các trận đấu sao cho cân bằng về kỹ năng, giảm thời gian chờ đợi và tối ưu trải nghiệm tổng thể. 
+Dữ liệu đầu vào bao gồm danh sách người chơi đang chờ ghép trận, mỗi người có các thuộc tính như rank (xếp hạng), latency (độ trễ), và thời gian chờ. Tôi muốn bạn viết một chương trình Python thực hiện việc ghép trận tự động dựa trên các tiêu chí trên. 
+Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này, tôi muốn bạn viết ba chương trình Python khác nhau để giải quyết bài toán ghép trận. Sau đó, hãy giải thích ưu và nhược điểm của từng phương pháp.
