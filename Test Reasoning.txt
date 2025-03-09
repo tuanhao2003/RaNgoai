@@ -1,0 +1,56 @@
+##### 1 : Hào - quản lý nhân viên #####
+Tôi là nhân viên công nghệ thông tin đang làm việc tại một công ty công nghệ. Tôi đang phát triển một hệ thống để quản lý nhân viên trong công ty bằng ngôn ngữ Java. Trong quá trình phát triển, tôi đã tạo ra một chương trình mô phỏng hệ thống. Tôi muốn kiểm tra xem đoạn mã đã hoạt động chính xác hay chưa. Việc kiểm tra phải được làm kỹ lưỡng vì đoạn mã này sẽ là tiền đề cho hệ thống của tôi. Đoạn mã của tôi hoạt động bằng cách nhận vào một danh sách nhân viên sau đó duyệt danh sách đó và tính tiền lương cho nhân viên. Nhân viên có các thuộc tính như tên, ngày làm việc và mức lương theo ngày.
+Các ràng buộc mà đoạn mã cần phải tuân theo là: số ngày làm việc của nhân viên phải lớn hơn hoặc bằng 0, mức lương của nhân viên không được âm.
+Hãy kiểm tra kết quả của đoạn mã dưới đây dự trên các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
+Dưới đây là đoạn mã của tôi:
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class EmployeeInfomation {
+    String name;
+    int days;
+    double salary;
+
+    public EmployeeInfomation(String name, int days, double salary) {
+        this.name = name;
+        this.days = days;
+        this.salary = salary;
+    }
+}
+
+class SalaryCalculator {
+    public static void main(String[] args) {
+       
+    }
+}
+```
+Dưới đây là các trường hợp kiểm thử:
+```java
+//TH 1
+ List<EmployeeInfomation> employees = new ArrayList<>();
+        employees.add(new EmployeeInfomation("John", 20, 50));
+        employees.add(new EmployeeInfomation("Jane", 15, 60));
+        employees.add(new EmployeeInfomation("Doe", 22, 45));
+
+        for (EmployeeInfomation emp : employees) {
+            double totalSalary = emp.days * emp.salary;
+            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+        }
+// TH 2
+ List<EmployeeInfomation> employees = new ArrayList<>();
+        employees.add(new EmployeeInfomation("sew", 0, 50)); 
+        employees.add(new EmployeeInfomation("jee", 23, 55)); 
+        employees.add(new EmployeeInfomation("Done", 30, 0)); 
+
+        for (EmployeeInfomation emp : employees) {
+            double totalSalary = emp.days * emp.salary;
+            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+        }
+// TH 3
+ List<EmployeeInfomation> employees = new ArrayList<>();
+        for (EmployeeInfomation emp : employees) {
+            double totalSalary = emp.days * emp.salary;
+            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+        }
+```
