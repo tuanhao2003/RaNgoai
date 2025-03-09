@@ -1,7 +1,12 @@
 ##### (done) 1 : Hào - quản lý nhân viên #####
-Tôi là nhân viên công nghệ thông tin đang làm việc tại một công ty công nghệ. Tôi đang phát triển một hệ thống để quản lý nhân viên trong công ty bằng ngôn ngữ Java. Trong quá trình phát triển, tôi đã tạo ra một chương trình mô phỏng hệ thống. Tôi muốn kiểm tra xem đoạn mã đã hoạt động chính xác hay chưa. Việc kiểm tra phải được làm kỹ lưỡng vì đoạn mã này sẽ là tiền đề cho hệ thống của tôi. Đoạn mã của tôi hoạt động bằng cách nhận vào một danh sách nhân viên sau đó duyệt danh sách đó và tính tiền lương cho nhân viên. Nhân viên có các thuộc tính như tên, ngày làm việc và mức lương theo ngày.
-Các ràng buộc mà đoạn mã cần phải tuân theo là: số ngày làm việc của nhân viên phải lớn hơn hoặc bằng 0, mức lương của nhân viên không được âm.
-Hãy kiểm tra kết quả của đoạn mã dưới đây dự trên các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
+Tôi là nhân viên công nghệ thông tin đang làm việc tại một công ty công nghệ. Tôi đang phát triển một hệ thống 
+để quản lý nhân viên trong công ty bằng ngôn ngữ Java. Trong quá trình phát triển, tôi đã tạo ra một chương 
+trình mô phỏng hệ thống. Tôi muốn kiểm tra xem đoạn mã đã hoạt động chính xác hay chưa. Việc kiểm tra phải được 
+làm kỹ lưỡng vì đoạn mã này sẽ là tiền đề cho hệ thống của tôi. Đoạn mã của tôi hoạt động bằng cách nhận vào 
+một danh sách nhân viên sau đó duyệt danh sách đó và tính tiền lương cho nhân viên. Nhân viên có các thuộc tính 
+như tên, ngày làm việc và mức lương theo ngày. Các ràng buộc mà đoạn mã cần phải tuân theo là: số ngày làm việc 
+của nhân viên phải lớn hơn hoặc bằng 0, mức lương của nhân viên không được âm. Hãy kiểm tra kết quả của đoạn mã 
+dưới đây dự trên các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
 Dưới đây là đoạn mã của tôi:
 ```java
 import java.util.ArrayList;
@@ -185,6 +190,72 @@ public class IronBarMaximumProfit {
 
     public static void main(String[] args) {
          int[] price = {10000, 50000, 80000, 90000, 100000, 170000, 200000}; 
+    }
+}
+```
+
+
+
+##### 3 : Khải - Chi phí vận chuyển rẻ nhất #####
+Tôi một học sinh trung học tập làm quen với lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển 
+hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Tôi cần kiểm tra tính chuẩn xác của đoạn mã. Việc kiểm 
+định phải được diễn ra cẩn thận và chi tiết vì nó giúp tôi hiểu rõ hơn về lập trình. Chương trình sẽ nhận vào 1 
+mảng danh sách các nhà vận chuyển bao gồm đơn giá trên khoảng cách và đơn giá trên khối lượng, và thông tin của 
+đơn hàng gồm khoảng cách và khối lượng, tiến hành tính toán để có được giá tiền vận chuyển. Để tính ra được kết 
+quả hợp lệ dữ liệu khoảng cách phải lớn hơn 0, khối lượng phải lớn hơn 0. Dựa vào các trường hợp kiểm thử tôi 
+sẽ cho dưới đây, hãy kiểm thử đoạn mã kèm theo bên dưới sau đó đưa ra kết quả và giải thích cụ thể từng trường 
+hợp kiểm thử. Dưới đây các trường hợp để kiểm thử:
+```java
+double distance = 200; 
+double weight = 11; 
+
+double distance = 10; 
+double weight = 100; 
+
+double distance = 1000; 
+double weight = 0,5; 
+```
+
+Đây là đoạn mã của tôi:
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class TransportProvider {
+    String name;
+    double pricePerDistance; 
+    double pricePerWeight;
+    public TransportProvider(String name, double pricePerDistance, double pricePerWeight) {
+        this.name = name;
+        this.pricePerDistance = pricePerDistance;
+        this.pricePerWeight = pricePerWeight;
+    }
+}
+
+public class TransportCostOptimizer {
+    public static void main(String[] args) {
+        
+        TransportProvider cheapestProvider = cheapestProvider(distance,weight);
+        if (cheapestProvider != null) {
+            System.out.println("\nNhà vận chuyển rẻ nhất: " + cheapestProvider.name);
+        }
+    }
+    public static TransportProvider cheapestProvider(double distance, double weight){
+        TransportProvider providers [] = new TransportProvider [3];
+        providers[0] = (new TransportProvider("Provider A",5000, 10000));
+        providers[1]= (new TransportProvider("Provider B", 6000, 9000));
+        providers[2]=(new TransportProvider("Provider C", 3000, 12000));
+        TransportProvider cheapestProvider = null;
+        double minCost = Double.MAX_VALUE;
+        for (int i = 0; i<providers.length; i++) {
+            double cost = (providers[i].pricePerDistance * distance) + (providers[i].pricePerWeight * weight);
+            System.out.println("Chi phí của " + providers[i].name + " là: " + cost + " VND");
+            if (cost < minCost) {
+                minCost = cost;
+                cheapestProvider = providers[i];
+            }
+        }
+        return cheapestProvider;
     }
 }
 ```
