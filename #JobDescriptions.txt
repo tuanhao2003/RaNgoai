@@ -3,13 +3,14 @@
 - Mỗi task t nhận được 8$ chia lại cho ae 5$ t giữ 3$ tiền cò :)).
 - Ae làm kỹ kỹ xíu, không được trùng nhau tại trùng là nộp lại ko được. Chế lại lời văn cho nó khác xíu, mà đúng chính tả chứ đừng làm giống nhau quá t bị ban.
 - T nộp cái nào thì t thống kê lên file excel cho ae.
-- T lấy task xoay tua, ví dụ: nộp task 1 lấy promp của Lộc xong task 2 tới Khải,.... Nếu tới lượt mà ko có loại promp phù hợp thì t pass qua lượt người tiếp theo.
-- Khi làm promp ae ghi như dưới r bắt đầu làm, xong thì cách xuống 3 cái để làm cái tiếp theo:
-##### (Task số):(Thể loại) #####
-ví dụ: ##### 1:test reasoning #####
+- T lấy task xoay tua, ví dụ: nộp task 1 lấy prompt của Lộc xong task 2 tới Khải,.... Nếu tới lượt mà ko có loại promp phù hợp thì t pass qua lượt người tiếp theo.
+- Khi làm prompt ae ghi như dưới r bắt đầu làm, xong thì cách xuống 3 cái để làm cái tiếp theo:
+##### (prompt số) : (Tên) - (Chủ đề) #####
+ví dụ: ##### 1 : Hào - quản lý cửa hàng #####
 - Code phải là code Java
 - Chỉ viết text, không trang trí j cả, có thể xuống dòng.
 - Viết xong dùng link sau để check xem có giống bot không, tốt nhất là nên sửa cho dưới 30%: https://app.gptzero.me/
+- Làm xong push lên nhánh riêng, commit như sau "(loại prompt) : (Tên) - (Chủ đề)" vd: "Test Reasoning : Hào - quản lý cửa hàng"
 
 
 
@@ -58,15 +59,15 @@ Bạn phải cẩn thận trong quá trình kiểm thử vì ...
 Việc kiểm thử phải được thực hiện một cách kỹ càng vì ...
 
 [CLEAR ASK]
-Hãy thực hiện kiểm tra đầu ra của đoạn mã dưới đây bằng cách phân tích các trường hợp kiểm thử bên dưới, lý giải vì sao mỗi đầu vào lại cho ra kết quả tương ứng. Dưới đây là đoạn mã mà tôi đã thực hiện. Đoạn mã này đã được tách ra riêng cho môi trường kiểm thử
+Hãy thực hiện kiểm tra đầu ra của đoạn mã dưới đây bằng cách phân tích các trường hợp kiểm thử bên dưới, giải thích chi tiết vì sao mỗi đầu vào lại cho ra kết quả tương ứng. Dưới đây là đoạn mã mà tôi đã thực hiện. Đoạn mã này đã được tách ra riêng cho môi trường kiểm thử
 
 Hãy kiểm tra kết quả của đoạn mã dưới đây dự vào các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
 
-Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã bên dưới sau đó đưa ra kết quả và giải thích cho từng trường hợp.
+Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã bên dưới sau đó đưa ra kết quả và giải thích chi tiết cho từng trường hợp.
 
 
 Ví dụ:
-##### 1:test reasoning #####
+##### 1 : Hào - Tính RSI trong công ty tài chính #####
 Tôi là lập trình viên làm việc trong một công ty tài chính. Tôi được giao nhiệm vụ phát triển một hệ thống gợi ý giao dịch và cần tính các đường RSI. Tôi đã viết một chương trình sử dụng ngôn ngữ lập trình Java để giải quyết bài toán trên. Tôi cần đảm bảo tính chính xác và độ tin cậy của chương trình mà tôi đã viết vì thế tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên một vài tiêu chí cụ thể.
 Chương trình nhận vào một mảng đại diện cho các mức giá của một tài sản tài chính theo thời gian và một số nguyên đại diện cho số chu kỳ dùng để tính RSI. Kết quả trả về là một mảng chứa các chỉ số RSI được tính toán tương ứng với từng điểm dữ liệu và kết quả được in ra dưới dạng `"RSI[i] = <giá trị RSI>"`.
 Các ràng buộc mà đoạn mã này cần phải có là: mảng đại diện cho các mức giá của một tài sản tài chính theo thời gian phải có số lượng phần tử lớn hơn số chu kỳ dùng để tính RSI, số chu kỳ dùng để tính RSI phải là số nguyên dương, phải có ít nhất một sự thay đổi giá trong chu kỳ đầu tiên.
@@ -165,7 +166,7 @@ for (int i = 0; i < rsiSeries.length; i++) {
 
 
 
-##### 2:test reasoning #####
+##### 2 : Hào - Tìm nhóm bạn lớn nhất #####
 Tôi là một kỹ sư phần mềm đang xây dựng một hệ thống phân tích mạng xã hội bằng Java. Mục tiêu của tôi là tìm ra nhóm bạn lớn nhất trong một mạng xã hội dựa trên dữ liệu về mối quan hệ bạn bè giữa các người dùng.
 Mạng xã hội này có `n` người dùng, mỗi người là một nút trong đồ thị và `m` mối quan hệ bạn bè, mỗi mối quan hệ là một cạnh nối hai nút lại với nhau. Một nhóm bạn được xác định là một thành phần liên thông trong đồ thị, tức là một tập hợp người dùng có thể kết nối với nhau trực tiếp hoặc gián tiếp thông qua các mối quan hệ bạn bè.
 Tôi đã viết một chương trình Java sử dụng thuật toán BFS (Duyệt theo chiều rộng) để tìm thành phần liên thông lớn nhất, tức là nhóm bạn có số lượng thành viên nhiều nhất. Tôi cần kiểm tra độ chính xác của chương trình bằng cách kiểm thử kết quả. Việc kiểm thử được thực hiện cẩn thận có thể giúp tôi quan sát luồng biến đổi của dữ liệu và giảm thiểu sai sót trong chương trình.
@@ -308,7 +309,7 @@ Hãy thực hiện tái cấu trúc lại đoạn mã bằng cách .... Giải t
 
 
 Ví dụ:
-##### 3:code refactoring ##### (cái này t làm js tại task yêu cầu nhưng mà ae làm java đi)
+##### 3 : Hào - tìm đường đi trong ma trận ##### (cái này t làm js tại task yêu cầu nhưng mà ae làm java đi)
 Tôi là một sinh viên năm thứ ba ngành công nghệ thông tin. Tôi đang làm một số bài tập giải thuật sử dụng ngôn ngữ Javascript, cụ thể tôi đang phát triển một hàm nhằm giải quyết bài toán tìm đường đi ngắn nhất từ vị trí ô `(0,0)` đến vị trí ô `(n-1,n-1)` trong một ma trận theo 8 hướng. 
 Hệ thống nhận vào một ma trận có chứa các giá trị 0 và 1, trong đó 0 là ô có thể đi được và 1 là ô bị chặn.
 Mặc dù đoạn mã đã hoạt động, nhưng vẫn còn một số vấn đề như sau: Tốc độ của đoạn mã vẫn còn khá chậm, tôi muốn đoạn mã chạy nhanh hơn và quản lý bộ nhớ tốt hơn. 
@@ -359,7 +360,7 @@ console.log(solver.shortestPathMatrix(grid));
 
 
 
-##### 4:code refactoring #####
+##### 4 : Hào - kiểm tra đạo văn #####
 Tôi là thực tập sinh của một công ty công nghệ hoạt động về lĩnh vực giáo dục. Hiện tôi được giao nhiệm vụ nghiên cứu để phát triển hệ thống kiểm tra đạo văn. Tôi đã phát triển được một đoạn mã giúp kiểm tra mức độ giống nhau của hai chuỗi, đoạn mã được viết bằng ngôn ngữ Java và sẽ là nền tảng để tôi có thể phát triển thành một chức năng hoàn chỉnh.
 Đoạn mã của tôi nhận vào hai chuỗi và tiến hành so sánh hai chuỗi đó, kết quả trả về là tỉ lệ giống nhau giữa hai chuỗi. Tuy nhiên, đoạn mã của tôi còn một số hạn chế: nó sẽ bị chậm nếu chuỗi quá dài và khó được mở rộng hoặc tái sử dụng.
 Tôi muốn tái cấu trúc lại đoạn mã để sửa các trường hợp trên. Việc tái cấu trúc để sửa các trường hợp trên là rất quan trọng vì nó sẽ làm cho mã của tôi hoàn thiện hơn và có thể được sử dụng để phát triển thành chức năng hoàn chỉnh.
@@ -443,7 +444,7 @@ Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng n
 
 
 Ví dụ:
-##### 5:code generation #####
+##### 5 : Hào - Tính đường trung bình động trong tài chính #####
 (cái này lead đưa)
 Tôi là một nhà khoa học dữ liệu đang làm việc với chuỗi thời gian trong lĩnh vực tài chính. Tôi có một tập dữ liệu chứa giá cổ phiếu theo ngày, và tôi muốn tính toán đường trung bình động có trọng số theo hàm mũ (EWMA) để làm mượt dữ liệu và phát hiện xu hướng. Tuy nhiên, tôi không chỉ làm việc với một mã chứng khoán mà với nhiều mã khác nhau trong cùng một tập dữ liệu, vì vậy tôi cần một cách tiếp cận linh hoạt có thể áp dụng cho toàn bộ khung dữ liệu. Tôi cũng muốn có khả năng điều chỉnh hệ số suy giảm alpha để kiểm soát mức độ làm mượt. Hãy cung cấp cho tôi một chương trình Python có thể đọc tập dữ liệu CSV bao gồm các cột `Date`, `Stock' và 'Price`, sau đó tính toán EWMA cho từng mã chứng khoản trong đó và xuất kết quả dưới dạng tệp CSV mới. Chương trình phải đảm bảo tối ưu về hiệu suất khi làm việc với tập dữ liệu lớn.
 
@@ -497,7 +498,7 @@ Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này
 
 
 Ví dụ:
-##### 6:problem reflection #####
+##### 6 : Hào - hệ thống ghép trận #####
 Tôi là một lập trình viên phát triển trò chơi điện từ và hiện đang làm việc trên một trò chơi hành động nhiều. người chơi. Một trong những vấn đề tôi gặp phải là cần xây dựng một hệ thống ghép trận (matchmaking) thông minh, giúp ghép người chơi vào các trận đấu sao cho cân bằng về kỹ năng, giảm thời gian chờ đợi và tối ưu trải nghiệm tổng thể. 
 Dữ liệu đầu vào bao gồm danh sách người chơi đang chờ ghép trận, mỗi người có các thuộc tính như rank (xếp hạng), latency (độ trễ), và thời gian chờ. Tôi muốn bạn viết một chương trình Python thực hiện việc ghép trận tự động dựa trên các tiêu chí trên. 
 Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này, tôi muốn bạn viết ba chương trình Python khác nhau để giải quyết bài toán ghép trận. Sau đó, hãy giải thích ưu và nhược điểm của từng phương pháp.
@@ -506,7 +507,7 @@ Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này
 
 
 #~#~#~#~# Ví dụ thêm #~#~#~#~#
-##### 7:test reasoning #####
+##### 7 : Hào - quản lý tưới tiêu #####
 Tôi là nhân viên làm việc cho một nông trại áp dụng công nghệ cao. Tôi đang phát triển một hệ thống quản lý tưới tiêu tự động được viết bằng ngôn ngữ Java nhằm giải quyết vấn đề hao hụt nhiên liệu khi tưới tiêu. Chức năng mà tôi đang phát triển là chức năng tính toán lượng nhiên liệu hao phí tối thiểu để thực hiện tưới nước cho toàn bộ các mảnh đất trong khu vườn. Tôi cần kiểm tra độ chính xác của chức năng này, việc kiểm tra này phải được làm một cách cẩn thận vì đây sẽ là một trong những chức năng cốt lõi giúp các chức năng khác hoạt động. 
 Hệ thống nhận vào số mảnh đất trong khu vườn, danh sách lượng nước cần thiết để tưới cho từng khu vực, danh sách hệ thống tưới với cấu trúc  `{bắt đầu, kết thúc, chi phí}`. Kết quả trả về là lượng nhiên liệu hao phí tối thiểu để tưới nước hết toàn bộ khu vườn.
 Một số ràng buộc cần phải tuân theo là: các dữ liệu đầu vào phải hợp lệ, danh sách hệ thống tưới là mảng hai chiều.
