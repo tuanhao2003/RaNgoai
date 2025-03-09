@@ -194,11 +194,10 @@ public class IronBarMaximumProfit {
 
 
 ##### 4 : Lộc - Sắp xếp túi đồ trong game #####
-Tôi là một lập trình viên phần mềm. Nhóm của tôi đang làm việc trên một hệ thống xử lý dữ liệu túi đồ của trò chơi, trong đó có một bài toán cần sắp xếp vật phẩm trong túi đồ của tài khoản đó theo thứ tự tăng dần hoặc giảm dần. Tôi đang phát triển ứng dụng đó bằng Java.
-Túi đồ chứa 3 loại vật phẩm: vật phẩm hồi máu, vũ khí, công cụ giải đố, nhưng quan trọng nhất là vật phẩm hồi máu trong một tựa game sinh tồn. Vì thế tôi đã tạo ra một đoạn code để sắp xếp thứ tự vật phẩm sở hữu của loại vật phẩm đó, lần lượt là vật phẩm hồi máu, vũ khí, công cụ giải đố. Kết quả trả về là một danh sách các vật phẩm theo thứ tự ưu tiên được đề cập trước đó.
+Tôi là một lập trình viên phần mềm và nhóm của tôi hiện đang phát triển một hệ thống xử lý dữ liệu túi đồ trong trò chơi. Một trong những yêu cầu của hệ thống là sắp xếp vật phẩm trong túi đồ của người chơi theo thứ tự tăng dần hoặc giảm dần. Tôi đang thực hiện tính năng này bằng Java.
+Túi đồ bao gồm ba loại vật phẩm chính: vật phẩm hồi máu, vũ khí và công cụ giải đố. Trong một tựa game sinh tồn, vật phẩm hồi máu có vai trò quan trọng nhất. Do đó, tôi đã triển khai một thuật toán sắp xếp để đảm bảo thứ tự ưu tiên như sau: vật phẩm hồi máu đứng đầu, tiếp theo là vũ khí và cuối cùng là công cụ giải đố. Kết quả trả về sẽ là danh sách các vật phẩm được sắp xếp theo thứ tự ưu tiên này.
 Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: Số lượng vật phẩm hiển thị phải lớn hơn hoặc bằng 0, vật phẩm hồi máu sẽ là loại đầu tiên xuất hiện, tiếp theo là vũ khí, cuối cùng là vật phẩm giải đố.
 Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã được cung cấp bên dưới sau đó đưa ra kết quả và giải thích chi tiết cho từng trường hợp.
-Dưới đây là các trường hợp cần kiểm thử:
 ```java
 import java.util.ArrayList;
 import java.util.Collections;
