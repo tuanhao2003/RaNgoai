@@ -68,7 +68,85 @@ public class IronBarMaximumProfit {
     }
 }
 ```
-##### 3 : Khải - Chi phí vận chuyển rẻ nhất #####
+
+
+
+##### 3 : Lộc - Sắp xếp túi đồ trong game #####
+Tôi là một lập trình viên phần mềm. Nhóm của tôi đang làm việc trên một hệ thống xử lý dữ liệu túi đồ của trò chơi, trong đó có một bài toán cần sắp xếp vật phẩm trong túi đồ của tài khoản đó theo thứ tự tăng dần hoặc giảm dần. Tôi đang phát triển ứng dụng đó bằng Java.
+Túi đồ chứa 3 loại vật phẩm: vật phẩm hồi máu, vũ khí, công cụ giải đố, nhưng quan trọng nhất là vật phẩm hồi máu trong một tựa game sinh tồn.
+Vì thế tôi đã tạo ra một đoạn code để sắp xếp thứ tự vật phẩm sở hữu của loại vật phẩm đó, lần lượt là vật phẩm hồi máu, vũ khí, công cụ giải đố.
+Đoạn mã đã hoạt động nhưng vẫn còn vấn đề sau:
+Sắp xếp còn khá chậm, tôi cần bạn tối ưu về thời gian và không gian để đoạn mã thực hiện nhanh hơn.
+Đoạn mã cần phải đáp ứng một số ràng buộc nhất định như sau:
+Số lượng vật phẩm hiển thị phải lớn hơn hoặc bằng 0, vật phẩm hồi máu sẽ là loại đầu tiên xuất hiện, tiếp theo là vũ khí, cuối cùng là vật phẩm giải đố.
+Dưới này là đoạn mã của tôi, bạn tối ưu lại nhưng mà không làm thay đổi chức năng của đoạn code: 
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Item {
+    String name;
+    String type;
+    int quantity;
+
+    public Item(String name, String type, int quantity) {
+        this.name = name;
+        this.type = type;
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + type + ") - " + quantity;
+    }
+}
+
+public class InventorySorter {
+    public static void main(String[] args) {
+        List<Item> inventory = new ArrayList<>();
+        inventory.add(new Item("Potion", "Healing", 5));
+        inventory.add(new Item("Herb", "Healing", 3));
+        inventory.add(new Item("Gun", "Weapon", 1));
+        inventory.add(new Item("Key", "Puzzle", 4));
+        inventory.add(new Item("Map", "Puzzle", 6));
+        inventory.add(new Item("Sword", "Weapon", 2));
+
+    Collections.sort(inventory, new Comparator<Item>() {
+        @Override
+        public int compare(Item o1, Item o2) {
+            int priority1 = getTypePriority(o1.type);
+            int priority2 = getTypePriority(o2.type);
+    
+            if (priority1 != priority2) {
+                return Integer.compare(priority1, priority2);
+            }
+    
+            return Integer.compare(o2.quantity, o1.quantity);
+        }
+    
+        private int getTypePriority(String type) {
+            switch (type) {
+                case "Healing": return 0;
+                case "Weapon": return 1;
+                case "Puzzle": return 2;
+                default: return 3;
+            }
+        }
+    });
+
+        for (Item item : inventory) {
+            System.out.println(item);
+        }
+    }
+}
+```
+
+
+
+
+##### 4 : Khải - Chi phí vận chuyển rẻ nhất #####
 Tôi một học sinh trung học. Tôi muốn tập làm quen với lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển 
 hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Chương trình sẽ nhận vào 1 mảng danh sách các nhà vận 
 chuyển bao gồm đơn giá trên khoảng cách và đơn giá trên khối lượng, và thông tin của đơn hàng gồm khoảng cách 

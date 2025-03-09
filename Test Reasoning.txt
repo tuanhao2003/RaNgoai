@@ -62,13 +62,12 @@ Dưới đây là các trường hợp kiểm thử:
 
 
 
-##### 2 : Lộc - Tính toán tuyến đường tốt nhất GTS2 #####
-Tôi là một lập trình viên làm việc trong một công ty logistic. Tôi được giao nhiệm vụ phát triển một hệ thống tối ưu hóa lộ trình giao hàng để giảm chi phí vận chuyển.
-Tôi đã viết một chương trình sử dụng thuật toán tham lam GTS2 để giải quyết bài toán trên bằng ngôn ngữ Java. Trong quá trình phát triển một ứng dụng tối ưu hóa lộ trình giao hàng được viết bằng ngôn ngữ Java, tôi cần đảm bảo rằng kết quả đầu ra chính xác, ổn định. 
-Hệ thống nhận vào một danh sách các địa điểm cần giao hàng, mỗi địa điểm có tọa độ (x, y). Vị trí kho hàng ban đầu, cũng được biểu diễn dưới dạng tọa độ (x, y).
-Một số ràng buộc cần được đảm bảo: Đầu vào luôn là số nguyên dương, đầu ra sẽ luôn là đường đi từ thành phố này đến phố tiếp theo, chạy đến thành phố cuối cùng.
-Kết quả trả về là một tuyến đường giao hàng tối ưu, đảm bảo quãng đường đi là ngắn nhất theo nguyên tắc tham lam: Xuất phát từ kho hàng, luôn chọn địa điểm gần nhất để di chuyển tiếp theo, lặp lại cho đến khi đã đi qua tất cả các địa điểm, quay lại kho hàng khi hoàn tất.
-Hãy cung cấp cho tôi đầu ra và giải thích vì sao có được đầu ra tương ứng.
+##### (done) 2 : Lộc - Tính toán tuyến đường tốt nhất GTS2 #####
+Tôi là một lập trình viên đang làm việc tại một công ty chuyên về vận chuyển hàng hóa. Tôi được giao nhiệm vụ phát triển hệ thống tối ưu hóa lộ trình giao hàng để giảm chi phí vận chuyển. Tôi đã viết một chương trình sử dụng thuật toán tham lam để giải quyết bài toán trên bằng ngôn ngữ Java. Trong quá trình phát triển, tôi cần đảm bảo rằng kết quả đầu ra chính xác và ổn định.
+Hệ thống của tôi nhận vào một danh sách các địa điểm cần giao hàng, mỗi địa điểm có tọa độ `(x, y)`. Ví trí kho ban đầu cũng được biểu diễn dưới dạng tọa độ `(x, y)`. Kết quả trả về là một tuyến đường giao hàng tối ưu, đảm bảo quãng đường đi là ngắn nhất theo nguyên tắc tham lam.
+Đầu vào phải luôn là số nguyên dương để đoạn mã có thể hoạt động tốt.
+Hãy thực hiện kiểm thử đoạn mã dưới đây, cho tôi kết quả đầu ra và giải thích chi tiết tại sao có được kết quả tương ứng.
+Đoạn mã của tôi như sau:
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -131,11 +130,11 @@ public class GTS2DeliveryRouteOptimizer {
     }
 }
 ```
-Sau đây là các trường hợp kiểm thử cho đoạn mã trên:
+Sau đây là các trường hợp kiểm thử cần áp dụng cho đoạn mã trên:
 ```java
 //TH1
-Location warehouse = new Location("Kho hàng", 0, 0);
-List<Location> locations = List.of(
+Location warehouse1 = new Location("Kho hàng", 0, 0); 
+List<Location> locations1 = List.of( 
     new Location("A", 2, 3),
     new Location("B", 5, 1),
     new Location("C", 1, 4),
@@ -143,17 +142,20 @@ List<Location> locations = List.of(
     new Location("E", 4, 5),
     new Location("F", 7, 3) 
 );
+findOptimalRoute(warehouse1, locations1); 
 
 //TH2
-Location warehouse = new Location("Kho hàng", 0, 0);
-List<Location> locations = new ArrayList<>();
+Location warehouse2 = new Location("Kho hàng", 0, 0); 
+List<Location> locations2 = new ArrayList<>(); 
+findOptimalRoute(warehouse2, locations2); 
 
 //TH3
-Location warehouse = new Location("Kho hàng", 0, 0);
-List<Location> locations = new ArrayList<>();
+Location warehouse3 = new Location("Kho hàng", 0, 0); 
+List<Location> locations3 = new ArrayList<>(); 
 locations.add(new Location("A", 2, 3));
 locations.add(null);
 locations.add(new Location("B", 5, 1));
+findOptimalRoute(warehouse3, locations3);  
 ```
 
 
@@ -196,7 +198,109 @@ public class IronBarMaximumProfit {
 
 
 
-##### 3 : Khải - Chi phí vận chuyển rẻ nhất #####
+##### 4 : Lộc - Sắp xếp túi đồ trong game #####
+Tôi là một lập trình viên phần mềm và nhóm của tôi hiện đang phát triển một hệ thống xử lý dữ liệu túi đồ trong trò chơi. Một trong những yêu cầu của hệ thống là sắp xếp vật phẩm trong túi đồ của người chơi theo thứ tự tăng dần hoặc giảm dần. Tôi đang thực hiện tính năng này bằng Java.
+Túi đồ bao gồm ba loại vật phẩm chính: vật phẩm hồi máu, vũ khí và công cụ giải đố. Trong một tựa game sinh tồn, vật phẩm hồi máu có vai trò quan trọng nhất. Do đó, tôi đã triển khai một thuật toán sắp xếp để đảm bảo thứ tự ưu tiên như sau: vật phẩm hồi máu đứng đầu, tiếp theo là vũ khí và cuối cùng là công cụ giải đố. Kết quả trả về sẽ là danh sách các vật phẩm được sắp xếp theo thứ tự ưu tiên này.
+Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: Số lượng vật phẩm hiển thị phải lớn hơn hoặc bằng 0, vật phẩm hồi máu sẽ là loại đầu tiên xuất hiện, tiếp theo là vũ khí, cuối cùng là vật phẩm giải đố.
+Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã được cung cấp bên dưới sau đó đưa ra kết quả và giải thích chi tiết cho từng trường hợp.
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Item {
+    String name;
+    String type;
+    int quantity;
+
+    public Item(String name, String type, int quantity) {
+        this.name = name;
+        this.type = type;
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + type + ") - " + quantity;
+    }
+}
+
+public class InventorySorter {
+    public static void main(String[] args) {
+        List<Item> inventory = new ArrayList<>();
+        inventory.add(new Item("Potion", "Healing", 5));
+        inventory.add(new Item("Herb", "Healing", 3));
+        inventory.add(new Item("Gun", "Weapon", 1));
+        inventory.add(new Item("Key", "Puzzle", 4));
+        inventory.add(new Item("Map", "Puzzle", 6));
+        inventory.add(new Item("Sword", "Weapon", 2));
+
+    Collections.sort(inventory, new Comparator<Item>() {
+        @Override
+        public int compare(Item o1, Item o2) {
+            int priority1 = getTypePriority(o1.type);
+            int priority2 = getTypePriority(o2.type);
+    
+            if (priority1 != priority2) {
+                return Integer.compare(priority1, priority2);
+            }
+    
+            return Integer.compare(o2.quantity, o1.quantity);
+        }
+    
+        private int getTypePriority(String type) {
+            switch (type) {
+                case "Healing": return 0;
+                case "Weapon": return 1;
+                case "Puzzle": return 2;
+                default: return 3;
+            }
+        }
+    });
+
+        for (Item item : inventory) {
+            System.out.println(item);
+        }
+    }
+}
+```
+
+Sau đây là các trường hợp kiểm thử cần áp dụng cho đoạn mã trên:
+```java
+//TH1
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Potion", "Healing", 5));
+inventory.add(new Item("Herb", "Healing", 3));
+inventory.add(new Item("Gun", "Weapon", 1));
+inventory.add(new Item("Key", "Puzzle", 4));
+inventory.add(new Item("Map", "Puzzle", 6));
+inventory.add(new Item("Sword", "Weapon", 2));
+
+//TH2
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Potion", "Healing", 5));
+inventory.add(new Item("Herb", "Healing", 5));
+inventory.add(new Item("Sword", "Weapon", 5));
+inventory.add(new Item("Gun", "Weapon", 5));
+inventory.add(new Item("Map", "Puzzle", 5));
+inventory.add(new Item("Key", "Puzzle", 5));
+
+
+//TH3
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Small Potion", "Healing", 2));
+inventory.add(new Item("Large Potion", "Healing", Null));
+inventory.add(new Item("Null", "Weapon", 4));
+inventory.add(new Item("Axe", "Null", 8));
+inventory.add(new Item("Secret Key", "Puzzle", 1));
+inventory.add(new Item("Null", "Puzzle", 7));
+```
+
+
+
+
+##### 5 : Khải - Chi phí vận chuyển rẻ nhất #####
 Tôi một học sinh trung học tập làm quen với lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển 
 hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Tôi cần kiểm tra tính chuẩn xác của đoạn mã. Việc kiểm 
 định phải được diễn ra cẩn thận và chi tiết vì nó giúp tôi hiểu rõ hơn về lập trình. Chương trình sẽ nhận vào 1 
@@ -258,4 +362,3 @@ public class TransportCostOptimizer {
         return cheapestProvider;
     }
 }
-```
