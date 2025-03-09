@@ -446,3 +446,88 @@ if (result != null) {
     System.out.println("Danh sách khuyến mãi: " + result);
 }
 ```
+
+
+
+##### (done) 7 : Hào - quản lý tổng thời gian chờ máy in #####
+Tôi là nhân viên công nghệ thông tin tại một công ty chuyên làm về tuyển dụng. Vì máy in của công ty tôi chỉ có thể in một tài liệu mỗi lần, tôi đang thiết kế một chương trình bằng ngôn ngữ Java để gửi các tài liệu đến máy in theo thứ tự sử dụng hàng đợi (queue). Trong quá trình thiết kế, tôi đã làm một chức năng đó là ước lượng thời gian máy in thực hiện in xong tất cả tài liệu được gửi. Tôi cần kiểm tra độ chính xác của chức năng này. Việc kiểm tra này cần được thực hiện kỹ lưỡng vì chức năng này sẽ được các sếp của tôi sử dụng để quản lý thời gian in ấn.
+Đoạn mã nhận vào một danh sách đại diện cho thời gian in của các tài liệu, ví dụ: `[5, 3, 8]` có thể được hiểu là tài liệu thứ nhất cần 5 giây để in, tài liệu thứ hai cần 3 giây để in, tài liệu thứ ba cần 8 giây để in. Kết quả trả về là tổng thời gian cần có để in tất cả các tài liệu.
+Ngoài ra, đoạn mã của tôi cần có một số ràng buộc như sau: sử dụng cấu trúc dữ liệu hàng đợi (queue) để quản lý các tài liệu, mỗi tài liệu có một thời gian in (tính bằng giây), kết quả trả về là tổng thời gian chờ đợi của tất cả các tài liệu trong hàng đợi.
+Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã bên dưới sau đó đưa ra kết quả và giải thích chi tiết cho từng trường hợp.
+Các trường hợp cần kiểm thử như sau (hãy nhập theo thứ tự):
+```java
+// TH 1
+6
+2
+3
+5
+7
+11
+1
+
+// TH 2
+5
+1
+2
+4
+8
+16
+
+// TH 3
+5
+-2
+3
+6
+11
+5
+```
+Dưới đây là đoạn mã của tôi:
+```java
+import java.util.*;
+
+public class PrintQueue {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] printTimes;
+
+        System.out.print("Nhập số lượng tài liệu: ");
+        int numberOfDocuments = scanner.nextInt();
+        printTimes = new int[numberOfDocuments];
+        System.out.println("Nhập thời gian in cho từng tài liệu:");
+        for (int i = 0; i < numberOfDocuments; i++) {
+            printTimes[i] = scanner.nextInt();
+        }
+
+        scanner.close();
+
+        System.out.println("Tổng thời gian chờ đợi: " + calculateTotalWaitTime(printTimes) + " giây");
+    }
+
+    public static int calculateTotalWaitTime(int[] printTimes) {
+        if (printTimes == null || printTimes.length == 0) {
+            System.out.println("Danh sách tài liệu trống!");
+            return 0;
+        }
+
+        Queue<Integer> queue = new PriorityQueue<>();
+        for (int time : printTimes) {
+            if (time <= 0) {
+                System.out.println("Lỗi: Thời gian in không hợp lệ: " + time);
+                return -1;
+            }
+            queue.add(time);
+        }
+
+        int totalWaitTime = 0;
+        int currentWaitTime = 0;
+
+        while (!queue.isEmpty()) {
+            int printTime = queue.poll();
+            totalWaitTime += currentWaitTime;
+            currentWaitTime += printTime;
+        }
+
+        return totalWaitTime;
+    }
+}
+```
