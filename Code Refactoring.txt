@@ -1,4 +1,4 @@
-##### 1 : Lộc - Quản lý lương nhân viên #####
+##### (done) 1 : Lộc - Quản lý lương nhân viên #####
 Tôi là một sinh viên năm ba ngành công nghệ thông tin ở đại học Sài Gòn. Tôi đang làm một số bài tập giải thuật của thầy giao cho và sử dụng ngôn ngữ Java, cụ thể tôi đang phát triển một hàm nhằm tính lương cho nhân viên dựa vào số buổi đi làm.
 Hệ thống nhận vào một danh sách nhân viên, mỗi nhân viên có thông tin về số buổi đi làm và mức lương mỗi buổi. Kết quả trả về là tổng lương của từng nhân viên.
 Mặc dù đoạn mã đã hoạt động, nhưng vẫn còn một số vấn đề như sau:
