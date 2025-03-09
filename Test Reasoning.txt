@@ -1,4 +1,4 @@
-##### 1 : Hào - quản lý nhân viên #####
+##### (done) 1 : Hào - quản lý nhân viên #####
 Tôi là nhân viên công nghệ thông tin đang làm việc tại một công ty công nghệ. Tôi đang phát triển một hệ thống để quản lý nhân viên trong công ty bằng ngôn ngữ Java. Trong quá trình phát triển, tôi đã tạo ra một chương trình mô phỏng hệ thống. Tôi muốn kiểm tra xem đoạn mã đã hoạt động chính xác hay chưa. Việc kiểm tra phải được làm kỹ lưỡng vì đoạn mã này sẽ là tiền đề cho hệ thống của tôi. Đoạn mã của tôi hoạt động bằng cách nhận vào một danh sách nhân viên sau đó duyệt danh sách đó và tính tiền lương cho nhân viên. Nhân viên có các thuộc tính như tên, ngày làm việc và mức lương theo ngày.
 Các ràng buộc mà đoạn mã cần phải tuân theo là: số ngày làm việc của nhân viên phải lớn hơn hoặc bằng 0, mức lương của nhân viên không được âm.
 Hãy kiểm tra kết quả của đoạn mã dưới đây dự trên các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
