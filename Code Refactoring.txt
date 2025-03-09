@@ -39,3 +39,32 @@ class SalaryCalculator {
     }
 }
 ```
+
+
+
+##### (done) 2 : Hào - Tối đa lợi nhuận cắt thanh sắt #####
+Tôi là một lập trình viên làm việc tự do. Tôi đang nhận một dự án phát triển một hệ thống quản lý nguyên vật liệu cho một công xưởng, được viết bằng ngôn ngữ Java. Tôi đã làm một tính năng giúp tính toán việc phân đoạn các thanh sắt sao cho tối đa lợi nhuận.
+Đoạn mã của tôi nhận vào một danh sách chứa các giá trị bán ra của thanh sắt dựa trên độ dài (độ dài là chỉ mục của giá trị đó trong danh sách), và một số nguyên đại diện cho độ dài của thanh sắt cần cắt. Kết quả trả về là lợi nhuận lớn nhất có thể thu được từ việc cắt thanh sắt đó.
+Tuy đoạn mã đã hoạt động đúng như ý tôi muốn nhưng vì đoạn mã đang sử dụng đệ quy để thực hiện tìm lợi nhuận lớn nhất, điều này làm cho đoạn mã hoạt động khá chậm khi mảng có độ dài lớn. Tôi cần tái cấu trúc lại đoạn mã để tối ưu thời gian chạy.
+Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: độ dài của thanh sắt được cho phải lớn hơn 0, các giá trị trong danh sách cũng phải lớn hơn 0 và được tính bằng đơn vị tiền tệ Việt Nam đồng. 
+Hãy tái cấu trúc lại đoạn mã dưới đây cho phù hợp với yêu cầu và mô tả bên trên. Việc tái cấu trúc nên được làm cẩn thận vì đây là một trong số các chức năng chính trong hệ thống của tôi. Hãy tổng hợp các thay đổi và chỉnh sửa ở cuối.
+Đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.*;
+public class IronBarMaximumProfit {
+    public static int maxProfitCutting(int[] price, int n) {
+        int maxProfit = Integer.MIN_VALUE;
+        if (n == 0) return 0;
+        for (int i = 1; i <= n; i++) {
+            maxProfit = Math.max(maxProfit, price[i - 1] + maxProfitCutting(price, n - i));
+        }
+        return maxProfit;
+    }
+
+    public static void main(String[] args) {
+        int[] price = {10000, 50000, 80000, 90000, 100000, 170000, 200000};
+        int bar = 8; 
+        System.out.println(maxProfitCutting(price, bar));
+    }
+}
+```
