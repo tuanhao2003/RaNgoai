@@ -362,3 +362,87 @@ public class TransportCostOptimizer {
         return cheapestProvider;
     }
 }
+
+
+
+##### (done) 6 : Hào - gợi ý sản phẩm trong siêu thị bán lẻ dựa trên số tiền #####
+Tôi là quản lý của một hệ thống siêu thị bán lẻ. Tôi tự tìm hiểu và đã có một ít kiến thức về lập trình. Hiện tôi đang phát triển trang web đặt hàng trực tuyến cho siêu thị của tôi được viết bằng ngôn ngữ java . Tôi đang thực hiện một chức năng là gợi ý sản phẩm dựa trên số tiền hiện có trong tài khoản của khách hàng.  
+Tôi muốn kiểm tra xem liệu đoạn mã mà tôi đã viết có hoạt động đúng như suy đoán của tôi không. Việc kiểm tra nên được thực hiện chi tiết và cẩn thận vì việc này sẽ ảnh hưởng trực tiếp đến lợi nhuận của siêu thị.
+Đoạn mã của tôi sẽ nhận đầu vào bao gồm một số thực n, và một mảng các số thực. Số thực n sẽ là đại diện cho số tiền hiện đang có trong tài khoản của khách hàng và mảng số thực là đại diện cho giá tiền của các sản phẩm có trong cửa hàng. Mục tiêu của đoạn mã là tạo ra một danh sách các sản phẩm mà trong đó tổng giá trị của danh sách gần nhất với số tiền đang có trong tài khoản của khách hàng để làm khuyến mãi cho khách hàng. 
+Chức năng trên cần phải đảm bảo các yêu cầu sau: chỉ được sử dụng khi số tiền trong tài khoản của khách hàng không quá năm triệu đồng, các thông báo lỗi cho mảng rỗng và số tiền là số âm phải được in ra để phục vụ quá trình kiểm thử. 
+Tôi sẽ cung cấp đoạn mã và các trường hợp cần kiểm thử bên dưới đây, hãy kiểm thử, đưa ra kết quả và giải thích cho từng trường hợp.
+
+Đoạn mã của tôi như sau:
+```java
+import java.util.*;
+
+public class shoppingSuggestions {
+    public static List<Double> maxProducts(double n, double[] prices) {
+        if (n > 5000000.0) {
+            return null;
+        }
+
+        if (n < 0) {
+            System.out.println("Lỗi: n không được là số âm.");
+            return null;
+        }
+        
+        for (double num : prices) {
+            if (num < 0) {
+                System.out.println("Lỗi: Mảng chứa số âm không hợp lệ.");
+                return null;
+            }
+        }
+
+        Arrays.sort(prices);
+        List<Double> result = new ArrayList<>();
+        double sum = 0.0;
+        
+        for (double num : prices) {
+            if (sum + num <= n) {
+                result.add(num);
+                sum += num;
+            } else {
+                break;
+            }
+        }
+        
+        return result;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+
+Các trường hợp kiểm thử như sau:
+```java
+n = 10.5;
+prices = {2.3, 1.5, 5.1, 3.2, 4.7, 0.9}; 
+List<Double> result = maxProducts(n, prices);
+if (result != null) {
+    System.out.println("Danh sách khuyến mãi: " + result);
+}
+
+n = 6000000;
+prices = {1.0, 2.0, 3.0}; 
+List<Double> result = maxProducts(n, prices);
+if (result != null) {
+    System.out.println("Danh sách khuyến mãi: " + result);
+}
+
+n = -10;
+prices = {1.0, 2.0, 3.0}; 
+List<Double> result = maxProducts(n, prices);
+if (result != null) {
+    System.out.println("Danh sách khuyến mãi: " + result);
+}
+
+n = 10;
+prices = {2.0, -3.0, 1.0}; 
+List<Double> result = maxProducts(n, prices);
+if (result != null) {
+    System.out.println("Danh sách khuyến mãi: " + result);
+}
+```

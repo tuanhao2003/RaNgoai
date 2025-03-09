@@ -4,6 +4,8 @@ Dữ liệu đầu vào bao gồm túi đồ của mỗi người chơi có th�
 Tôi muốn xây dựng một cơ chế sắp xếp tự động, giúp túi đồ luôn được tổ chức theo thứ tự ưu tiên: Vật phẩm hồi máu(xuất hiện đầu tiên để dễ dàng sử dụng), Vũ khí(sắp xếp theo số lượng từ cao xuống thấp), Công cụ giải đố(đặt ở cuối vì ít được dùng trong giao tranh).
 Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này, tôi muốn bạn viết ba chương trình Java khác nhau để giải quyết bài toán trên. Sau đó, hãy giải thích ưu và nhược điểm của từng phương pháp.
 
+
+
 ##### 2 : Khải - Hệ thống sắp xếp danh mục đầu từ chứng khoán #####
 Tôi là một kỹ sư phần mềm đang phát triển một nền tảng giao dịch chứng khoán theo thời gian thực, nơi tốc độ 
 xử lý dữ liệu và phản hồi nhanh là yếu tố sống còn. Một trong những thách thức lớn mà tôi đang đối mặt là tối 
