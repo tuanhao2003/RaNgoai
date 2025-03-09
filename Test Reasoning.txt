@@ -190,3 +190,105 @@ public class IronBarMaximumProfit {
     }
 }
 ```
+
+
+
+##### 4 : Lộc - Sắp xếp túi đồ trong game #####
+Tôi là một lập trình viên phần mềm và nhóm của tôi hiện đang phát triển một hệ thống xử lý dữ liệu túi đồ trong trò chơi. Một trong những yêu cầu của hệ thống là sắp xếp vật phẩm trong túi đồ của người chơi theo thứ tự tăng dần hoặc giảm dần. Tôi đang thực hiện tính năng này bằng Java.
+Túi đồ bao gồm ba loại vật phẩm chính: vật phẩm hồi máu, vũ khí và công cụ giải đố. Trong một tựa game sinh tồn, vật phẩm hồi máu có vai trò quan trọng nhất. Do đó, tôi đã triển khai một thuật toán sắp xếp để đảm bảo thứ tự ưu tiên như sau: vật phẩm hồi máu đứng đầu, tiếp theo là vũ khí và cuối cùng là công cụ giải đố. Kết quả trả về sẽ là danh sách các vật phẩm được sắp xếp theo thứ tự ưu tiên này.
+Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: Số lượng vật phẩm hiển thị phải lớn hơn hoặc bằng 0, vật phẩm hồi máu sẽ là loại đầu tiên xuất hiện, tiếp theo là vũ khí, cuối cùng là vật phẩm giải đố.
+Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã được cung cấp bên dưới sau đó đưa ra kết quả và giải thích chi tiết cho từng trường hợp.
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Item {
+    String name;
+    String type;
+    int quantity;
+
+    public Item(String name, String type, int quantity) {
+        this.name = name;
+        this.type = type;
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + type + ") - " + quantity;
+    }
+}
+
+public class InventorySorter {
+    public static void main(String[] args) {
+        List<Item> inventory = new ArrayList<>();
+        inventory.add(new Item("Potion", "Healing", 5));
+        inventory.add(new Item("Herb", "Healing", 3));
+        inventory.add(new Item("Gun", "Weapon", 1));
+        inventory.add(new Item("Key", "Puzzle", 4));
+        inventory.add(new Item("Map", "Puzzle", 6));
+        inventory.add(new Item("Sword", "Weapon", 2));
+
+    Collections.sort(inventory, new Comparator<Item>() {
+        @Override
+        public int compare(Item o1, Item o2) {
+            int priority1 = getTypePriority(o1.type);
+            int priority2 = getTypePriority(o2.type);
+    
+            if (priority1 != priority2) {
+                return Integer.compare(priority1, priority2);
+            }
+    
+            return Integer.compare(o2.quantity, o1.quantity);
+        }
+    
+        private int getTypePriority(String type) {
+            switch (type) {
+                case "Healing": return 0;
+                case "Weapon": return 1;
+                case "Puzzle": return 2;
+                default: return 3;
+            }
+        }
+    });
+
+        for (Item item : inventory) {
+            System.out.println(item);
+        }
+    }
+}
+```
+
+Sau đây là các trường hợp kiểm thử cần áp dụng cho đoạn mã trên:
+```java
+//TH1
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Potion", "Healing", 5));
+inventory.add(new Item("Herb", "Healing", 3));
+inventory.add(new Item("Gun", "Weapon", 1));
+inventory.add(new Item("Key", "Puzzle", 4));
+inventory.add(new Item("Map", "Puzzle", 6));
+inventory.add(new Item("Sword", "Weapon", 2));
+
+//TH2
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Potion", "Healing", 5));
+inventory.add(new Item("Herb", "Healing", 5));
+inventory.add(new Item("Sword", "Weapon", 5));
+inventory.add(new Item("Gun", "Weapon", 5));
+inventory.add(new Item("Map", "Puzzle", 5));
+inventory.add(new Item("Key", "Puzzle", 5));
+
+
+//TH3
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Small Potion", "Healing", 2));
+inventory.add(new Item("Large Potion", "Healing", Null));
+inventory.add(new Item("Null", "Weapon", 4));
+inventory.add(new Item("Axe", "Null", 8));
+inventory.add(new Item("Secret Key", "Puzzle", 1));
+inventory.add(new Item("Null", "Puzzle", 7));
+
+```
