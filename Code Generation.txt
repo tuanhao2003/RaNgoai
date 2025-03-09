@@ -1,5 +1,0 @@
-##### 1 : Lộc - hệ thống sắp xếp items trong túi đồ của game #####
-Là một lập trình viên phát triển game, tôi đang làm việc trên một tựa game hành động nhiều người chơi, nơi mỗi quyết định nhanh có thể ảnh hưởng đến kết quả trận đấu. Tôi cần tối ưu hệ thống sắp xếp túi đồ để người chơi dễ dàng tìm thấy vật phẩm cần thiết trong lúc chiến đấu.
-Túi đồ chứa nhiều loại vật phẩm như hồi máu, vũ khí, công cụ giải đố, nhưng quan trọng nhất là phải tìm được vật phẩm hồi máu nhanh chóng.
-Nếu không được sắp xếp hợp lý, người chơi có thể mất thời gian tìm kiếm, làm giảm trải nghiệm và dễ bị hạ gục. Tôi muốn xây dựng một cơ chế sắp xếp tự động ưu tiên vật phẩm hồi máu lên đầu, tiếp theo là vũ khí theo số lượng, cuối cùng là công cụ giải đố.
-Tôi muốn đoạn code khi viết ra phải hoạt động chính xác, ổn định, tối ưu về hiệu suất vì vật phẩm trong game rất đa dạng.
