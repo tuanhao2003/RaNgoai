@@ -54,3 +54,99 @@ Dưới đây là các trường hợp kiểm thử:
             System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
         }
 ```
+
+
+
+##### 2 : Lộc - Tính toán tuyến đường tốt nhất GTS2 #####
+Tôi là một lập trình viên làm việc trong một công ty logistic. Tôi được giao nhiệm vụ phát triển một hệ thống tối ưu hóa lộ trình giao hàng để giảm chi phí vận chuyển.
+Tôi đã viết một chương trình sử dụng thuật toán tham lam GTS2 để giải quyết bài toán trên bằng ngôn ngữ Java. Trong quá trình phát triển một ứng dụng tối ưu hóa lộ trình giao hàng được viết bằng ngôn ngữ Java, tôi cần đảm bảo rằng kết quả đầu ra chính xác, ổn định. 
+Hệ thống nhận vào một danh sách các địa điểm cần giao hàng, mỗi địa điểm có tọa độ (x, y). Vị trí kho hàng ban đầu, cũng được biểu diễn dưới dạng tọa độ (x, y).
+Một số ràng buộc cần được đảm bảo: Đầu vào luôn là số nguyên dương, đầu ra sẽ luôn là đường đi từ thành phố này đến phố tiếp theo, chạy đến thành phố cuối cùng.
+Kết quả trả về là một tuyến đường giao hàng tối ưu, đảm bảo quãng đường đi là ngắn nhất theo nguyên tắc tham lam: Xuất phát từ kho hàng, luôn chọn địa điểm gần nhất để di chuyển tiếp theo, lặp lại cho đến khi đã đi qua tất cả các địa điểm, quay lại kho hàng khi hoàn tất.
+Hãy cung cấp cho tôi đầu ra và giải thích vì sao có được đầu ra tương ứng.
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class Location {
+    double x, y;
+    String name;
+
+    public Location(String name, double x, double y) {
+        this.name = name;
+        this.x = x;
+        this.y = y;
+    }
+
+    public double distanceTo(Location other) {
+        return Math.sqrt(Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2));
+    }
+}
+
+public class GTS2DeliveryRouteOptimizer {
+
+    public static List<Location> findOptimalRoute(Location warehouse, List<Location> locations) {
+        if (locations == null || locations.isEmpty()) {
+            throw new IllegalArgumentException("Danh sách địa điểm không được rỗng.");
+        }
+
+        List<Location> route = new ArrayList<>();
+        route.add(warehouse);
+
+        Location current = warehouse;
+        List<Location> remainingLocations = new ArrayList<>(locations);
+
+        while (!remainingLocations.isEmpty()) {
+            Location nearest = findNearestLocation(current, remainingLocations);
+            route.add(nearest);
+            remainingLocations.remove(nearest);
+            current = nearest;
+        }
+
+        route.add(warehouse);
+        return route;
+    }
+
+    private static Location findNearestLocation(Location current, List<Location> locations) {
+        Location nearest = locations.get(0);
+        double minDistance = current.distanceTo(nearest);
+
+        for (Location loc : locations) {
+            double distance = current.distanceTo(loc);
+            if (distance < minDistance) {
+                nearest = loc;
+                minDistance = distance;
+            }
+        }
+        return nearest;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+Sau đây là các trường hợp kiểm thử cho đoạn mã trên:
+```java
+//TH1
+Location warehouse = new Location("Kho hàng", 0, 0);
+List<Location> locations = List.of(
+    new Location("A", 2, 3),
+    new Location("B", 5, 1),
+    new Location("C", 1, 4),
+    new Location("D", 6, 2),
+    new Location("E", 4, 5),
+    new Location("F", 7, 3) 
+);
+
+//TH2
+Location warehouse = new Location("Kho hàng", 0, 0);
+List<Location> locations = new ArrayList<>();
+
+//TH3
+Location warehouse = new Location("Kho hàng", 0, 0);
+List<Location> locations = new ArrayList<>();
+locations.add(new Location("A", 2, 3));
+locations.add(null);
+locations.add(new Location("B", 5, 1));
+```
