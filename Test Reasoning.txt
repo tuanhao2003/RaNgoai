@@ -150,3 +150,41 @@ locations.add(new Location("A", 2, 3));
 locations.add(null);
 locations.add(new Location("B", 5, 1));
 ```
+
+
+
+##### 3 : Hào - Tối đa lợi nhuận cắt thanh sắt #####
+Tôi là một lập trình viên làm việc tự do. Tôi đang nhận một dự án phát triển một hệ thống quản lý nguyên vật liệu cho một công xưởng, được viết bằng ngôn ngữ Java. Tôi đã làm một tính năng giúp tính toán việc phân đoạn các thanh sắt sao cho tối đa lợi nhuận. Tôi cần kiểm tra độ chính xác của đoạn mã. Kết quả kiểm tra phải được thực hiện cẩn thận vì nó sẽ giúp đoạn mã của tôi có độ tin cậy cao hơn từ phía khách hàng.
+Đoạn mã của tôi nhận vào một danh sách chứa các giá trị bán ra của thanh sắt dựa trên độ dài (độ dài là chỉ mục của giá trị đó trong danh sách), và một số nguyên đại diện cho độ dài của thanh sắt cần cắt. Kết quả trả về là lợi nhuận lớn nhất có thể thu được từ việc cắt thanh sắt đó.
+Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: độ dài của thanh sắt được cho phải lớn hơn 0, các giá trị trong danh sách cũng phải lớn hơn 0 và được tính bằng đơn vị tiền tệ Việt Nam đồng. 
+Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã được cung cấp bên dưới sau đó đưa ra kết quả và giải thích chi tiết cho từng trường hợp.
+Dưới đây là các trường hợp cần kiểm thử:
+```java
+int bar1 = 8; 
+System.out.println(maxProfitCutting(price, bar1));
+
+int bar2 = 0; 
+System.out.println(maxProfitCutting(price, bar2));
+
+int bar3 = 10; 
+System.out.println(maxProfitCutting(price, bar3));
+```
+
+Đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.*;
+public class IronBarMaximumProfit {
+    public static int maxProfitCutting(int[] price, int n) {
+        int maxProfit = Integer.MIN_VALUE;
+        if (n == 0) return 0;
+        for (int i = 1; i <= n; i++) {
+            maxProfit = Math.max(maxProfit, price[i - 1] + maxProfitCutting(price, n - i));
+        }
+        return maxProfit;
+    }
+
+    public static void main(String[] args) {
+         int[] price = {10000, 50000, 80000, 90000, 100000, 170000, 200000}; 
+    }
+}
+```

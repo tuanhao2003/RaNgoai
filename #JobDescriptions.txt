@@ -10,7 +10,7 @@ ví dụ: ##### 1 : Hào - quản lý cửa hàng #####
 - Code phải là code Java
 - Chỉ viết text, không trang trí j cả, có thể xuống dòng.
 - Viết xong dùng link sau để check xem có giống bot không, tốt nhất là nên sửa cho dưới 30%: https://app.gptzero.me/
-- Làm xong push lên nhánh riêng, commit như sau "(loại prompt) : (Tên) - (Chủ đề)" vd: "Test Reasoning : Hào - quản lý cửa hàng"
+- Làm xong push lên nhánh riêng, commit như sau "(loại prompt) : (Tên) - (Chủ đề)" vd: "TR : Hào - quản lý cửa hàng"
 
 
 
