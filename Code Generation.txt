@@ -1,0 +1,15 @@
+##### 1 : Khang - Hệ thống chia nhóm trong lớp học #####
+Tôi là một nhà nghiên cứu trong lĩnh vực giáo dục và công nghệ.
+
+Trong quá trình tổ chức các hoạt động nhóm trong lớp, tôi nhận thấy việc chia nhóm thủ công tốn nhiều thời gian và không đảm bảo sự công bằng giữa các sinh viên. Vì vậy, tôi cần một hệ thống có thể tự động chia nhóm sinh viên theo số lượng nhóm mong muốn, đảm bảo số lượng thành viên trong mỗi nhóm xấp xỉ nhau.
+
+Tôi cần phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán phân chia nhóm học sinh một cách tự động trong bối cảnh quản lý lớp học và hỗ trợ giảng dạy.
+
+Trong quá trình phát triển một ứng dụng hỗ trợ giảng dạy và quản lý lớp học được viết bằng ngôn ngữ Java, tôi đang gặp khó khăn trong phần tối ưu hiệu suất để xử lý danh sách sinh viên lớn và đảm bảo tất cả sinh viên đều được phân nhóm hợp lý. Tôi muốn bạn tạo cho tôi đoạn mã để đọc danh sách sinh viên từ tệp CSV, tự động chia nhóm theo số lượng mong muốn, sau đó xuất kết quả ra một tệp CSV mới.
+
+
+
+
+
+
+

@@ -1,25 +1,34 @@
-##### (done) 1 : Hào - quản lý nhân viên #####
-Tôi là nhân viên công nghệ thông tin đang làm việc tại một công ty công nghệ. Tôi đang phát triển một hệ thống để quản lý nhân viên trong công ty bằng ngôn ngữ Java. Trong quá trình phát triển, tôi đã tạo ra một chương trình mô phỏng hệ thống. Tôi muốn kiểm tra xem đoạn mã đã hoạt động chính xác hay chưa. Việc kiểm tra phải được làm kỹ lưỡng vì đoạn mã này sẽ là tiền đề cho hệ thống của tôi. Đoạn mã của tôi hoạt động bằng cách nhận vào một danh sách nhân viên sau đó duyệt danh sách đó và tính tiền lương cho nhân viên. Nhân viên có các thuộc tính như tên, ngày làm việc và mức lương theo ngày.
-Các ràng buộc mà đoạn mã cần phải tuân theo là: số ngày làm việc của nhân viên phải lớn hơn hoặc bằng 0, mức lương của nhân viên không được âm.
+##### 1 : Khang - Hệ Thống xếp nhóm trong lớp học #####
+Tôi là nhân viên công nghệ thông tin đang làm việc tại một công ty công nghệ. Tôi đang phát triển một hệ thống để xếp nhóm trong lớp bằng ngôn ngữ Java. Trong quá trình phát triển, tôi đã tạo ra một chương trình mô phỏng hệ thống. Tôi muốn kiểm tra xem đoạn mã đã hoạt động chính xác hay chưa. Việc kiểm tra phải được làm kỹ lưỡng vì đoạn mã này sẽ là tiền đề cho hệ thống của tôi. Đoạn mã của tôi hoạt động bằng cách nhận vào một danh sách sinh viên sau đó duyệt danh sách đó và chia các nhân viên vào các nhóm đều nhau. Sinh viên có các thuộc tính như MSSV, Họ tên và lớp.
+Các ràng buộc mà đoạn mã cần phải tuân theo là: MSSV phải và nó phải là duy nhất, họ tên và lớp không được để trống.
 Hãy kiểm tra kết quả của đoạn mã dưới đây dự trên các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
 Dưới đây là đoạn mã của tôi:
 ```java
 import java.util.ArrayList;
 import java.util.List;
 
-class EmployeeInfomation {
+class Student {
+    String studentID;
     String name;
-    int days;
-    double salary;
+    String className;
 
-    public EmployeeInfomation(String name, int days, double salary) {
+    public Student(String studentID, String name, String className) {
+        if (studentID == null || studentID.isEmpty()) {
+            throw new IllegalArgumentException("MSSV không được để trống.");
+        }
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Họ tên không được để trống.");
+        }
+        if (className == null || className.isEmpty()) {
+            throw new IllegalArgumentException("Lớp không được để trống.");
+        }
+        this.studentID = studentID;
         this.name = name;
-        this.days = days;
-        this.salary = salary;
+        this.className = className;
     }
 }
 
-class SalaryCalculator {
+class StudentGroupAllocator {
     public static void main(String[] args) {
        
     }
@@ -27,30 +36,29 @@ class SalaryCalculator {
 ```
 Dưới đây là các trường hợp kiểm thử:
 ```java
-//TH 1
- List<EmployeeInfomation> employees = new ArrayList<>();
-        employees.add(new EmployeeInfomation("John", 20, 50));
-        employees.add(new EmployeeInfomation("Jane", 15, 60));
-        employees.add(new EmployeeInfomation("Doe", 22, 45));
+        // TH 1
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("SV001", "John", "Class A"));
+        students.add(new Student("SV002", "Jane", "Class B"));
+        students.add(new Student("SV003", "Doe", "Class C"));
 
-        for (EmployeeInfomation emp : employees) {
-            double totalSalary = emp.days * emp.salary;
-            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+        for (Student student : students) {
+            System.out.println("Student: " + student.name + ", Class: " + student.className);
         }
-// TH 2
- List<EmployeeInfomation> employees = new ArrayList<>();
-        employees.add(new EmployeeInfomation("sew", 0, 50)); 
-        employees.add(new EmployeeInfomation("jee", 23, 55)); 
-        employees.add(new EmployeeInfomation("Done", 30, 0)); 
 
-        for (EmployeeInfomation emp : employees) {
-            double totalSalary = emp.days * emp.salary;
-            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+        // TH 2
+        students = new ArrayList<>();
+        students.add(new Student("SV004", "Sew", "Class A"));
+        students.add(new Student("SV005", "Jee", "Class B"));
+        students.add(new Student("SV006", "Done", "Class C"));
+
+        for (Student student : students) {
+            System.out.println("Student: " + student.name + ", Class: " + student.className);
         }
-// TH 3
- List<EmployeeInfomation> employees = new ArrayList<>();
-        for (EmployeeInfomation emp : employees) {
-            double totalSalary = emp.days * emp.salary;
-            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+
+        // TH 3
+        students = new ArrayList<>();
+        for (Student student : students) {
+            System.out.println("Student: " + student.name + ", Class: " + student.className);
         }
 ```

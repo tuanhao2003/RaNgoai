@@ -1,41 +1,42 @@
-##### 1 : Lộc - Quản lý lương nhân viên #####
-Tôi là một sinh viên năm ba ngành công nghệ thông tin ở đại học Sài Gòn. Tôi đang làm một số bài tập giải thuật của thầy giao cho và sử dụng ngôn ngữ Java, cụ thể tôi đang phát triển một hàm nhằm tính lương cho nhân viên dựa vào số buổi đi làm.
-Hệ thống nhận vào một danh sách nhân viên, mỗi nhân viên có thông tin về số buổi đi làm và mức lương mỗi buổi. Kết quả trả về là tổng lương của từng nhân viên.
-Mặc dù đoạn mã đã hoạt động, nhưng vẫn còn một số vấn đề như sau:
-Mã nguồn chưa được tối ưu hóa, cần tách các logic tính toán lương thành các phương thức riêng biệt để dễ bảo trì và mở rộng.
-Hiện tại, hệ thống tính lương của tôi đang tính trực tiếp trong vòng lặp, không tuân theo nguyên tắc Single Responsibility Principle.
-Cần đảm bảo rằng nếu số buổi làm việc hoặc mức lương nhập vào không hợp lệ thì hệ thống có thể xử lý ngoại lệ một cách hợp lý.
-Đoạn mã cần phải đáp ứng một số ràng buộc nhất định như sau:
-Nếu số buổi làm việc nhỏ hơn 0, hệ thống sẽ phải trả về lỗi, nếu mức lương mỗi buổi của nhân viên nhỏ hơn 0, hệ thống cũng sẽ phải báo lỗi. Kết quả trả về phải chính xác và có định dạng rõ ràng.
-Hãy giúp tôi tái cấu trúc lại đoạn mã bên dưới để giải quyết các vấn đề được nêu bên trên, các thay đổi và chỉnh sửa cần phải được tóm tắt ở cuối.
-Dưới này là đoạn mã của tôi, bạn sửa lại theo đúng những gì tôi yêu cầu: 
+##### 1 : Khang - Hệ thống chia nhóm trong lớp học #####
+Tôi là một sinh viên năm thứ ba ngành công nghệ thông tin. Tôi đang làm một số bài tập giải thuật sử dụng ngôn ngữ JavaScript, cụ thể tôi đang phát triển một hàm nhằm giải quyết bài toán chia nhóm trong lớp học.
+Hệ thống nhận vào một danh sách sinh viên, trong đó mỗi sinh viên có thông tin gồm MSSV, họ tên và lớp, sau đó phân chia thành các nhóm.
+Mặc dù đoạn mã đã hoạt động, nhưng vẫn còn một số vấn đề như sau: thuật toán chạy chưa tối ưu, có thể mất nhiều thời gian khi số lượng sinh viên lớn, và việc quản lý bộ nhớ chưa hiệu quả. Tôi muốn cải thiện hiệu suất của thuật toán và tối ưu hóa cách thức phân nhóm.
+Hãy giúp tôi tái cấu trúc lại đoạn mã bên dưới để giải quyết các vấn đề nêu trên. Các thay đổi và chỉnh sửa không được chú thích trong mã mà cần phải được tóm tắt ở cuối.
+Đây là đoạn mã mà tôi đã viết:
 ```java
-import java.util.ArrayList;
-import java.util.List;
+class StudentGroupAllocator {
+    divideIntonhoms(sinhviens, sonhom) {
+        if (sinhviens.length === 0 || sonhom <= 0) return [];
 
-class EmployeeInfomation {
-    String name;
-    int days;
-    double salary;
+        sinhviens.sort(() => Math.random() - 0.5); // Xáo trộn danh sách để chia ngẫu nhiên
 
-    public EmployeeInfomation(String name, int days, double salary) {
-        this.name = name;
-        this.days = days;
-        this.salary = salary;
-    }
-}
+        let nhoms = Array.from({ length: sonhom }, () => []);
+        let index = 0;
 
-class SalaryCalculator {
-    public static void main(String[] args) {
-        List<EmployeeInfomation> employees = new ArrayList<>();
-        employees.add(new EmployeeInfomation("John", 20, 50));
-        employees.add(new EmployeeInfomation("Jane", 15, 60));
-        employees.add(new EmployeeInfomation("Doe", 22, 45));
-
-        for (EmployeeInfomation emp : employees) {
-            double totalSalary = emp.days * emp.salary;
-            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+        for (const sinhvien of sinhviens) {
+            nhoms[index].push(sinhvien);
+            index = (index + 1) % sonhom; // Chia đều sinh viên vào các nhóm
         }
+
+        return nhoms;
     }
 }
-```
+
+const sinhviens = [
+    { mssv: "123", name: "Nguyễn Văn A", class: "CNTT1" },
+    { mssv: "456", name: "Trần Thị B", class: "CNTT2" },
+    { mssv: "789", name: "Lê Văn C", class: "CNTT1" },
+    { mssv: "101", name: "Phạm Thị D", class: "CNTT3" },
+    { mssv: "112", name: "Hoàng Văn E", class: "CNTT2" },
+    { mssv: "131", name: "Bùi Thị F", class: "CNTT3" }
+];
+
+const sonhom = 2;
+const nhomSystem = new StudentGroupAllocator();
+const nhoms = nhomSystem.divideIntonhoms(sinhviens, sonhom);
+
+// In kết quả nhóm
+nhoms.forEach((nhom, i) => {
+    console.log(`Nhóm ${i + 1}:`, nhom);
+});
