@@ -52,3 +52,10 @@ Ban đầu tôi định dùng cách gán sẵn một mảng trong đoạn mã đ
 Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: số tiền linh kiện không được nhỏ hơn không, để xây dựng được một bộ máy tính cần đầy đủ 4 loại linh kiện, nếu không kết quả phải trả về là "không đủ linh kiện để hoàn thành máy tính"
 Việc tìm được nhiều các tiếp cận khác nhau cho bài toán này là rất quan trọng vì nếu như không thể được thêm linh kiện thì rất khó khăn cho việc mở rộng và phát triển các chức năng khác của phần mềm.
 Hãy cho tôi một số phương pháp khác tốt hơn để tiếp cận vấn đề này.
+
+
+
+##### 5: Khoa - Hệ thống kiểm tra số lượng vé còn hay không để xác nhận đặt vé thành công #####
+Trong quá trình phát triển hệ thống đặt vé xem phim trực tuyến, nhóm phát triển đã gặp phải thách thức quan trọng liên quan đến việc kiểm soát số lượng vé khả dụng để đảm bảo tính chính xác và công bằng trong quá trình đặt vé. Một vấn đề phổ biến là tình trạng đặt vé vượt mức, có thể dẫn đến lỗi giao dịch, ảnh hưởng đến trải nghiệm người dùng và gây ra sự mất cân đối trong quản lý suất chiếu.
+Hiện tại, hệ thống cần một cơ chế kiểm tra số lượng vé còn lại trước khi xác nhận giao dịch. Điều này đòi hỏi một quy trình kiểm tra nhanh chóng, chính xác nhằm xác định xem số lượng vé yêu cầu có khả dụng hay không. Nếu không đủ vé, hệ thống phải có cơ chế thông báo số lượng vé còn lại và hướng dẫn người dùng điều chỉnh yêu cầu đặt vé.
+Bên cạnh đó, hệ thống cũng cần đảm bảo tính nhất quán và tránh các lỗi như đặt vé trùng lặp hoặc đặt vé vượt quá số lượng thực tế. Hãy viết thêm các đoạn mã bằng Java để giải quyết các vấn đề này. Việc tối ưu hóa quy trình này sẽ giúp nâng cao hiệu suất, đảm bảo công bằng và mang lại trải nghiệm người dùng tốt hơn.

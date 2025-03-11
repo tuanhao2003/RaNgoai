@@ -31,3 +31,10 @@ Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: số tiề
 Việc triển khai hệ thống này là rất quan trọng vì nếu không có chức năng trên, khách hàng sẽ khó có thể lựa chọn được bộ máy tính phù hợp với mình, và có thể website sẽ vắng khách ghé xem.
 Tôi cần bạn tạo ra mã nguồn cho hệ thống của tôi. Mã nguồn phải được tạo ra một cách cẩn thận vì tôi cần đảm bảo hệ thống chấm điểm với độ chính xác là cao nhất.
 Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ java, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
+
+
+
+##### 5 : Khoa - Hệ thống kiểm tra số lượng vé còn hay không để xác nhận đặt vé thành công ######
+Tôi là một nhà phát triển phần mềm đang làm việc tại một công ty chuyên về hệ thống đặt vé xem phim trực tuyến, tôi đang cùng nhóm triển khai dự án quản lý vé nhằm tối ưu hóa quy trình và ngăn chặn tình trạng bán vé vượt mức. Trong quá trình phát triển ứng dụng đặt vé bằng Java, chúng tôi nhận thấy cần thiết phải có một hệ thống kiểm tra số lượng vé khả dụng trước khi xác nhận đặt vé để đảm bảo tính chính xác và công bằng.
+Hệ thống sẽ nhận đầu vào gồm ID phim, suất chiếu và số lượng vé yêu cầu. Sau đó, nó sẽ kiểm tra kho vé để xác định xem số lượng vé còn lại có đủ đáp ứng yêu cầu hay không. Nếu đủ vé, quy trình đặt vé sẽ tiếp tục; ngược lại, hệ thống sẽ thông báo số lượng vé còn lại và yêu cầu người dùng điều chỉnh.
+Điều quan trọng là hệ thống phải đảm bảo xử lý nhanh chóng, chính xác và ngăn ngừa các lỗi đặt vé trùng lặp hoặc vượt quá số lượng. Việc triển khai tính năng này là rất quan trọng để nâng cao trải nghiệm người dùng, giảm thiểu sai sót và đảm bảo quá trình đặt vé diễn ra suôn sẻ.
