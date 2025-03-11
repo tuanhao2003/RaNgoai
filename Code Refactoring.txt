@@ -8,7 +8,7 @@ Cần đảm bảo rằng nếu số buổi làm việc hoặc mức lương nh�
 Đoạn mã cần phải đáp ứng một số ràng buộc nhất định như sau:
 Nếu số buổi làm việc nhỏ hơn 0, hệ thống sẽ phải trả về lỗi, nếu mức lương mỗi buổi của nhân viên nhỏ hơn 0, hệ thống cũng sẽ phải báo lỗi. Kết quả trả về phải chính xác và có định dạng rõ ràng.
 Hãy giúp tôi tái cấu trúc lại đoạn mã bên dưới để giải quyết các vấn đề được nêu bên trên, các thay đổi và chỉnh sửa cần phải được tóm tắt ở cuối.
-Dưới này là đoạn mã của tôi, bạn sửa lại theo đúng những gì tôi yêu cầu: 
+Dưới này là đoạn mã của tôi, bạn sửa lại theo đúng những gì tôi yêu cầu:
 ```java
 import java.util.ArrayList;
 import java.util.List;
