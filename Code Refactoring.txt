@@ -146,16 +146,8 @@ public class InventorySorter {
 
 
 
-##### 4 : Khải - Chi phí vận chuyển rẻ nhất #####
-Tôi một học sinh trung học. Tôi muốn tập làm quen với lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển 
-hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Chương trình sẽ nhận vào 1 mảng danh sách các nhà vận 
-chuyển bao gồm đơn giá trên khoảng cách và đơn giá trên khối lượng, và thông tin của đơn hàng gồm khoảng cách 
-và khối lượng. Tiến hành tính toán để có được giá tiền vận chuyển. Để tính ra được kết quả hợp lệ dữ liệu khoảng 
-cách phải lớn hơn 0, khối lượng phải lớn hơn 0. Tôi đã có đoạn mã đã hoạt động những trong đó vẫn còn một số 
-vấn đề: Tôi đang sử dụng mảng tĩnh, thực hiện tính toán tiền trực tiếp trong vòng lặp thay vì trong lớp đối 
-tượng, thiếu format đơn vị VND. Tôi muốn tái cấu trúc mã này và sửa những vấn đề kể trên, việc tái cấu trúc 
-này nên được làm cẩn thận vì tính toán sai lầm có thể dẫn đến tổn thất lớn. Hãy tái cấu trúc mã lại và tổng 
-hợp thay đổi ở cuối cùng. Dưới đây là đoạn mã tôi đã viết.
+##### (Done) 4 : Khải - Chi phí vận chuyển rẻ nhất #####
+Tôi một học sinh trung học. Tôi muốn tập làm quen với lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Chương trình sẽ nhận vào 1 mảng danh sách các nhà vận chuyển bao gồm đơn giá trên khoảng cách và đơn giá trên khối lượng, và thông tin của đơn hàng gồm khoảng cách và khối lượng. Tiến hành tính toán để có được giá tiền vận chuyển. Để tính ra được kết quả hợp lệ dữ liệu khoảng cách phải lớn hơn 0, khối lượng phải lớn hơn 0. Tôi đã có đoạn mã đã hoạt động những trong đó vẫn còn một số vấn đề: Tôi đang sử dụng mảng tĩnh, thực hiện tính toán tiền trực tiếp trong vòng lặp thay vì trong lớp đối tượng, thiếu format đơn vị VND. Tôi muốn tái cấu trúc mã này và sửa những vấn đề kể trên, việc tái cấu trúc này nên được làm cẩn thận vì tính toán sai lầm có thể dẫn đến tổn thất lớn. Hãy tái cấu trúc mã lại và tổng hợp thay đổi ở cuối cùng. Dưới đây là đoạn mã tôi đã viết.
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -195,3 +187,49 @@ public class TransportCostOptimizer {
     }
 }
 ```
+###fix
+Tôi là một học sinh trung học đang tự học lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Chương trình nhận vào một mảng chứa nhiều đơn hàng, mỗi đơn hàng đều có thuộc tính tên người vận chuyển, khoảng cách giao hàng và khối lượng hàng hóa. Kết quả trả về là giá tiền vận chuyển.
+Để tính ra được kết quả hợp lệ, chương trình yêu cầu dữ liệu khoảng cách phải lớn hơn `0`, khối lượng phải lớn hơn `0`.
+Tuy đoạn mã đã hoạt động đúng với mục đích mà tôi mong muốn nhưng vẫn còn một số vấn đề sau làm cho đoạn mã khó mở rộng và kết quả chưa được rõ ràng: đoạn mã đang dùng mảng tĩnh và thực hiện tính toán chi phí trực tiếp trong vòng lặp thay, điều này gây ra việc thiếu khả năng mở rộng và tái sử dụng đoạn mã cho các chương trình tiếp theo; thiếu định dạng cho đơn vị tiền tệ (được tính theo đơn vị Việt Nam đồng) điều này làm cho kết quả trả về rất khó nhìn và không rõ ràng.
+Hãy thực hiện tái cấu trúc lại đoạn mã để sửa các vấn đề trên, việc tái cấu trúc nên được làm cẩn thận, không được thay đổi cách thức hoạt động của đoạn mã. Tổng hợp những thay đổi ở cuối và so sánh so với đoạn mã cũ.
+Sau đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class TransportProvider {
+    String name;
+    double pricePerDistance; 
+    double pricePerWeight;
+    public TransportProvider(String name, double pricePerDistance, double pricePerWeight) {
+        this.name = name;
+        this.pricePerDistance = pricePerDistance;
+        this.pricePerWeight = pricePerWeight;
+    }
+}
+
+public class TransportCostOptimizer {
+    public static void main(String[] args) {
+        TransportProvider providers [] = new TransportProvider [3];
+        providers[0] = (new TransportProvider("Provider A",5000, 10000));
+        providers[1]= (new TransportProvider("Provider B", 6000, 9000));
+        providers[2]=(new TransportProvider("Provider C", 3000, 12000));
+        double distance = 100; 
+        double weight = 50;    
+        TransportProvider cheapestProvider = null;
+        double minCost = Double.MAX_VALUE;
+        for (int i = 0; i<providers.length; i++) {
+            double cost = (providers[i].pricePerDistance * distance) + (providers[i].pricePerWeight * weight);
+            System.out.println("Chi phí của " + providers[i].name + " là: " + cost + " VND");
+            if (cost < minCost) {
+                minCost = cost;
+                cheapestProvider = providers[i];
+            }
+        }
+        if (cheapestProvider != null) {
+            System.out.println("\nNhà vận chuyển rẻ nhất: " + cheapestProvider.name + " với chi phí " + minCost + "VND");
+        }
+    }
+}
+```
+###
