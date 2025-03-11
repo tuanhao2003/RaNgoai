@@ -1,3 +1,20 @@
+##### (done) 1 : Lộc - hệ thống sắp xếp items trong túi đồ của game #####
+Là một lập trình viên phát triển game, tôi đang làm việc trên một tựa game hành động nhiều người chơi, nơi mỗi quyết định nhanh có thể ảnh hưởng đến kết quả trận đấu. Tôi cần tối ưu hệ thống sắp xếp túi đồ để người chơi dễ dàng tìm thấy vật phẩm cần thiết trong lúc chiến đấu.
+Túi đồ chứa nhiều loại vật phẩm như hồi máu, vũ khí, công cụ giải đố, nhưng quan trọng nhất là phải tìm được vật phẩm hồi máu nhanh chóng.
+Nếu không được sắp xếp hợp lý, người chơi có thể mất thời gian tìm kiếm, làm giảm trải nghiệm và dễ bị hạ gục. Tôi muốn xây dựng một cơ chế sắp xếp tự động ưu tiên vật phẩm hồi máu lên đầu, tiếp theo là vũ khí theo số lượng, cuối cùng là công cụ giải đố.
+Tôi muốn đoạn code khi viết ra phải hoạt động chính xác, ổn định, tối ưu về hiệu suất vì vật phẩm trong game rất đa dạng.
+
+
+
+##### 2 : Khải - Chương trình tính lương trong công ty #####
+Tôi là một sinh viên học lập trình, tôi đang mày mò cách tạo một ứng dụng quản lý nhân sự và tiền lương cho doanh nghiệp bằng
+ngôn ngữ Java. Tôi cần chương trình tính toán lương thưởng dựa trên các đầu vào: mức lương cơ bản cho trước với mỗi nhân viên,
+phụ cấp, lương tăng ca ngày thường: 150%, ngày nghỉ: 200%, ngày lễ: 300%, lương thưởng, và các khoảng khấu trừ để cuối cùng 
+ra giá trị lương thực nhận. Hãy tạo một mã nguồn dựa trên mô tả trên nên nhớ tiền lương cho mỗi nhân viên rất quan trọng cần 
+phải được tính toán kỹ lương và chính xác, mã nguồn nên được chú thích đầy đủ.
+
+
+
 ##### 3 : Khang - Tính toán sản phẩm có lợi nhuận cao nhất ####
 Tôi là một lập trình viên làm việc tự do. Nhóm của tôi đang làm việc trên một dự án quản lý kho hàng, tập trung vào việc tối ưu hóa lợi nhuận từ các sản phẩm trong kho.
 Trong quá trình phát triển ứng dụng này, tôi gặp khó khăn trong phần kiểm soát dữ liệu đầu vào và đảm bảo kết quả tính toán chính xác. Tôi muốn bạn tạo cho tôi một đoạn mã để xử lý nhập liệu an toàn, dừng nhập khi tên sản phẩm trống và tìm ra sản phẩm có lợi nhuận cao nhất. 

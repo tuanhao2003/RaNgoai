@@ -1,3 +1,241 @@
+##### (done) 1 : Lộc - Quản lý lương nhân viên #####
+Tôi là một sinh viên năm ba ngành công nghệ thông tin ở đại học Sài Gòn. Tôi đang làm một số bài tập giải thuật của thầy giao cho và sử dụng ngôn ngữ Java, cụ thể tôi đang phát triển một hàm nhằm tính lương cho nhân viên dựa vào số buổi đi làm.
+Hệ thống nhận vào một danh sách nhân viên, mỗi nhân viên có thông tin về số buổi đi làm và mức lương mỗi buổi. Kết quả trả về là tổng lương của từng nhân viên.
+Mặc dù đoạn mã đã hoạt động, nhưng vẫn còn một số vấn đề như sau:
+Mã nguồn chưa được tối ưu hóa, cần tách các logic tính toán lương thành các phương thức riêng biệt để dễ bảo trì và mở rộng.
+Hiện tại, hệ thống tính lương của tôi đang tính trực tiếp trong vòng lặp, không tuân theo nguyên tắc Single Responsibility Principle.
+Cần đảm bảo rằng nếu số buổi làm việc hoặc mức lương nhập vào không hợp lệ thì hệ thống có thể xử lý ngoại lệ một cách hợp lý.
+Đoạn mã cần phải đáp ứng một số ràng buộc nhất định như sau:
+Nếu số buổi làm việc nhỏ hơn 0, hệ thống sẽ phải trả về lỗi, nếu mức lương mỗi buổi của nhân viên nhỏ hơn 0, hệ thống cũng sẽ phải báo lỗi. Kết quả trả về phải chính xác và có định dạng rõ ràng.
+Hãy giúp tôi tái cấu trúc lại đoạn mã bên dưới để giải quyết các vấn đề được nêu bên trên, các thay đổi và chỉnh sửa cần phải được tóm tắt ở cuối.
+Dưới này là đoạn mã của tôi, bạn sửa lại theo đúng những gì tôi yêu cầu:
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class EmployeeInfomation {
+    String name;
+    int days;
+    double salary;
+
+    public EmployeeInfomation(String name, int days, double salary) {
+        this.name = name;
+        this.days = days;
+        this.salary = salary;
+    }
+}
+
+class SalaryCalculator {
+    public static void main(String[] args) {
+        List<EmployeeInfomation> employees = new ArrayList<>();
+        employees.add(new EmployeeInfomation("John", 20, 50));
+        employees.add(new EmployeeInfomation("Jane", 15, 60));
+        employees.add(new EmployeeInfomation("Doe", 22, 45));
+
+        for (EmployeeInfomation emp : employees) {
+            double totalSalary = emp.days * emp.salary;
+            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+        }
+    }
+}
+```
+
+
+
+##### (done) 2 : Hào - Tối đa lợi nhuận cắt thanh sắt #####
+Tôi là một lập trình viên làm việc tự do. Tôi đang nhận một dự án phát triển một hệ thống quản lý nguyên vật liệu cho một công xưởng, được viết bằng ngôn ngữ Java. Tôi đã làm một tính năng giúp tính toán việc phân đoạn các thanh sắt sao cho tối đa lợi nhuận.
+Đoạn mã của tôi nhận vào một danh sách chứa các giá trị bán ra của thanh sắt dựa trên độ dài (độ dài là chỉ mục của giá trị đó trong danh sách), và một số nguyên đại diện cho độ dài của thanh sắt cần cắt. Kết quả trả về là lợi nhuận lớn nhất có thể thu được từ việc cắt thanh sắt đó.
+Tuy đoạn mã đã hoạt động đúng như ý tôi muốn nhưng vì đoạn mã đang sử dụng đệ quy để thực hiện tìm lợi nhuận lớn nhất, điều này làm cho đoạn mã hoạt động khá chậm khi mảng có độ dài lớn. Tôi cần tái cấu trúc lại đoạn mã để tối ưu thời gian chạy.
+Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: độ dài của thanh sắt được cho phải lớn hơn 0, các giá trị trong danh sách cũng phải lớn hơn 0 và được tính bằng đơn vị tiền tệ Việt Nam đồng. 
+Hãy tái cấu trúc lại đoạn mã dưới đây cho phù hợp với yêu cầu và mô tả bên trên. Việc tái cấu trúc nên được làm cẩn thận vì đây là một trong số các chức năng chính trong hệ thống của tôi. Hãy tổng hợp các thay đổi và chỉnh sửa ở cuối.
+Đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.*;
+public class IronBarMaximumProfit {
+    public static int maxProfitCutting(int[] price, int n) {
+        int maxProfit = Integer.MIN_VALUE;
+        if (n == 0) return 0;
+        for (int i = 1; i <= n; i++) {
+            maxProfit = Math.max(maxProfit, price[i - 1] + maxProfitCutting(price, n - i));
+        }
+        return maxProfit;
+    }
+
+    public static void main(String[] args) {
+        int[] price = {10000, 50000, 80000, 90000, 100000, 170000, 200000};
+        int bar = 8; 
+        System.out.println(maxProfitCutting(price, bar));
+    }
+}
+```
+
+
+
+##### 3 : Lộc - Sắp xếp túi đồ trong game #####
+Tôi là một lập trình viên phần mềm. Nhóm của tôi đang làm việc trên một hệ thống xử lý dữ liệu túi đồ của trò chơi, trong đó có một bài toán cần sắp xếp vật phẩm trong túi đồ của tài khoản đó theo thứ tự tăng dần hoặc giảm dần. Tôi đang phát triển ứng dụng đó bằng Java.
+Túi đồ chứa 3 loại vật phẩm: vật phẩm hồi máu, vũ khí, công cụ giải đố, nhưng quan trọng nhất là vật phẩm hồi máu trong một tựa game sinh tồn.
+Vì thế tôi đã tạo ra một đoạn code để sắp xếp thứ tự vật phẩm sở hữu của loại vật phẩm đó, lần lượt là vật phẩm hồi máu, vũ khí, công cụ giải đố.
+Đoạn mã đã hoạt động nhưng vẫn còn vấn đề sau:
+Sắp xếp còn khá chậm, tôi cần bạn tối ưu về thời gian và không gian để đoạn mã thực hiện nhanh hơn.
+Đoạn mã cần phải đáp ứng một số ràng buộc nhất định như sau:
+Số lượng vật phẩm hiển thị phải lớn hơn hoặc bằng 0, vật phẩm hồi máu sẽ là loại đầu tiên xuất hiện, tiếp theo là vũ khí, cuối cùng là vật phẩm giải đố.
+Dưới này là đoạn mã của tôi, bạn tối ưu lại nhưng mà không làm thay đổi chức năng của đoạn code: 
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Item {
+    String name;
+    String type;
+    int quantity;
+
+    public Item(String name, String type, int quantity) {
+        this.name = name;
+        this.type = type;
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + type + ") - " + quantity;
+    }
+}
+
+public class InventorySorter {
+    public static void main(String[] args) {
+        List<Item> inventory = new ArrayList<>();
+        inventory.add(new Item("Potion", "Healing", 5));
+        inventory.add(new Item("Herb", "Healing", 3));
+        inventory.add(new Item("Gun", "Weapon", 1));
+        inventory.add(new Item("Key", "Puzzle", 4));
+        inventory.add(new Item("Map", "Puzzle", 6));
+        inventory.add(new Item("Sword", "Weapon", 2));
+
+    Collections.sort(inventory, new Comparator<Item>() {
+        @Override
+        public int compare(Item o1, Item o2) {
+            int priority1 = getTypePriority(o1.type);
+            int priority2 = getTypePriority(o2.type);
+    
+            if (priority1 != priority2) {
+                return Integer.compare(priority1, priority2);
+            }
+    
+            return Integer.compare(o2.quantity, o1.quantity);
+        }
+    
+        private int getTypePriority(String type) {
+            switch (type) {
+                case "Healing": return 0;
+                case "Weapon": return 1;
+                case "Puzzle": return 2;
+                default: return 3;
+            }
+        }
+    });
+
+        for (Item item : inventory) {
+            System.out.println(item);
+        }
+    }
+}
+```
+
+
+
+
+##### (Done) 4 : Khải - Chi phí vận chuyển rẻ nhất #####
+Tôi một học sinh trung học. Tôi muốn tập làm quen với lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Chương trình sẽ nhận vào 1 mảng danh sách các nhà vận chuyển bao gồm đơn giá trên khoảng cách và đơn giá trên khối lượng, và thông tin của đơn hàng gồm khoảng cách và khối lượng. Tiến hành tính toán để có được giá tiền vận chuyển. Để tính ra được kết quả hợp lệ dữ liệu khoảng cách phải lớn hơn 0, khối lượng phải lớn hơn 0. Tôi đã có đoạn mã đã hoạt động những trong đó vẫn còn một số vấn đề: Tôi đang sử dụng mảng tĩnh, thực hiện tính toán tiền trực tiếp trong vòng lặp thay vì trong lớp đối tượng, thiếu format đơn vị VND. Tôi muốn tái cấu trúc mã này và sửa những vấn đề kể trên, việc tái cấu trúc này nên được làm cẩn thận vì tính toán sai lầm có thể dẫn đến tổn thất lớn. Hãy tái cấu trúc mã lại và tổng hợp thay đổi ở cuối cùng. Dưới đây là đoạn mã tôi đã viết.
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class TransportProvider {
+    String name;
+    double pricePerDistance; 
+    double pricePerWeight;
+    public TransportProvider(String name, double pricePerDistance, double pricePerWeight) {
+        this.name = name;
+        this.pricePerDistance = pricePerDistance;
+        this.pricePerWeight = pricePerWeight;
+    }
+}
+
+public class TransportCostOptimizer {
+    public static void main(String[] args) {
+        TransportProvider providers [] = new TransportProvider [3];
+        providers[0] = (new TransportProvider("Provider A",5000, 10000));
+        providers[1]= (new TransportProvider("Provider B", 6000, 9000));
+        providers[2]=(new TransportProvider("Provider C", 3000, 12000));
+        double distance = 100; 
+        double weight = 50;    
+        TransportProvider cheapestProvider = null;
+        double minCost = Double.MAX_VALUE;
+        for (int i = 0; i<providers.length; i++) {
+            double cost = (providers[i].pricePerDistance * distance) + (providers[i].pricePerWeight * weight);
+            System.out.println("Chi phí của " + providers[i].name + " là: " + cost + " VND");
+            if (cost < minCost) {
+                minCost = cost;
+                cheapestProvider = providers[i];
+            }
+        }
+        if (cheapestProvider != null) {
+            System.out.println("\nNhà vận chuyển rẻ nhất: " + cheapestProvider.name + " với chi phí " + minCost + "VND");
+        }
+    }
+}
+```
+###fix
+Tôi là một học sinh trung học đang tự học lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Chương trình nhận vào một mảng chứa nhiều đơn hàng, mỗi đơn hàng đều có thuộc tính tên người vận chuyển, khoảng cách giao hàng và khối lượng hàng hóa. Kết quả trả về là giá tiền vận chuyển.
+Để tính ra được kết quả hợp lệ, chương trình yêu cầu dữ liệu khoảng cách phải lớn hơn `0`, khối lượng phải lớn hơn `0`.
+Tuy đoạn mã đã hoạt động đúng với mục đích mà tôi mong muốn nhưng vẫn còn một số vấn đề sau làm cho đoạn mã khó mở rộng và kết quả chưa được rõ ràng: đoạn mã đang dùng mảng tĩnh và thực hiện tính toán chi phí trực tiếp trong vòng lặp thay, điều này gây ra việc thiếu khả năng mở rộng và tái sử dụng đoạn mã cho các chương trình tiếp theo; thiếu định dạng cho đơn vị tiền tệ (được tính theo đơn vị Việt Nam đồng) điều này làm cho kết quả trả về rất khó nhìn và không rõ ràng.
+Hãy thực hiện tái cấu trúc lại đoạn mã để sửa các vấn đề trên, việc tái cấu trúc nên được làm cẩn thận, không được thay đổi cách thức hoạt động của đoạn mã. Tổng hợp những thay đổi ở cuối và so sánh so với đoạn mã cũ.
+Sau đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class TransportProvider {
+    String name;
+    double pricePerDistance; 
+    double pricePerWeight;
+    public TransportProvider(String name, double pricePerDistance, double pricePerWeight) {
+        this.name = name;
+        this.pricePerDistance = pricePerDistance;
+        this.pricePerWeight = pricePerWeight;
+    }
+}
+
+public class TransportCostOptimizer {
+    public static void main(String[] args) {
+        TransportProvider providers [] = new TransportProvider [3];
+        providers[0] = (new TransportProvider("Provider A",5000, 10000));
+        providers[1]= (new TransportProvider("Provider B", 6000, 9000));
+        providers[2]=(new TransportProvider("Provider C", 3000, 12000));
+        double distance = 100; 
+        double weight = 50;    
+        TransportProvider cheapestProvider = null;
+        double minCost = Double.MAX_VALUE;
+        for (int i = 0; i<providers.length; i++) {
+            double cost = (providers[i].pricePerDistance * distance) + (providers[i].pricePerWeight * weight);
+            System.out.println("Chi phí của " + providers[i].name + " là: " + cost + " VND");
+            if (cost < minCost) {
+                minCost = cost;
+                cheapestProvider = providers[i];
+            }
+        }
+        if (cheapestProvider != null) {
+            System.out.println("\nNhà vận chuyển rẻ nhất: " + cheapestProvider.name + " với chi phí " + minCost + "VND");
+        }
+    }
+}
+```
+###
+
+
+
 ##### 5 : Khang - Tính toán sản phẩm có lợi nhuận cao nhất #####
 Tôi là một lập trình viên làm việc tự do. Một công ty đang phát triển một hệ thống quản lý kho hàng để tối ưu hóa việc theo dõi và phân phối sản phẩm. Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán tính toán lợi nhuận sản phẩm trong bối cảnh quản lý kho hàng.
 Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể. Trong quá trình phát triển hệ thống, tôi cần đảm bảo rằng kết quả đầu ra luôn chính xác và không có lỗi khi nhập dữ liệu.
@@ -7,83 +245,3 @@ Tuy nhiên, ứng dụng của tôi vẫn còn một số hạn chế như: Khi 
 Hãy giúp tôi tái cấu trúc lại đoạn mã bên dưới để giải quyết các vấn đề được nêu bên trên, các thay đổi và chỉnh sửa không được chú thích trong mã mà cần phải được tóm tắt ở cuối.
 
 Dưới đây là đoạn mã tôi đã viết:
-```java
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-class Product {
-    private String name;
-    private int soluong;
-    private double von;
-    private double ban;
-
-    public Product(String name, int soluong, double von, double ban) {
-        if (soluong <= 0 || von <= 0 || ban <= 0) {
-            throw new IllegalArgumentException("Số lượng, giá vốn và giá bán phải lớn hơn 0.");
-        }
-        this.name = name;
-        this.soluong = soluong;
-        this.von = von;
-        this.ban = ban;
-    }
-
-    public double getProfit() {
-        return (ban - von) * soluong;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
-
-public class InventoryCalculator {
-    public static Product getMaxProfitProduct(List<Product> products) {
-        if (products == null || products.isEmpty()) {
-            throw new IllegalArgumentException("Danh sách sản phẩm không được trống.");
-        }
-        return products.stream()
-                .max((p1, p2) -> Double.compare(p1.getProfit(), p2.getProfit()))
-                .orElseThrow();
-    }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        List<Product> products = new ArrayList<>();
-
-        while (true) {
-            System.out.print("Nhập tên sản phẩm (bỏ trống để kết thúc): ");
-            String name = scanner.nextLine().trim();
-            if (name.isEmpty()) {
-                break;
-            }
-
-            try {
-                System.out.print("Nhập số lượng: ");
-                int soluong = Integer.parseInt(scanner.nextLine().trim());
-
-                System.out.print("Nhập giá vốn: ");
-                double von = Double.parseDouble(scanner.nextLine().trim());
-
-                System.out.print("Nhập giá bán: ");
-                double ban = Double.parseDouble(scanner.nextLine().trim());
-
-                products.add(new Product(name, soluong, von, ban));
-            } catch (NumberFormatException e) {
-                System.out.println("Vui lòng nhập số hợp lệ cho số lượng, giá vốn và giá bán.");
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
-        scanner.close();
-
-        if (!products.isEmpty()) {
-            Product maxProfitProduct = getMaxProfitProduct(products);
-            System.out.println("Sản phẩm có lợi nhuận cao nhất: " + maxProfitProduct.getName());
-        } else {
-            System.out.println("Không có sản phẩm nào để tính toán.");
-        }
-    }
-}
-```

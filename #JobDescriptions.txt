@@ -3,14 +3,14 @@
 - Mỗi task t nhận được 8$ chia lại cho ae 5$ t giữ 3$ tiền cò :)) (Test resoning vs code refactoring thì 5$, hai cái kia 4$).
 - Ae làm kỹ kỹ xíu, không được trùng nhau tại trùng là nộp lại ko được. Chế lại lời văn cho nó khác xíu, mà đúng chính tả chứ đừng làm giống nhau quá t bị ban.
 - T nộp cái nào thì t thống kê lên file excel cho ae.
-- T lấy task xoay tua, ví dụ: nộp task 1 lấy prompt của Lộc xong task 2 tới Khải,.... Nếu tới lượt mà ko có loại promp phù hợp thì t pass qua lượt người tiếp theo.
+- T lấy promp theo thứ tự từ trên xuống, tối đa là 5 promp liên tục/ người sau đó xoay tua sang người khác, ví dụ: lấy prompt của Lộc liên tục 5 lần mà tiếp theo vẫn là prompt của Lộc thì sẽ xoay tua tới prompt của người tiếp theo gần nhất. Nếu tới lượt mà ko có loại promp phù hợp thì t pass qua lượt người tiếp theo.
 - Khi làm prompt ae ghi như dưới r bắt đầu làm, xong thì cách xuống 3 cái để làm cái tiếp theo:
 ##### (prompt số) : (Tên) - (Chủ đề) #####
 ví dụ: ##### 1 : Hào - quản lý cửa hàng #####
 - Code phải là code Java
 - Chỉ viết text, không trang trí j cả, có thể xuống dòng.
 - Viết xong dùng link sau để check xem có giống bot không, tốt nhất là nên sửa cho dưới 30%: https://app.gptzero.me/
-- Làm xong push lên nhánh riêng, commit như sau "(loại prompt) : (Tên) - (Chủ đề)" vd: "Test Reasoning : Hào - quản lý cửa hàng"
+- Làm xong push lên nhánh riêng, commit như sau "(loại prompt) : (Tên) - (Chủ đề)" vd: "TR : Hào - quản lý cửa hàng"
 
 
 

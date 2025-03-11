@@ -1,10 +1,680 @@
+##### (done) 1 : Hào - quản lý nhân viên #####
+Tôi là nhân viên công nghệ thông tin đang làm việc tại một công ty công nghệ. Tôi đang phát triển một hệ thống 
+để quản lý nhân viên trong công ty bằng ngôn ngữ Java. Trong quá trình phát triển, tôi đã tạo ra một chương 
+trình mô phỏng hệ thống. Tôi muốn kiểm tra xem đoạn mã đã hoạt động chính xác hay chưa. Việc kiểm tra phải được 
+làm kỹ lưỡng vì đoạn mã này sẽ là tiền đề cho hệ thống của tôi. Đoạn mã của tôi hoạt động bằng cách nhận vào 
+một danh sách nhân viên sau đó duyệt danh sách đó và tính tiền lương cho nhân viên. Nhân viên có các thuộc tính 
+như tên, ngày làm việc và mức lương theo ngày. Các ràng buộc mà đoạn mã cần phải tuân theo là: số ngày làm việc 
+của nhân viên phải lớn hơn hoặc bằng 0, mức lương của nhân viên không được âm. Hãy kiểm tra kết quả của đoạn mã 
+dưới đây dự trên các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
+Dưới đây là đoạn mã của tôi:
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class EmployeeInfomation {
+    String name;
+    int days;
+    double salary;
+
+    public EmployeeInfomation(String name, int days, double salary) {
+        this.name = name;
+        this.days = days;
+        this.salary = salary;
+    }
+}
+
+class SalaryCalculator {
+    public static void main(String[] args) {
+       
+    }
+}
+```
+Dưới đây là các trường hợp kiểm thử:
+```java
+//TH 1
+ List<EmployeeInfomation> employees = new ArrayList<>();
+        employees.add(new EmployeeInfomation("John", 20, 50));
+        employees.add(new EmployeeInfomation("Jane", 15, 60));
+        employees.add(new EmployeeInfomation("Doe", 22, 45));
+
+        for (EmployeeInfomation emp : employees) {
+            double totalSalary = emp.days * emp.salary;
+            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+        }
+// TH 2
+ List<EmployeeInfomation> employees = new ArrayList<>();
+        employees.add(new EmployeeInfomation("sew", 0, 50)); 
+        employees.add(new EmployeeInfomation("jee", 23, 55)); 
+        employees.add(new EmployeeInfomation("Done", 30, 0)); 
+
+        for (EmployeeInfomation emp : employees) {
+            double totalSalary = emp.days * emp.salary;
+            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+        }
+// TH 3
+ List<EmployeeInfomation> employees = new ArrayList<>();
+        for (EmployeeInfomation emp : employees) {
+            double totalSalary = emp.days * emp.salary;
+            System.out.println("EmployeeInfomation: " + emp.name + ", Salary: $" + totalSalary);
+        }
+```
+
+
+
+##### (done) 2 : Lộc - Tính toán tuyến đường tốt nhất GTS2 #####
+Tôi là một lập trình viên đang làm việc tại một công ty chuyên về vận chuyển hàng hóa. Tôi được giao nhiệm vụ phát triển hệ thống tối ưu hóa lộ trình giao hàng để giảm chi phí vận chuyển. Tôi đã viết một chương trình sử dụng thuật toán tham lam để giải quyết bài toán trên bằng ngôn ngữ Java. Trong quá trình phát triển, tôi cần đảm bảo rằng kết quả đầu ra chính xác và ổn định.
+Hệ thống của tôi nhận vào một danh sách các địa điểm cần giao hàng, mỗi địa điểm có tọa độ `(x, y)`. Ví trí kho ban đầu cũng được biểu diễn dưới dạng tọa độ `(x, y)`. Kết quả trả về là một tuyến đường giao hàng tối ưu, đảm bảo quãng đường đi là ngắn nhất theo nguyên tắc tham lam.
+Đầu vào phải luôn là số nguyên dương để đoạn mã có thể hoạt động tốt.
+Hãy thực hiện kiểm thử đoạn mã dưới đây, cho tôi kết quả đầu ra và giải thích chi tiết tại sao có được kết quả tương ứng.
+Đoạn mã của tôi như sau:
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class Location {
+    double x, y;
+    String name;
+
+    public Location(String name, double x, double y) {
+        this.name = name;
+        this.x = x;
+        this.y = y;
+    }
+
+    public double distanceTo(Location other) {
+        return Math.sqrt(Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2));
+    }
+}
+
+public class GTS2DeliveryRouteOptimizer {
+
+    public static List<Location> findOptimalRoute(Location warehouse, List<Location> locations) {
+        if (locations == null || locations.isEmpty()) {
+            throw new IllegalArgumentException("Danh sách địa điểm không được rỗng.");
+        }
+
+        List<Location> route = new ArrayList<>();
+        route.add(warehouse);
+
+        Location current = warehouse;
+        List<Location> remainingLocations = new ArrayList<>(locations);
+
+        while (!remainingLocations.isEmpty()) {
+            Location nearest = findNearestLocation(current, remainingLocations);
+            route.add(nearest);
+            remainingLocations.remove(nearest);
+            current = nearest;
+        }
+
+        route.add(warehouse);
+        return route;
+    }
+
+    private static Location findNearestLocation(Location current, List<Location> locations) {
+        Location nearest = locations.get(0);
+        double minDistance = current.distanceTo(nearest);
+
+        for (Location loc : locations) {
+            double distance = current.distanceTo(loc);
+            if (distance < minDistance) {
+                nearest = loc;
+                minDistance = distance;
+            }
+        }
+        return nearest;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+Sau đây là các trường hợp kiểm thử cần áp dụng cho đoạn mã trên:
+```java
+//TH1
+Location warehouse1 = new Location("Kho hàng", 0, 0); 
+List<Location> locations1 = List.of( 
+    new Location("A", 2, 3),
+    new Location("B", 5, 1),
+    new Location("C", 1, 4),
+    new Location("D", 6, 2),
+    new Location("E", 4, 5),
+    new Location("F", 7, 3) 
+);
+findOptimalRoute(warehouse1, locations1); 
+
+//TH2
+Location warehouse2 = new Location("Kho hàng", 0, 0); 
+List<Location> locations2 = new ArrayList<>(); 
+findOptimalRoute(warehouse2, locations2); 
+
+//TH3
+Location warehouse3 = new Location("Kho hàng", 0, 0); 
+List<Location> locations3 = new ArrayList<>(); 
+locations.add(new Location("A", 2, 3));
+locations.add(null);
+locations.add(new Location("B", 5, 1));
+findOptimalRoute(warehouse3, locations3);  
+```
+
+
+
+##### (done) 3 : Hào - Tối đa lợi nhuận cắt thanh sắt #####
+Tôi là một lập trình viên làm việc tự do. Tôi đang nhận một dự án phát triển một hệ thống quản lý nguyên vật liệu cho một công xưởng, được viết bằng ngôn ngữ Java. Tôi đã làm một tính năng giúp tính toán việc phân đoạn các thanh sắt sao cho tối đa lợi nhuận. Tôi cần kiểm tra độ chính xác của đoạn mã. Kết quả kiểm tra phải được thực hiện cẩn thận vì nó sẽ giúp đoạn mã của tôi có độ tin cậy cao hơn từ phía khách hàng.
+Đoạn mã của tôi nhận vào một danh sách chứa các giá trị bán ra của thanh sắt dựa trên độ dài (độ dài là chỉ mục của giá trị đó trong danh sách), và một số nguyên đại diện cho độ dài của thanh sắt cần cắt. Kết quả trả về là lợi nhuận lớn nhất có thể thu được từ việc cắt thanh sắt đó.
+Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: độ dài của thanh sắt được cho phải lớn hơn 0, các giá trị trong danh sách cũng phải lớn hơn 0 và được tính bằng đơn vị tiền tệ Việt Nam đồng. 
+Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã được cung cấp bên dưới sau đó đưa ra kết quả và giải thích chi tiết cho từng trường hợp.
+Dưới đây là các trường hợp cần kiểm thử:
+```java
+int bar1 = 8; 
+System.out.println(maxProfitCutting(price, bar1));
+
+int bar2 = 0; 
+System.out.println(maxProfitCutting(price, bar2));
+
+int bar3 = 10; 
+System.out.println(maxProfitCutting(price, bar3));
+```
+
+Đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.*;
+public class IronBarMaximumProfit {
+    public static int maxProfitCutting(int[] price, int n) {
+        int maxProfit = Integer.MIN_VALUE;
+        if (n == 0) return 0;
+        for (int i = 1; i <= n; i++) {
+            maxProfit = Math.max(maxProfit, price[i - 1] + maxProfitCutting(price, n - i));
+        }
+        return maxProfit;
+    }
+
+    public static void main(String[] args) {
+         int[] price = {10000, 50000, 80000, 90000, 100000, 170000, 200000}; 
+    }
+}
+```
+
+
+
+##### (Done) 4 : Lộc - Sắp xếp túi đồ trong game #####
+Tôi là một lập trình viên phần mềm và nhóm của tôi hiện đang phát triển một hệ thống xử lý dữ liệu túi đồ trong trò chơi. Một trong những yêu cầu của hệ thống là sắp xếp vật phẩm trong túi đồ của người chơi theo thứ tự tăng dần hoặc giảm dần. Tôi đang thực hiện tính năng này bằng Java.
+Túi đồ bao gồm ba loại vật phẩm chính: vật phẩm hồi máu, vũ khí và công cụ giải đố. Trong một tựa game sinh tồn, vật phẩm hồi máu có vai trò quan trọng nhất. Do đó, tôi đã triển khai một thuật toán sắp xếp để đảm bảo thứ tự ưu tiên như sau: vật phẩm hồi máu đứng đầu, tiếp theo là vũ khí và cuối cùng là công cụ giải đố. Kết quả trả về sẽ là danh sách các vật phẩm được sắp xếp theo thứ tự ưu tiên này.
+Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: Số lượng vật phẩm hiển thị phải lớn hơn hoặc bằng 0, vật phẩm hồi máu sẽ là loại đầu tiên xuất hiện, tiếp theo là vũ khí, cuối cùng là vật phẩm giải đố.
+Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã được cung cấp bên dưới sau đó đưa ra kết quả và giải thích chi tiết cho từng trường hợp.
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Item {
+    String name;
+    String type;
+    int quantity;
+
+    public Item(String name, String type, int quantity) {
+        this.name = name;
+        this.type = type;
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + type + ") - " + quantity;
+    }
+}
+
+public class InventorySorter {
+    Collections.sort(inventory, new Comparator<Item>() {
+        @Override
+        public int compare(Item o1, Item o2) {
+            int priority1 = getTypePriority(o1.type);
+            int priority2 = getTypePriority(o2.type);
+
+            if (priority1 != priority2) {
+                return Integer.compare(priority1, priority2);
+            }
+
+            return Integer.compare(o2.quantity, o1.quantity);
+        }
+
+        private int getTypePriority(String type) {
+            switch (type) {
+                case "Healing": return 0;
+                case "Weapon": return 1;
+                case "Puzzle": return 2;
+                default: return 3;
+            }
+        }
+    });
+
+    for (Item item : inventory) {
+        System.out.println(item);
+    }
+    public static void main(String[] args) {
+
+    }
+}
+```
+
+Sau đây là các trường hợp kiểm thử cần áp dụng cho đoạn mã trên:
+```java
+//TH1
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Potion", "Healing", 5));
+inventory.add(new Item("Herb", "Healing", 3));
+inventory.add(new Item("Gun", "Weapon", 1));
+inventory.add(new Item("Key", "Puzzle", 4));
+inventory.add(new Item("Map", "Puzzle", 6));
+inventory.add(new Item("Sword", "Weapon", 2));
+
+//TH2
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Potion", "Healing", 5));
+inventory.add(new Item("Herb", "Healing", 5));
+inventory.add(new Item("Sword", "Weapon", 5));
+inventory.add(new Item("Gun", "Weapon", 5));
+inventory.add(new Item("Map", "Puzzle", 5));
+inventory.add(new Item("Key", "Puzzle", 5));
+
+
+//TH3
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Small Potion", "Healing", 2));
+inventory.add(new Item("Large Potion", "Healing", Null));
+inventory.add(new Item("Null", "Weapon", 4));
+inventory.add(new Item("Axe", "Null", 8));
+inventory.add(new Item("Secret Key", "Puzzle", 1));
+inventory.add(new Item("Null", "Puzzle", 7));
+```
+###fix
+Tôi là một lập trình viên phần mềm, nhóm của tôi đang thực hiện một hệ thống xử lý dữ liệu cho chức năng túi đồ trong một trò chơi. Một trong những yêu cầu của hệ thống là sắp xếp vật phẩm trong túi đồ của người chơi theo thứ tự tăng dần hoặc giảm dần. Tôi đã viết đoạn mã để xử lý tính năng này bằng ngôn ngữ Java.
+Túi đồ bao gồm ba loại vật phẩm chính là vật phẩm bổ trợ, vũ khí và vật phẩm giải đố. Vật phẩm là một đối tượng có các thuộc tính như: tên, loại và số lượng. Đoạn mã nhận đầu vào là danh sách các vật phẩm này. Kết quả trả về sẽ là danh sách các vật phẩm được sắp xếp theo thứ tự vật phẩm hồi máu đứng đầu, tiếp theo là vũ khí và cuối cùng là công cụ giải đố. Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: Số lượng vật phẩm hiển thị phải lớn hơn hoặc bằng 0. Kết quả trả về vật phẩm hồi máu sẽ là vật phẩm đầu tiên được xếp trong danh sách, tiếp theo là vũ khí, cuối cùng là vật phẩm giải đố.
+Dựa vào các trường hợp kiểm thử được cung cấp dưới đây. Hãy kiểm thử đoạn mã, cho biết kết quả và giải thích chi tiết cho từng trường hợp tương ứng.
+Sau đây là các trường hợp kiểm thử:
+```java
+//TH1
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Potion", "Healing", 5));
+inventory.add(new Item("Herb", "Healing", 3));
+inventory.add(new Item("Gun", "Weapon", 1));
+inventory.add(new Item("Key", "Puzzle", 4));
+inventory.add(new Item("Map", "Puzzle", 6));
+inventory.add(new Item("Sword", "Weapon", 2));
+Collections.sort(inventory, new Comparator<Item>() {
+    @Override
+    public int compare(Item o1, Item o2) {
+        int priority1 = getTypePriority(o1.type);
+        int priority2 = getTypePriority(o2.type);
+
+        if (priority1 != priority2) {
+            return Integer.compare(priority1, priority2);
+        }
+
+        return Integer.compare(o2.quantity, o1.quantity);
+    }
+
+    private int getTypePriority(String type) {
+        switch (type) {
+            case "Healing": return 0;
+            case "Weapon": return 1;
+            case "Puzzle": return 2;
+            default: return 3;
+        }
+    }
+});
+
+for (Item item : inventory) {
+    System.out.println(item);
+}
+
+//TH2
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Potion", "Healing", 5));
+inventory.add(new Item("Herb", "Healing", 5));
+inventory.add(new Item("Sword", "Weapon", 5));
+inventory.add(new Item("Gun", "Weapon", 5));
+inventory.add(new Item("Map", "Puzzle", 5));
+inventory.add(new Item("Key", "Puzzle", 5));
+Collections.sort(inventory, new Comparator<Item>() {
+    @Override
+    public int compare(Item o1, Item o2) {
+        int priority1 = getTypePriority(o1.type);
+        int priority2 = getTypePriority(o2.type);
+
+        if (priority1 != priority2) {
+            return Integer.compare(priority1, priority2);
+        }
+
+        return Integer.compare(o2.quantity, o1.quantity);
+    }
+
+    private int getTypePriority(String type) {
+        switch (type) {
+            case "Healing": return 0;
+            case "Weapon": return 1;
+            case "Puzzle": return 2;
+            default: return 3;
+        }
+    }
+});
+
+for (Item item : inventory) {
+    System.out.println(item);
+}
+
+
+//TH3
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Small Potion", "Healing", 2));
+inventory.add(new Item("Large Potion", "Healing", Null));
+inventory.add(new Item("Null", "Weapon", 4));
+inventory.add(new Item("Axe", "Null", 8));
+inventory.add(new Item("Secret Key", "Puzzle", 1));
+inventory.add(new Item("Null", "Puzzle", 7));
+Collections.sort(inventory, new Comparator<Item>() {
+    @Override
+    public int compare(Item o1, Item o2) {
+        int priority1 = getTypePriority(o1.type);
+        int priority2 = getTypePriority(o2.type);
+
+        if (priority1 != priority2) {
+            return Integer.compare(priority1, priority2);
+        }
+
+        return Integer.compare(o2.quantity, o1.quantity);
+    }
+
+    private int getTypePriority(String type) {
+        switch (type) {
+            case "Healing": return 0;
+            case "Weapon": return 1;
+            case "Puzzle": return 2;
+            default: return 3;
+        }
+    }
+});
+
+for (Item item : inventory) {
+    System.out.println(item);
+}
+```
+Dưới đây là đoạn mã cần được kiểm thử:
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Item {
+    String name;
+    String type;
+    int quantity;
+
+    public Item(String name, String type, int quantity) {
+        this.name = name;
+        this.type = type;
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + type + ") - " + quantity;
+    }
+}
+
+public class InventorySorter {
+    public static void main(String[] args) {
+
+    }
+}
+```
+###
+
+
+
+##### 5 : Khải - Chi phí vận chuyển rẻ nhất #####
+Tôi một học sinh trung học tập làm quen với lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển 
+hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Tôi cần kiểm tra tính chuẩn xác của đoạn mã. Việc kiểm 
+định phải được diễn ra cẩn thận và chi tiết vì nó giúp tôi hiểu rõ hơn về lập trình. Chương trình sẽ nhận vào 1 
+mảng danh sách các nhà vận chuyển bao gồm đơn giá trên khoảng cách và đơn giá trên khối lượng, và thông tin của 
+đơn hàng gồm khoảng cách và khối lượng, tiến hành tính toán để có được giá tiền vận chuyển. Để tính ra được kết 
+quả hợp lệ dữ liệu khoảng cách phải lớn hơn 0, khối lượng phải lớn hơn 0. Dựa vào các trường hợp kiểm thử tôi 
+sẽ cho dưới đây, hãy kiểm thử đoạn mã kèm theo bên dưới sau đó đưa ra kết quả và giải thích cụ thể từng trường 
+hợp kiểm thử. Dưới đây các trường hợp để kiểm thử:
+```java
+double distance = 200; 
+double weight = 11; 
+
+double distance = 10; 
+double weight = 100; 
+
+double distance = 1000; 
+double weight = 0,5; 
+```
+
+Đây là đoạn mã của tôi:
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class TransportProvider {
+    String name;
+    double pricePerDistance; 
+    double pricePerWeight;
+    public TransportProvider(String name, double pricePerDistance, double pricePerWeight) {
+        this.name = name;
+        this.pricePerDistance = pricePerDistance;
+        this.pricePerWeight = pricePerWeight;
+    }
+}
+
+public class TransportCostOptimizer {
+    public static void main(String[] args) {
+        
+        TransportProvider cheapestProvider = cheapestProvider(distance,weight);
+        if (cheapestProvider != null) {
+            System.out.println("\nNhà vận chuyển rẻ nhất: " + cheapestProvider.name);
+        }
+    }
+    public static TransportProvider cheapestProvider(double distance, double weight){
+        TransportProvider providers [] = new TransportProvider [3];
+        providers[0] = (new TransportProvider("Provider A",5000, 10000));
+        providers[1]= (new TransportProvider("Provider B", 6000, 9000));
+        providers[2]=(new TransportProvider("Provider C", 3000, 12000));
+        TransportProvider cheapestProvider = null;
+        double minCost = Double.MAX_VALUE;
+        for (int i = 0; i<providers.length; i++) {
+            double cost = (providers[i].pricePerDistance * distance) + (providers[i].pricePerWeight * weight);
+            System.out.println("Chi phí của " + providers[i].name + " là: " + cost + " VND");
+            if (cost < minCost) {
+                minCost = cost;
+                cheapestProvider = providers[i];
+            }
+        }
+        return cheapestProvider;
+    }
+}
+
+
+
+##### (done) 6 : Hào - gợi ý sản phẩm trong siêu thị bán lẻ dựa trên số tiền #####
+Tôi là quản lý của một hệ thống siêu thị bán lẻ. Tôi tự tìm hiểu và đã có một ít kiến thức về lập trình. Hiện tôi đang phát triển trang web đặt hàng trực tuyến cho siêu thị của tôi được viết bằng ngôn ngữ java . Tôi đang thực hiện một chức năng là gợi ý sản phẩm dựa trên số tiền hiện có trong tài khoản của khách hàng.  
+Tôi muốn kiểm tra xem liệu đoạn mã mà tôi đã viết có hoạt động đúng như suy đoán của tôi không. Việc kiểm tra nên được thực hiện chi tiết và cẩn thận vì việc này sẽ ảnh hưởng trực tiếp đến lợi nhuận của siêu thị.
+Đoạn mã của tôi sẽ nhận đầu vào bao gồm một số thực n, và một mảng các số thực. Số thực n sẽ là đại diện cho số tiền hiện đang có trong tài khoản của khách hàng và mảng số thực là đại diện cho giá tiền của các sản phẩm có trong cửa hàng. Mục tiêu của đoạn mã là tạo ra một danh sách các sản phẩm mà trong đó tổng giá trị của danh sách gần nhất với số tiền đang có trong tài khoản của khách hàng để làm khuyến mãi cho khách hàng. 
+Chức năng trên cần phải đảm bảo các yêu cầu sau: chỉ được sử dụng khi số tiền trong tài khoản của khách hàng không quá năm triệu đồng, các thông báo lỗi cho mảng rỗng và số tiền là số âm phải được in ra để phục vụ quá trình kiểm thử. 
+Tôi sẽ cung cấp đoạn mã và các trường hợp cần kiểm thử bên dưới đây, hãy kiểm thử, đưa ra kết quả và giải thích cho từng trường hợp.
+
+Đoạn mã của tôi như sau:
+```java
+import java.util.*;
+
+public class shoppingSuggestions {
+    public static List<Double> maxProducts(double n, double[] prices) {
+        if (n > 5000000.0) {
+            return null;
+        }
+
+        if (n < 0) {
+            System.out.println("Lỗi: n không được là số âm.");
+            return null;
+        }
+        
+        for (double num : prices) {
+            if (num < 0) {
+                System.out.println("Lỗi: Mảng chứa số âm không hợp lệ.");
+                return null;
+            }
+        }
+
+        Arrays.sort(prices);
+        List<Double> result = new ArrayList<>();
+        double sum = 0.0;
+        
+        for (double num : prices) {
+            if (sum + num <= n) {
+                result.add(num);
+                sum += num;
+            } else {
+                break;
+            }
+        }
+        
+        return result;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+
+Các trường hợp kiểm thử như sau:
+```java
+n = 10.5;
+prices = {2.3, 1.5, 5.1, 3.2, 4.7, 0.9}; 
+List<Double> result = maxProducts(n, prices);
+if (result != null) {
+    System.out.println("Danh sách khuyến mãi: " + result);
+}
+
+n = 6000000;
+prices = {1.0, 2.0, 3.0}; 
+List<Double> result = maxProducts(n, prices);
+if (result != null) {
+    System.out.println("Danh sách khuyến mãi: " + result);
+}
+
+n = -10;
+prices = {1.0, 2.0, 3.0}; 
+List<Double> result = maxProducts(n, prices);
+if (result != null) {
+    System.out.println("Danh sách khuyến mãi: " + result);
+}
+
+n = 10;
+prices = {2.0, -3.0, 1.0}; 
+List<Double> result = maxProducts(n, prices);
+if (result != null) {
+    System.out.println("Danh sách khuyến mãi: " + result);
+}
+```
+
+
+
+##### (done) 7 : Hào - quản lý tổng thời gian chờ máy in #####
+Tôi là nhân viên công nghệ thông tin tại một công ty chuyên làm về tuyển dụng. Vì máy in của công ty tôi chỉ có thể in một tài liệu mỗi lần, tôi đang thiết kế một chương trình bằng ngôn ngữ Java để gửi các tài liệu đến máy in theo thứ tự sử dụng hàng đợi (queue). Trong quá trình thiết kế, tôi đã làm một chức năng đó là ước lượng thời gian máy in thực hiện in xong tất cả tài liệu được gửi. Tôi cần kiểm tra độ chính xác của chức năng này. Việc kiểm tra này cần được thực hiện kỹ lưỡng vì chức năng này sẽ được các sếp của tôi sử dụng để quản lý thời gian in ấn.
+Đoạn mã nhận vào một danh sách đại diện cho thời gian in của các tài liệu, ví dụ: `[5, 3, 8]` có thể được hiểu là tài liệu thứ nhất cần 5 giây để in, tài liệu thứ hai cần 3 giây để in, tài liệu thứ ba cần 8 giây để in. Kết quả trả về là tổng thời gian cần có để in tất cả các tài liệu.
+Ngoài ra, đoạn mã của tôi cần có một số ràng buộc như sau: sử dụng cấu trúc dữ liệu hàng đợi (queue) để quản lý các tài liệu, mỗi tài liệu có một thời gian in (tính bằng giây), kết quả trả về là tổng thời gian chờ đợi của tất cả các tài liệu trong hàng đợi.
+Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã bên dưới sau đó đưa ra kết quả và giải thích chi tiết cho từng trường hợp.
+Các trường hợp cần kiểm thử như sau (hãy nhập theo thứ tự):
+```java
+// TH 1
+6
+2
+3
+5
+7
+11
+1
+
+// TH 2
+5
+1
+2
+4
+8
+16
+
+// TH 3
+5
+-2
+3
+6
+11
+5
+```
+Dưới đây là đoạn mã của tôi:
+```java
+import java.util.*;
+
+public class PrintQueue {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] printTimes;
+
+        System.out.print("Nhập số lượng tài liệu: ");
+        int numberOfDocuments = scanner.nextInt();
+        printTimes = new int[numberOfDocuments];
+        System.out.println("Nhập thời gian in cho từng tài liệu:");
+        for (int i = 0; i < numberOfDocuments; i++) {
+            printTimes[i] = scanner.nextInt();
+        }
+
+        scanner.close();
+
+        System.out.println("Tổng thời gian chờ đợi: " + calculateTotalWaitTime(printTimes) + " giây");
+    }
+
+    public static int calculateTotalWaitTime(int[] printTimes) {
+        if (printTimes == null || printTimes.length == 0) {
+            System.out.println("Danh sách tài liệu trống!");
+            return 0;
+        }
+
+        Queue<Integer> queue = new PriorityQueue<>();
+        for (int time : printTimes) {
+            if (time <= 0) {
+                System.out.println("Lỗi: Thời gian in không hợp lệ: " + time);
+                return -1;
+            }
+            queue.add(time);
+        }
+
+        int totalWaitTime = 0;
+        int currentWaitTime = 0;
+
+        while (!queue.isEmpty()) {
+            int printTime = queue.poll();
+            totalWaitTime += currentWaitTime;
+            currentWaitTime += printTime;
+        }
+
+        return totalWaitTime;
+    }
+}
+```
+
+
+
 ##### 8 : Khang - Tính toán sản phẩm có lợi nhuận cao nhất #####
-Tôi là một lập trình viên làm việc tự do. Tôi đang nhận một dự án phát triển một hệ thống quản lý kho hàng cho một công ty ban hàng, được viết bằng ngôn ngữ Java. Tôi đã triển khai một tính năng giúp tính toán lợi nhuận cao nhất của sản phẩm dựa trên số lượng, giá von, và giá ban.
-Hệ thống sẽ nhận vào danh sách sản phẩm với thông tin bao gồm: Số lượng sản phẩm có sẵn trong kho, giá von (chi phí nhập mỗi sản phẩm), giá ban (giá ban ra thị trường của mỗi sản phẩm).
+Tôi là một lập trình viên làm việc tự do. Tôi đang nhận một dự án phát triển một hệ thống quản lý kho hàng cho một công ty bán hàng, được viết bằng ngôn ngữ Java. Tôi đã triển khai một tính năng giúp tính toán lợi nhuận cao nhất của sản phẩm dựa trên số lượng, giá vốn, và giá bán.
+Hệ thống sẽ nhận vào danh sách sản phẩm với thông tin bao gồm: Số lượng sản phẩm có sẵn trong kho, giá vốn (chi phí nhập mỗi sản phẩm), giá bán (giá ban ra thị trường của mỗi sản phẩm).
 Mục tiêu là xác định cách tối ưu hóa lợi nhuận từ các sản phẩm trong kho bằng cách tính toán.
 Hệ thống cần đảm bảo rằng: - Số lượng sản phẩm phải lớn hơn 0 - Giá vốn và giá bán phải lớn hơn 0 và tính theo đơn vị tiền tệ Việt Nam đồng.
 Hãy kiểm tra kết quả của đoạn mã dưới đây dự vào các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
-
 Dưới đây là đoạn mã tôi đã viết:
 ```java
 import java.util.ArrayList;
@@ -99,6 +769,72 @@ Bàn phím 50 200000 300000
 Chuột 40 150000 250000  
 
 // Trường hợp 3  
-
+// Không nhập gì cả 
  
+```
+
+
+
+##### (Done) 9 : Hào - combo sát thương cao nhất trong k lần đánh #####
+Tôi là một lập trình viên chuyên về lập trình trò chơi. Tôi đang xây dựng một hàm viết bằng ngôn ngữ Java để phục vụ cho chức năng tính sát thương cao nhất mà người chơi gây ra trong một chuỗi `k` lần gây sát thương liên tiếp. Tôi muốn kiểm tra xem hàm mà tôi viết có hoạt động đúng như mong đợi không bằng cách kiểm tra bằng các trường hợp kiểm thử.
+Hàm của tôi nhận vào hai tham số là một mảng các số nguyên đại diện cho các lần gây sát thương và một số nguyên `k` đại diện cho số lần liên tiếp cần tính. Đoạn mã trả về kết quả là một mảng, trong đó tổng lượng sát thương gây ra bởi người chơi là lớn nhất.
+Các ràng buộc mà đoạn mã cần tuân theo là: `k` phải là số nguyên dương, kết quả trả về phải được in ra màn hình dưới dạng chuỗi, trường hợp sát thương gây ra là âm thì sẽ được tính như lượng hồi máu.
+Việc kiểm thử đoạn mã nên thực hiện cẩn thận vì đây sẽ là tính năng quan trọng trong trò chơi mà tôi đang phát triển.
+Dựa vào đoạn mã và các trường hợp kiểm thử dưới đây, hãy giúp tôi thực hiện việc kiểm thử đầu ra của đoạn mã, đưa ra kết quả và giải thích chi tiết đối với mỗi trường hợp.
+Dưới đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.Arrays;
+
+public class MaxDamageCombo {
+    public static int[] maxDamageComboList(int[] damageRecorded, int k) {
+        if (damageRecorded.length < k) {
+            return new int[0];
+        }
+
+        int currentTotalDamage = 0;
+        for (int i = 0; i < k; i++) {
+            currentTotalDamage += damageRecorded[i];
+        }
+
+        int maxSum = currentTotalDamage;
+        int startComboSkill = 0;
+
+        for (int i = k; i < damageRecorded.length; i++) {
+            currentTotalDamage += damageRecorded[i] - damageRecorded[i - k];
+
+            if (currentTotalDamage > maxSum) {
+                maxSum = currentTotalDamage;
+                startComboSkill = i - k + 1;
+            }
+        }
+
+        return Arrays.copyOfRange(damageRecorded, startComboSkill, startComboSkill + k);
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+Các trường hợp kiểm thử như sau:
+```java
+// TH 1
+int[] damageRecorded1 = {2, 1, 5, 1, 3, 2}; 
+int k1 = 3; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded1, k1)));
+
+// TH 2
+int[] damageRecorded2 = {-2, -1, -3, -4, -1}; 
+int k2 = 2; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded2, k2)));
+
+// TH 3
+int[] damageRecorded3 = {1, 2}; 
+int k3 = 3; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded3, k3)));
+
+// TH 4
+int[] damageRecorded4 = {}; 
+int k4 = 3; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded4, k4)));
 ```
