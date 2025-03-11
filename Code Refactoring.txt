@@ -233,3 +233,104 @@ public class TransportCostOptimizer {
 }
 ```
 ###
+
+
+
+##### (Done) 5 : Lộc - tối ưu nguồn tiền build pc #####
+Tôi là một lập trình viên làm việc tự do.
+Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán tính toán điểm hiệu năng trên giá thành được viết bằng ngôn ngữ Java. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+Hệ thống nhận vào một mảng danh sách gồm lần lượt tên linh kiện, giá, điểm hiệu năng. Linh kiện gồm 4 loại là cpu, main, ram, card màn hình. Kết quả trả về sau khi xử lý là một danh sách các linh kiện có tên, giá, điểm hiệu năng và điểm hiệu năng trên giá thành tốt nhất.
+Tuy đã hoạt động đúng mục đích nhưng ứng dụng vẫn cần một số cải tiến để giải quyết: Phải tạo riêng một hàm nhập các sản phẩm vào chứ không được gán cứng trong đoạn mã, giá linh kiện không được nhỏ hơn 0.
+Hệ thống cần đáp ứng các yêu cầu sau để hoạt động chính xác: Để xây dựng được một bộ máy tính cần đầy đủ 4 loại linh kiện, nếu không kết quả phải trả về là "không đủ linh kiện để hoàn thành máy tính"
+Tôi muốn tái cấu trúc lại đoạn mã để sửa các trường hợp trên. Việc tái cấu trúc để sửa các trường hợp trên là rất quan trọng vì nếu không cho nhập các linh kiện vào thì hệ thống sẽ bị hạn chế, không thể phát triển và mở rộng thêm các chức năng khác.
+Hãy giúp tôi tái cấu trúc lại đoạn mã để giải quyết các vấn đề trên, các thay đổi và chỉnh sửa cần phải được tóm tắt ở cuối.
+```java
+import java.util.Arrays;
+
+public class MaxDamageCombo {
+    public static int[] maxDamageComboList(int[] damageRecorded, int k) {
+        if (damageRecorded.length < k) {
+            return new int[0];
+        }
+
+        int currentTotalDamage = 0;
+        for (int i = 0; i < k; i++) {
+            currentTotalDamage += damageRecorded[i];
+        }
+
+        int maxSum = currentTotalDamage;
+        int startComboSkill = 0;
+
+        for (int i = k; i < damageRecorded.length; i++) {
+            currentTotalDamage += damageRecorded[i] - damageRecorded[i - k];
+
+            if (currentTotalDamage > maxSum) {
+                maxSum = currentTotalDamage;
+                startComboSkill = i - k + 1;
+            }
+        }
+
+        return Arrays.copyOfRange(damageRecorded, startComboSkill, startComboSkill + k);
+    }
+
+    public static void main(String[] args) {
+
+    }
+}import java.util.*;
+
+class Component {
+    String name, type;
+    double price, performance, ppRatio;
+
+    public Component(String name, String type, double price, double performance) {
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.performance = performance;
+        this.ppRatio = performance / price;
+    }
+
+    @Override
+    public String toString() {
+        return type + ": " + name + " | Giá: " + price + " | Điểm: " + performance + " | P/P: " + ppRatio;
+    }
+}
+
+class PCBuilder {
+    private static final List<String> REQUIRED_TYPES = Arrays.asList("CPU", "RAM", "Mainboard", "Card màn hình");
+    
+    public static Map<String, Component> getBestComponents(Component[] components) {
+        Map<String, Component> bestPC = new LinkedHashMap<>();
+        
+        for (Component c : components) {
+            bestPC.putIfAbsent(c.type, c);
+            if (c.ppRatio > bestPC.get(c.type).ppRatio) {
+                bestPC.put(c.type, c);
+            }
+        }
+        
+        return bestPC;
+    }
+    
+    public static boolean isValidPC(Map<String, Component> bestPC) {
+        return bestPC.keySet().containsAll(REQUIRED_TYPES);
+    }
+    
+    public static void printBestPC(Map<String, Component> bestPC) {
+        if (!isValidPC(bestPC)) {
+            System.out.println("Không đủ linh kiện để lắp một bộ PC hoàn chỉnh!");
+            return;
+        }
+        for (String type : REQUIRED_TYPES) {
+            System.out.println(bestPC.get(type));
+        }
+    }
+}
+
+class BestPCBuilder {
+    public static void main(String[] args) {
+
+    }
+}
+
+```

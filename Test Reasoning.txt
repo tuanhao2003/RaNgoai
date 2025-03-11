@@ -838,3 +838,210 @@ int[] damageRecorded4 = {};
 int k4 = 3; 
 System.out.println(Arrays.toString(maxDamageComboList(damageRecorded4, k4)));
 ```
+
+
+
+##### 10 : Lộc - tối ưu nguồn tiền build pc #####
+Tôi là một lập trình viên chuyên làm website cho các công ty lớn. Tôi đang xây dựng một hàm viết bằng ngôn ngữ Java để phục vụ cho chức năng tính toán, tối ưu nguồn tiền khi xây dựng hệ thống máy tính. Tôi muốn kiểm tra xem hàm mà tôi viết có hoạt động đúng như mong đợi không bằng cách kiểm tra bằng các trường hợp kiểm thử.
+Hàm của tôi nhận vào một mảng các phần cứng của một bộ máy tính, gồm có 4 thành phần chính là CPU, Main, Ram và Card màn hình. Đoạn mã trả về kết quả là một danh sách các thành phần linh kiện và p/p(hiệu năng trên giá thành) tốt nhất.
+Các ràng buộc mà đoạn mã cần tuân theo là: Mảng nhập vào phải có dạng theo thứ tự là tên, loại thiết bị, giá, điểm sức mạnh của thiết bị đó. Đầu ra sẽ là một mảng gồm các thành phần linh kiện gồm tên, giá, điểm số của thiết bị đó và điểm p/p.
+Việc kiểm thử đoạn mã nên thực hiện cẩn thận vì đây sẽ là tính năng quan trọng trong website mà tôi đang phát triển.
+Dựa vào đoạn mã và các trường hợp kiểm thử dưới đây, hãy giúp tôi thực hiện việc kiểm thử đầu ra của đoạn mã, đưa ra kết quả và giải thích chi tiết đối với mỗi trường hợp.
+Dưới đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.Arrays;
+
+public class MaxDamageCombo {
+    public static int[] maxDamageComboList(int[] damageRecorded, int k) {
+        if (damageRecorded.length < k) {
+            return new int[0];
+        }
+
+        int currentTotalDamage = 0;
+        for (int i = 0; i < k; i++) {
+            currentTotalDamage += damageRecorded[i];
+        }
+
+        int maxSum = currentTotalDamage;
+        int startComboSkill = 0;
+
+        for (int i = k; i < damageRecorded.length; i++) {
+            currentTotalDamage += damageRecorded[i] - damageRecorded[i - k];
+
+            if (currentTotalDamage > maxSum) {
+                maxSum = currentTotalDamage;
+                startComboSkill = i - k + 1;
+            }
+        }
+
+        return Arrays.copyOfRange(damageRecorded, startComboSkill, startComboSkill + k);
+    }
+
+    public static void main(String[] args) {
+
+    }
+}import java.util.*;
+
+class Component {
+    String name, type;
+    double price, performance, ppRatio;
+
+    public Component(String name, String type, double price, double performance) {
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.performance = performance;
+        this.ppRatio = performance / price;
+    }
+
+    @Override
+    public String toString() {
+        return type + ": " + name + " | Giá: " + price + " | Điểm: " + performance + " | P/P: " + ppRatio;
+    }
+}
+
+class PCBuilder {
+    private static final List<String> REQUIRED_TYPES = Arrays.asList("CPU", "RAM", "Mainboard", "Card màn hình");
+    
+    public static Map<String, Component> getBestComponents(Component[] components) {
+        Map<String, Component> bestPC = new LinkedHashMap<>();
+        
+        for (Component c : components) {
+            bestPC.putIfAbsent(c.type, c);
+            if (c.ppRatio > bestPC.get(c.type).ppRatio) {
+                bestPC.put(c.type, c);
+            }
+        }
+        
+        return bestPC;
+    }
+    
+    public static boolean isValidPC(Map<String, Component> bestPC) {
+        return bestPC.keySet().containsAll(REQUIRED_TYPES);
+    }
+    
+    public static void printBestPC(Map<String, Component> bestPC) {
+        if (!isValidPC(bestPC)) {
+            System.out.println("Không đủ linh kiện để lắp một bộ PC hoàn chỉnh!");
+            return;
+        }
+        for (String type : REQUIRED_TYPES) {
+            System.out.println(bestPC.get(type));
+        }
+    }
+}
+
+class BestPCBuilder {
+    public static void main(String[] args) {
+
+    }
+}
+
+```
+Các trường hợp kiểm thử như sau:
+```java
+// TH 1
+Component[] components = {
+    new Component("Intel i5-12400F", "CPU", 4500000, 15000),
+    new Component("Intel i7-13700K", "CPU", 9000000, 23000),
+    new Component("AMD Ryzen 5 5600X", "CPU", 5000000, 16000),
+    new Component("AMD Ryzen 7 5800X", "CPU", 7500000, 20000),
+    new Component("Intel i9-13900K", "CPU", 13000000, 28000),
+    
+    new Component("Corsair Vengeance 16GB", "RAM", 1600000, 3200),
+    new Component("G.Skill Trident Z 16GB", "RAM", 1800000, 3600),
+    new Component("Kingston Fury 32GB", "RAM", 3200000, 3200),
+    new Component("Corsair Dominator 32GB", "RAM", 3500000, 3600),
+    new Component("ADATA XPG 16GB", "RAM", 1500000, 3000),
+    
+    new Component("MSI B660M", "Mainboard", 2500000, 3000),
+    new Component("ASUS TUF Gaming B550", "Mainboard", 3500000, 3500),
+    new Component("Gigabyte Z690 AORUS", "Mainboard", 6000000, 5000),
+    new Component("ASRock B450M", "Mainboard", 2000000, 2800),
+    new Component("MSI MAG Z790", "Mainboard", 7500000, 5200),
+    
+    new Component("RTX 3060", "Card màn hình", 7000000, 18000),
+    new Component("RTX 3070", "Card màn hình", 11000000, 25000),
+    new Component("RTX 3080", "Card màn hình", 16000000, 32000),
+    new Component("RX 6600 XT", "Card màn hình", 8000000, 20000),
+    new Component("RX 6800 XT", "Card màn hình", 14000000, 30000)
+};
+
+Map<String, Component> bestPC = PCBuilder.getBestComponents(components);
+PCBuilder.printBestPC(bestPC);
+
+// TH 2
+Component[] components = {
+    new Component("Intel i5-12400F", "CPU", 4500000, 15000),
+    new Component("Intel i7-13700K", "CPU", 9000000, 23000),
+    
+    new Component("Corsair Vengeance 16GB", "RAM", 1600000, 3200),
+    new Component("G.Skill Trident Z 16GB", "RAM", 1800000, 3600),
+    new Component("Kingston Fury 32GB", "RAM", 3200000, 3200),
+    new Component("Corsair Dominator 32GB", "RAM", 3500000, 3600),
+    new Component("ADATA XPG 16GB", "RAM", 1500000, 3000),
+    
+    new Component("MSI B660M", "Mainboard", 2500000, 3000),
+    new Component("ASUS TUF Gaming B550", "Mainboard", 3500000, 3500),
+    new Component("Gigabyte Z690 AORUS", "Mainboard", 6000000, 5000),
+    new Component("ASRock B450M", "Mainboard", 2000000, 2800),
+    new Component("MSI MAG Z790", "Mainboard", 7500000, 5200),
+    
+    new Component("RTX 3060", "Card màn hình", 7000000, 18000),
+    new Component("RTX 3070", "Card màn hình", 11000000, 25000),
+    new Component("RTX 3080", "Card màn hình", 16000000, 32000),
+    new Component("RX 6600 XT", "Card màn hình", 8000000, 20000),
+    new Component("RX 6800 XT", "Card màn hình", 14000000, 30000)
+};
+
+Map<String, Component> bestPC = PCBuilder.getBestComponents(components);
+PCBuilder.printBestPC(bestPC);
+
+// TH 3
+Component[] components = {
+    new Component("Intel i5-12400F", "CPU", 4500000, 15000),
+    new Component("Intel i7-13700K", "CPU", 9000000, 23000),
+    new Component("AMD Ryzen 5 5600X", "CPU", 5000000, 16000),
+    new Component("AMD Ryzen 7 5800X", "CPU", 7500000, 20000),
+    new Component("Intel i9-13900K", "CPU", 13000000, 28000),
+    
+    new Component("Corsair Vengeance 16GB", "RAM", 1600000, 3200),
+    new Component("G.Skill Trident Z 16GB", "RAM", 1800000, 3600),
+    new Component("Kingston Fury 32GB", "RAM", 3200000, 3200),
+    new Component("Corsair Dominator 32GB", "RAM", 3500000, 3600),
+    new Component("ADATA XPG 16GB", "RAM", 1500000, 3000),
+    
+    new Component("MSI B660M", "Mainboard", 2500000, 3000),
+    new Component("ASUS TUF Gaming B550", "Mainboard", 3500000, 3500),
+    new Component("Gigabyte Z690 AORUS", "Mainboard", 6000000, 5000),
+    new Component("ASRock B450M", "Mainboard", 2000000, 2800),
+    new Component("MSI MAG Z790", "Mainboard", 7500000, 5200),
+};
+
+Map<String, Component> bestPC = PCBuilder.getBestComponents(components);
+PCBuilder.printBestPC(bestPC);
+
+// TH 4
+Component[] components = {
+    new Component("Intel i5-12400F", "CPU", 4500000, 15000),
+    new Component("Intel i7-13700K", "CPU", 9000000, 23000),
+    new Component("AMD Ryzen 5 5600X", "CPU", 5000000, 16000),
+    new Component("AMD Ryzen 7 5800X", "CPU", 7500000, 20000),
+    new Component("Intel i9-13900K", "CPU", 13000000, 28000),
+    
+    new Component("Corsair Vengeance 16GB", "RAM", 1600000, 3200),
+    new Component("G.Skill Trident Z 16GB", "RAM", 1800000, 3600),
+    new Component("Kingston Fury 32GB", "RAM", 3200000, 3200),
+    new Component("Corsair Dominator 32GB", "RAM", 3500000, 3600),
+    new Component("ADATA XPG 16GB", "RAM", 1500000, 3000),
+    
+    new Component("MSI B660M", "Mainboard", 2500000, -3000),
+    new Component("ASUS TUF Gaming B550", "Mainboard", -3500000, 3500),
+    new Component("Gigabyte Z690 AORUS", "Mainboard", -6000000, 5000),
+    new Component("ASRock B450M", "Mainboard", -2000000, 2800),
+    new Component("MSI MAG Z790", "Mainboard", 7500000, 5200),
+};
+
+Map<String, Component> bestPC = PCBuilder.getBestComponents(components);
+PCBuilder.printBestPC(bestPC);
+```
