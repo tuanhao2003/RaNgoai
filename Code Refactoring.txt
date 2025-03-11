@@ -243,8 +243,87 @@ Hệ thống nhận vào danh sách sản phẩm với các thông tin:- Tên s�
 Kết quả trả về là tên của sản phẩm có lợi nhuận cao nhất.
 Tuy nhiên, ứng dụng của tôi vẫn còn một số hạn chế như: Khi nhập sai dữ liệu (ví dụ: số lượng hoặc giá không hợp lệ), chương trình không cho phép nhập lại mà chỉ hiển thị lỗi. Nếu người dùng nhập trống hoặc nhập 0 ở phần số lượng, giá vốn hoặc giá bán, chương trình không xử lý linh hoạt. Chưa có cách để nhập lại dữ liệu nếu lỡ nhập sai mà không cần khởi động lại chương trình.
 Hãy giúp tôi tái cấu trúc lại đoạn mã bên dưới để giải quyết các vấn đề được nêu bên trên, các thay đổi và chỉnh sửa không được chú thích trong mã mà cần phải được tóm tắt ở cuối.
-
 Dưới đây là đoạn mã tôi đã viết:
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Product {
+    private String name;
+    private int soluong;
+    private double von;
+    private double ban;
+
+    public Product(String name, int soluong, double von, double ban) {
+        if (soluong <= 0 || von <= 0 || ban <= 0) {
+            throw new IllegalArgumentException("Số lượng, giá vốn và giá bán phải lớn hơn 0.");
+        }
+        this.name = name;
+        this.soluong = soluong;
+        this.von = von;
+        this.ban = ban;
+    }
+
+    public double getProfit() {
+        return (ban - von) * soluong;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class InventoryCalculator {
+    public static Product getMaxProfitProduct(List<Product> products) {
+        if (products == null || products.isEmpty()) {
+            throw new IllegalArgumentException("Danh sách sản phẩm không được trống.");
+        }
+        return products.stream()
+                .max((p1, p2) -> Double.compare(p1.getProfit(), p2.getProfit()))
+                .orElseThrow();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Product> products = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Nhập tên sản phẩm (bỏ trống để kết thúc): ");
+            String name = scanner.nextLine().trim();
+            if (name.isEmpty()) {
+                break;
+            }
+
+            try {
+                System.out.print("Nhập số lượng: ");
+                int soluong = Integer.parseInt(scanner.nextLine().trim());
+
+                System.out.print("Nhập giá vốn: ");
+                double von = Double.parseDouble(scanner.nextLine().trim());
+
+                System.out.print("Nhập giá bán: ");
+                double ban = Double.parseDouble(scanner.nextLine().trim());
+
+                products.add(new Product(name, soluong, von, ban));
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số hợp lệ cho số lượng, giá vốn và giá bán.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        scanner.close();
+
+        if (!products.isEmpty()) {
+            Product maxProfitProduct = getMaxProfitProduct(products);
+            System.out.println("Sản phẩm có lợi nhuận cao nhất: " + maxProfitProduct.getName());
+        } else {
+            System.out.println("Không có sản phẩm nào để tính toán.");
+        }
+    }
+}
+```
 
 
 
