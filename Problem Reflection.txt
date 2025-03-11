@@ -1,8 +1,14 @@
-##### 1 : Lộc - hệ thống sắp xếp items trong túi đồ của game #####
+##### (Done) 1 : Lộc - hệ thống sắp xếp items trong túi đồ của game #####
 Tôi là một lập trình viên phát triển trò chơi điện tử và hiện đang làm việc trên một tựa game hành động nhiều người chơi, nơi nhịp độ chiến đấu nhanh và quyết định của người chơi trong từng khoảnh khắc có thể thay đổi cục diện trận đấu. Một trong những thách thức lớn tôi đang đối mặt là tối ưu hóa hệ thống quản lý túi đồ, giúp người chơi nhanh chóng tìm được vật phẩm mình cần trong lúc chiến đấu căng thẳng.
 Dữ liệu đầu vào bao gồm túi đồ của mỗi người chơi có thể chứa nhiều loại vật phẩm khác nhau, từ vật phẩm hồi máu, vũ khí, đến công cụ giải đố. Tuy nhiên, trong những tình huống sinh tử, điều quan trọng nhất là tìm nhanh vật phẩm hồi máu, vì đó là nhóm vật phẩm được sử dụng nhiều nhất. Nếu hệ thống không sắp xếp hợp lý, người chơi có thể mất thời gian quý giá để lục lọi, làm giảm trải nghiệm và thậm chí bị hạ gục oan uổng trong trận đấu.
 Tôi muốn xây dựng một cơ chế sắp xếp tự động, giúp túi đồ luôn được tổ chức theo thứ tự ưu tiên: Vật phẩm hồi máu(xuất hiện đầu tiên để dễ dàng sử dụng), Vũ khí(sắp xếp theo số lượng từ cao xuống thấp), Công cụ giải đố(đặt ở cuối vì ít được dùng trong giao tranh).
 Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này, tôi muốn bạn viết ba chương trình Java khác nhau để giải quyết bài toán trên. Sau đó, hãy giải thích ưu và nhược điểm của từng phương pháp.
+```fix
+Tôi là một lập trình viên phát triển trò chơi điện tử. Tôi đang làm việc trên một dự án trò chơi hành động nhiều người chơi được phát triển bằng ngôn ngữ Java. Trong quá trình phát triển dự án này, tôi cần tạo ra một tính năng quản lý túi đồ giúp người chơi có thể nhanh chóng tìm được vật phẩm mình cần. 
+Túi đồ của người chơi có thể chứa nhiều loại vật phẩm khác nhau như vật phẩm bổ trợ, vũ khí và vật phẩm giải đố. Tính năng mà tôi cần làm có tác dụng giúp cho người chơi có thể lấy được vật phẩm bổ trợ một cách nhanh nhất trong những lúc cấp bách.
+Vì có nhiều hướng để thực hiện chức năng này nên hãy tạo ra ba đoạn mã viết bằng ngôn ngữ Java, nêu ra các ưu và nhược điểm cho mỗi đoạn mã.
+Tôi muốn đoạn mã phải có thời gian chạy nhanh chóng. Điều này là rất cần thiết vì đây là một trò chơi trực tuyến nhịp độ cao.
+```
 
 
 
