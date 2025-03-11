@@ -8,7 +8,7 @@ Cần đảm bảo rằng nếu số buổi làm việc hoặc mức lương nh�
 Đoạn mã cần phải đáp ứng một số ràng buộc nhất định như sau:
 Nếu số buổi làm việc nhỏ hơn 0, hệ thống sẽ phải trả về lỗi, nếu mức lương mỗi buổi của nhân viên nhỏ hơn 0, hệ thống cũng sẽ phải báo lỗi. Kết quả trả về phải chính xác và có định dạng rõ ràng.
 Hãy giúp tôi tái cấu trúc lại đoạn mã bên dưới để giải quyết các vấn đề được nêu bên trên, các thay đổi và chỉnh sửa cần phải được tóm tắt ở cuối.
-Dưới này là đoạn mã của tôi, bạn sửa lại theo đúng những gì tôi yêu cầu: 
+Dưới này là đoạn mã của tôi, bạn sửa lại theo đúng những gì tôi yêu cầu:
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -235,7 +235,199 @@ public class TransportCostOptimizer {
 ###
 
 
-##### 5: Hệ thống kiểm tra số lượng vé còn hay không để xác nhận đặt vé thành công #####
+
+##### 5 : Khang - Tính toán sản phẩm có lợi nhuận cao nhất #####
+Tôi là một lập trình viên làm việc tự do. Một công ty đang phát triển một hệ thống quản lý kho hàng để tối ưu hóa việc theo dõi và phân phối sản phẩm. Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán tính toán lợi nhuận sản phẩm trong bối cảnh quản lý kho hàng.
+Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể. Trong quá trình phát triển hệ thống, tôi cần đảm bảo rằng kết quả đầu ra luôn chính xác và không có lỗi khi nhập dữ liệu.
+Hệ thống nhận vào danh sách sản phẩm với các thông tin:- Tên sản phẩm (chuỗi ký tự).- Số lượng sản phẩm (số nguyên, phải lớn hơn 0).- Giá vốn (số thực, phải lớn hơn 0).- Giá bán (số thực, phải lớn hơn 0).- Khi người dùng bỏ trống tên sản phẩm, quá trình nhập sẽ dừng lại và hệ thống sẽ bắt đầu tính toán lợi nhuận.
+Kết quả trả về là tên của sản phẩm có lợi nhuận cao nhất.
+Tuy nhiên, ứng dụng của tôi vẫn còn một số hạn chế như: Khi nhập sai dữ liệu (ví dụ: số lượng hoặc giá không hợp lệ), chương trình không cho phép nhập lại mà chỉ hiển thị lỗi. Nếu người dùng nhập trống hoặc nhập 0 ở phần số lượng, giá vốn hoặc giá bán, chương trình không xử lý linh hoạt. Chưa có cách để nhập lại dữ liệu nếu lỡ nhập sai mà không cần khởi động lại chương trình.
+Hãy giúp tôi tái cấu trúc lại đoạn mã bên dưới để giải quyết các vấn đề được nêu bên trên, các thay đổi và chỉnh sửa không được chú thích trong mã mà cần phải được tóm tắt ở cuối.
+Dưới đây là đoạn mã tôi đã viết:
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Product {
+    private String name;
+    private int soluong;
+    private double von;
+    private double ban;
+
+    public Product(String name, int soluong, double von, double ban) {
+        if (soluong <= 0 || von <= 0 || ban <= 0) {
+            throw new IllegalArgumentException("Số lượng, giá vốn và giá bán phải lớn hơn 0.");
+        }
+        this.name = name;
+        this.soluong = soluong;
+        this.von = von;
+        this.ban = ban;
+    }
+
+    public double getProfit() {
+        return (ban - von) * soluong;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class InventoryCalculator {
+    public static Product getMaxProfitProduct(List<Product> products) {
+        if (products == null || products.isEmpty()) {
+            throw new IllegalArgumentException("Danh sách sản phẩm không được trống.");
+        }
+        return products.stream()
+                .max((p1, p2) -> Double.compare(p1.getProfit(), p2.getProfit()))
+                .orElseThrow();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Product> products = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Nhập tên sản phẩm (bỏ trống để kết thúc): ");
+            String name = scanner.nextLine().trim();
+            if (name.isEmpty()) {
+                break;
+            }
+
+            try {
+                System.out.print("Nhập số lượng: ");
+                int soluong = Integer.parseInt(scanner.nextLine().trim());
+
+                System.out.print("Nhập giá vốn: ");
+                double von = Double.parseDouble(scanner.nextLine().trim());
+
+                System.out.print("Nhập giá bán: ");
+                double ban = Double.parseDouble(scanner.nextLine().trim());
+
+                products.add(new Product(name, soluong, von, ban));
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số hợp lệ cho số lượng, giá vốn và giá bán.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        scanner.close();
+
+        if (!products.isEmpty()) {
+            Product maxProfitProduct = getMaxProfitProduct(products);
+            System.out.println("Sản phẩm có lợi nhuận cao nhất: " + maxProfitProduct.getName());
+        } else {
+            System.out.println("Không có sản phẩm nào để tính toán.");
+        }
+    }
+}
+```
+
+
+
+##### 6 : Lộc - tối ưu nguồn tiền build pc #####
+Tôi là một lập trình viên làm việc tự do.
+Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán tính toán điểm hiệu năng trên giá thành được viết bằng ngôn ngữ Java. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+Hệ thống nhận vào một mảng danh sách gồm lần lượt tên linh kiện, giá, điểm hiệu năng. Linh kiện gồm 4 loại là cpu, main, ram, card màn hình. Kết quả trả về sau khi xử lý là một danh sách các linh kiện có tên, giá, điểm hiệu năng và điểm hiệu năng trên giá thành tốt nhất.
+Tuy đã hoạt động đúng mục đích nhưng ứng dụng vẫn cần một số cải tiến để giải quyết: Phải tạo riêng một hàm nhập các sản phẩm vào chứ không được gán cứng trong đoạn mã, giá linh kiện không được nhỏ hơn 0.
+Hệ thống cần đáp ứng các yêu cầu sau để hoạt động chính xác: Để xây dựng được một bộ máy tính cần đầy đủ 4 loại linh kiện, nếu không kết quả phải trả về là "không đủ linh kiện để hoàn thành máy tính"
+Tôi muốn tái cấu trúc lại đoạn mã để sửa các trường hợp trên. Việc tái cấu trúc để sửa các trường hợp trên là rất quan trọng vì nếu không cho nhập các linh kiện vào thì hệ thống sẽ bị hạn chế, không thể phát triển và mở rộng thêm các chức năng khác.
+Hãy giúp tôi tái cấu trúc lại đoạn mã để giải quyết các vấn đề trên, các thay đổi và chỉnh sửa cần phải được tóm tắt ở cuối.
+```java
+import java.util.Arrays;
+
+public class MaxDamageCombo {
+    public static int[] maxDamageComboList(int[] damageRecorded, int k) {
+        if (damageRecorded.length < k) {
+            return new int[0];
+        }
+
+        int currentTotalDamage = 0;
+        for (int i = 0; i < k; i++) {
+            currentTotalDamage += damageRecorded[i];
+        }
+
+        int maxSum = currentTotalDamage;
+        int startComboSkill = 0;
+
+        for (int i = k; i < damageRecorded.length; i++) {
+            currentTotalDamage += damageRecorded[i] - damageRecorded[i - k];
+
+            if (currentTotalDamage > maxSum) {
+                maxSum = currentTotalDamage;
+                startComboSkill = i - k + 1;
+            }
+        }
+
+        return Arrays.copyOfRange(damageRecorded, startComboSkill, startComboSkill + k);
+    }
+
+    public static void main(String[] args) {
+
+    }
+}import java.util.*;
+
+class Component {
+    String name, type;
+    double price, performance, ppRatio;
+
+    public Component(String name, String type, double price, double performance) {
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.performance = performance;
+        this.ppRatio = performance / price;
+    }
+
+    @Override
+    public String toString() {
+        return type + ": " + name + " | Giá: " + price + " | Điểm: " + performance + " | P/P: " + ppRatio;
+    }
+}
+
+class PCBuilder {
+    private static final List<String> REQUIRED_TYPES = Arrays.asList("CPU", "RAM", "Mainboard", "Card màn hình");
+    
+    public static Map<String, Component> getBestComponents(Component[] components) {
+        Map<String, Component> bestPC = new LinkedHashMap<>();
+        
+        for (Component c : components) {
+            bestPC.putIfAbsent(c.type, c);
+            if (c.ppRatio > bestPC.get(c.type).ppRatio) {
+                bestPC.put(c.type, c);
+            }
+        }
+        
+        return bestPC;
+    }
+    
+    public static boolean isValidPC(Map<String, Component> bestPC) {
+        return bestPC.keySet().containsAll(REQUIRED_TYPES);
+    }
+    
+    public static void printBestPC(Map<String, Component> bestPC) {
+        if (!isValidPC(bestPC)) {
+            System.out.println("Không đủ linh kiện để lắp một bộ PC hoàn chỉnh!");
+            return;
+        }
+        for (String type : REQUIRED_TYPES) {
+            System.out.println(bestPC.get(type));
+        }
+    }
+}
+
+class BestPCBuilder {
+    public static void main(String[] args) {
+
+    }
+}
+```
+
+
+
+##### 7: Hệ thống kiểm tra số lượng vé còn hay không để xác nhận đặt vé thành công #####
 Tôi là một nhà phát triển phần mềm đang làm việc tại một công ty chuyên về hệ thống đặt vé xem phim trực tuyến, tôi đang cùng nhóm triển khai dự án quản lý vé nhằm tối ưu hóa quy trình và ngăn chặn tình trạng bán vé vượt mức. Trong quá trình phát triển ứng dụng đặt vé bằng Java, chúng tôi nhận thấy cần thiết phải có một hệ thống kiểm tra số lượng vé khả dụng trước khi xác nhận đặt vé để đảm bảo tính chính xác và công bằng.
 Hệ thống sẽ nhận đầu vào gồm ID phim, suất chiếu và số lượng vé yêu cầu. Sau đó, nó sẽ kiểm tra kho vé để xác định xem số lượng vé còn lại có đủ đáp ứng yêu cầu hay không. Nếu đủ vé, quy trình đặt vé sẽ tiếp tục; ngược lại, hệ thống sẽ thông báo số lượng vé còn lại và yêu cầu người dùng điều chỉnh.
 Điều quan trọng là hệ thống phải đảm bảo xử lý nhanh chóng, chính xác và ngăn ngừa các lỗi đặt vé trùng lặp hoặc vượt quá số lượng. Việc triển khai tính năng này là rất quan trọng để nâng cao trải nghiệm người dùng, giảm thiểu sai sót và đảm bảo quá trình đặt vé diễn ra suôn sẻ.

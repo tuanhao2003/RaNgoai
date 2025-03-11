@@ -3,16 +3,16 @@ Tôi là một lập trình viên phát triển trò chơi điện tử và hi�
 Dữ liệu đầu vào bao gồm túi đồ của mỗi người chơi có thể chứa nhiều loại vật phẩm khác nhau, từ vật phẩm hồi máu, vũ khí, đến công cụ giải đố. Tuy nhiên, trong những tình huống sinh tử, điều quan trọng nhất là tìm nhanh vật phẩm hồi máu, vì đó là nhóm vật phẩm được sử dụng nhiều nhất. Nếu hệ thống không sắp xếp hợp lý, người chơi có thể mất thời gian quý giá để lục lọi, làm giảm trải nghiệm và thậm chí bị hạ gục oan uổng trong trận đấu.
 Tôi muốn xây dựng một cơ chế sắp xếp tự động, giúp túi đồ luôn được tổ chức theo thứ tự ưu tiên: Vật phẩm hồi máu(xuất hiện đầu tiên để dễ dàng sử dụng), Vũ khí(sắp xếp theo số lượng từ cao xuống thấp), Công cụ giải đố(đặt ở cuối vì ít được dùng trong giao tranh).
 Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này, tôi muốn bạn viết ba chương trình Java khác nhau để giải quyết bài toán trên. Sau đó, hãy giải thích ưu và nhược điểm của từng phương pháp.
-```fix
+###fix
 Tôi là một lập trình viên phát triển trò chơi điện tử. Tôi đang làm việc trên một dự án trò chơi hành động nhiều người chơi được phát triển bằng ngôn ngữ Java. Trong quá trình phát triển dự án này, tôi cần tạo ra một tính năng quản lý túi đồ giúp người chơi có thể nhanh chóng tìm được vật phẩm mình cần. 
 Túi đồ của người chơi có thể chứa nhiều loại vật phẩm khác nhau như vật phẩm bổ trợ, vũ khí và vật phẩm giải đố. Tính năng mà tôi cần làm có tác dụng giúp cho người chơi có thể lấy được vật phẩm bổ trợ một cách nhanh nhất trong những lúc cấp bách.
 Vì có nhiều hướng để thực hiện chức năng này nên hãy tạo ra ba đoạn mã viết bằng ngôn ngữ Java, nêu ra các ưu và nhược điểm cho mỗi đoạn mã.
 Tôi muốn đoạn mã phải có thời gian chạy nhanh chóng. Điều này là rất cần thiết vì đây là một trò chơi trực tuyến nhịp độ cao.
-```
+###
 
 
 
-##### 2 : Khải - Hệ thống sắp xếp danh mục đầu từ chứng khoán #####
+##### (Done) 2 : Khải - Hệ thống sắp xếp danh mục đầu từ chứng khoán #####
 Tôi là một kỹ sư phần mềm đang phát triển một nền tảng giao dịch chứng khoán theo thời gian thực, nơi tốc độ 
 xử lý dữ liệu và phản hồi nhanh là yếu tố sống còn. Một trong những thách thức lớn mà tôi đang đối mặt là tối 
 ưu hóa hệ thống hiển thị danh mục đầu tư của người dùng, giúp họ nhanh chóng nhận diện cổ phiếu quan trọng 
@@ -25,6 +25,34 @@ có biến động giá cao nhất (đặt ở đầu để dễ dàng theo dõi
 xuống thấp), và Trái phiếu (đặt ở cuối vì ít biến động hơn). Vì có nhiều cách tiếp cận khác nhau để xây dựng 
 hệ thống này, tôi muốn bạn viết ba chương trình Java khác nhau để giải quyết bài toán trên. Sau đó, hãy phân 
 tích ưu và nhược điểm của từng phương pháp.
+###fix
+Tôi là kỹ sư phần mềm đang phát triển một nền tảng chứng khoán theo thời gian thực. Một trong những thách thức lớn đối với tôi trong quá trình phát triển là thực hiện tối ưu hóa hệ thống hiển thị danh mục đầu tư của người dùng, giúp họ nhanh chóng xem được các cổ phiếu quan trọng trong danh sách đầu tư của mình.
+Dữ liệu đầu vào bao gồm danh mục đầu tư của mỗi người dùng, chứa nhiều loại tài sản khác nhau như cổ phiếu, trái phiếu và quỹ ETF. Trong trường hợp thị trường biến động mạnh, những cổ phiếu có sự thay đổi lớn về giá trị nên được hiển thị lên trên cùng. Điều này giúp nhà đầu tư nhanh chóng nhận diện và ra quyết định kịp thời. Tôi muốn xây dựng một cơ chế sắp xếp tự động để đảm bảo danh mục đầu tư của người dùng luôn được sắp xếp theo thứ tự: cổ phiếu có biến động cao nhất, quỹ ETF, trái phiếu. Tôi muốn bạn giúp tôi tạo ra đoạn mã bằng ngôn ngữ lập trình Java để giải quyết bài toán này. 
+Đoạn mã phải được cập nhật theo thời gian thực và có tốc độ xử lý nhanh nhất. Việc tạo ra đoạn mã phải được thực hiện cẩn thận vì chức năng này rất quan trọng trong các cuộc giao dịch của nhà đầu tư.
+Hãy giúp tôi tạo ra ba đoạn mã khác nhau với ba hướng tiếp cận cho vấn đề này. So sánh và giải thích ưu điểm, nhược điểm của mỗi đoạn mã.
+###
+
+
+
+##### 3 : Khang - Tính toán sản phẩm có lợi nhuận cao nhất ####
+Tôi là một lập trình viên làm việc tự do. Nhóm của tôi đang phát triển một hệ thống quản lý kho hàng cho một công ty bán hàng.
+Tôi đang phát triển một ứng dụng được viết bằng Java nhằm giải quyết bài toán quản lý kho hàng, trong đó hệ thống cần tính toán và theo dõi sản phẩm có lợi nhuận cao nhất. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể như tính chính xác của số liệu và hiệu suất xử lý dữ liệu.
+Hệ thống nhận vào danh sách các sản phẩm trong kho, mỗi sản phẩm có thông tin về giá nhập, giá bán và số lượng bán ra. Kết quả trả về là sản phẩm có lợi nhuận cao nhất, được tính dựa trên chênh lệch giữa giá nhập và giá bán nhân với số lượng bán ra.
+Ban đầu tôi định dùng cách duyệt toàn bộ danh sách sản phẩm để tìm ra sản phẩm có lợi nhuận cao nhất, nhưng cách này có nhược điểm là tốn thời gian khi danh sách sản phẩm quá lớn. Tôi cần một số cách tiếp cận khác để tối ưu hóa việc tìm kiếm sản phẩm có lợi nhuận cao nhất mà vẫn đảm bảo tính chính xác của kết quả.
+Hệ thống cần đảm bảo rằng:- Kết quả trả về luôn chính xác.- Không bị ảnh hưởng bởi lỗi làm tròn số.- Thời gian xử lý phải nhanh ngay cả khi danh sách sản phẩm rất lớn.- Phương pháp tính toán phải có khả năng mở rộng nếu sau này cần thêm các tiêu chí khác như lợi nhuận trung bình hoặc biên lợi nhuận theo thời gian.
+Việc tìm được cách tiếp cận tối ưu cho bài toán này là rất quan trọng vì nó giúp cải thiện hiệu suất hệ thống và giảm thời gian xử lý dữ liệu. Hãy cho tôi một số phương pháp tối ưu hơn để tìm sản phẩm có lợi nhuận cao nhất, đặc biệt là những cách có thể cải thiện hiệu suất khi danh sách sản phẩm rất lớn.
+
+
+
+##### 4 : Lộc - tối ưu nguồn tiền build pc #####
+Tôi là một lập trình viên làm việc tự do. Nhóm của tôi đang làm việc trên một dự án xây dựng hệ thống bán máy tính. Trong quá trình phát triển ứng dụng này, tôi được phản hồi từ rất nhiều người dùng rằng họ cần một chức năng tính toán hiệu năng trên giá thành để thuận tiện xây dựng hệ thống máy tính của họ nên tôi cần một hệ thống có thể tính toán được điểm hiệu năng trên giá thành để người dùng tham khảo.
+Trong quá trình phát triển một ứng dụng bán máy tính được viết bằng ngôn ngữ Java, tôi cần đảm bảo rằng kết quả đầu ra chính xác, ổn định. 
+Hệ thống nhận vào một mảng danh sách gồm lần lượt tên linh kiện, giá, điểm hiệu năng. Linh kiện gồm 4 loại là cpu, main, ram, card màn hình. Kết quả trả về là một danh sách các linh kiện có tên, giá, điểm hiệu năng và điểm hiệu năng trên giá thành tốt nhất
+Ban đầu tôi định dùng cách gán sẵn một mảng trong đoạn mã để dễ tạo mã nhưng cách này có một số nhược điểm là không thể thêm được linh kiện mới, tôi cần vài cách tiếp cận khác để giải quyết vấn đề này.
+Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: số tiền linh kiện không được nhỏ hơn không, để xây dựng được một bộ máy tính cần đầy đủ 4 loại linh kiện, nếu không kết quả phải trả về là "không đủ linh kiện để hoàn thành máy tính"
+Việc tìm được nhiều các tiếp cận khác nhau cho bài toán này là rất quan trọng vì nếu như không thể được thêm linh kiện thì rất khó khăn cho việc mở rộng và phát triển các chức năng khác của phần mềm.
+Hãy cho tôi một số phương pháp khác tốt hơn để tiếp cận vấn đề này.
+
 
 
 ##### 5: Khoa - Hệ thống kiểm tra số lượng vé còn hay không để xác nhận đặt vé thành công #####

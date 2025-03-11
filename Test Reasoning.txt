@@ -198,7 +198,7 @@ public class IronBarMaximumProfit {
 
 
 
-##### 4 : Lộc - Sắp xếp túi đồ trong game #####
+##### (Done) 4 : Lộc - Sắp xếp túi đồ trong game #####
 Tôi là một lập trình viên phần mềm và nhóm của tôi hiện đang phát triển một hệ thống xử lý dữ liệu túi đồ trong trò chơi. Một trong những yêu cầu của hệ thống là sắp xếp vật phẩm trong túi đồ của người chơi theo thứ tự tăng dần hoặc giảm dần. Tôi đang thực hiện tính năng này bằng Java.
 Túi đồ bao gồm ba loại vật phẩm chính: vật phẩm hồi máu, vũ khí và công cụ giải đố. Trong một tựa game sinh tồn, vật phẩm hồi máu có vai trò quan trọng nhất. Do đó, tôi đã triển khai một thuật toán sắp xếp để đảm bảo thứ tự ưu tiên như sau: vật phẩm hồi máu đứng đầu, tiếp theo là vũ khí và cuối cùng là công cụ giải đố. Kết quả trả về sẽ là danh sách các vật phẩm được sắp xếp theo thứ tự ưu tiên này.
 Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: Số lượng vật phẩm hiển thị phải lớn hơn hoặc bằng 0, vật phẩm hồi máu sẽ là loại đầu tiên xuất hiện, tiếp theo là vũ khí, cuối cùng là vật phẩm giải đố.
@@ -227,28 +227,19 @@ class Item {
 }
 
 public class InventorySorter {
-    public static void main(String[] args) {
-        List<Item> inventory = new ArrayList<>();
-        inventory.add(new Item("Potion", "Healing", 5));
-        inventory.add(new Item("Herb", "Healing", 3));
-        inventory.add(new Item("Gun", "Weapon", 1));
-        inventory.add(new Item("Key", "Puzzle", 4));
-        inventory.add(new Item("Map", "Puzzle", 6));
-        inventory.add(new Item("Sword", "Weapon", 2));
-
     Collections.sort(inventory, new Comparator<Item>() {
         @Override
         public int compare(Item o1, Item o2) {
             int priority1 = getTypePriority(o1.type);
             int priority2 = getTypePriority(o2.type);
-    
+
             if (priority1 != priority2) {
                 return Integer.compare(priority1, priority2);
             }
-    
+
             return Integer.compare(o2.quantity, o1.quantity);
         }
-    
+
         private int getTypePriority(String type) {
             switch (type) {
                 case "Healing": return 0;
@@ -259,9 +250,11 @@ public class InventorySorter {
         }
     });
 
-        for (Item item : inventory) {
-            System.out.println(item);
-        }
+    for (Item item : inventory) {
+        System.out.println(item);
+    }
+    public static void main(String[] args) {
+
     }
 }
 ```
@@ -296,7 +289,149 @@ inventory.add(new Item("Axe", "Null", 8));
 inventory.add(new Item("Secret Key", "Puzzle", 1));
 inventory.add(new Item("Null", "Puzzle", 7));
 ```
+###fix
+Tôi là một lập trình viên phần mềm, nhóm của tôi đang thực hiện một hệ thống xử lý dữ liệu cho chức năng túi đồ trong một trò chơi. Một trong những yêu cầu của hệ thống là sắp xếp vật phẩm trong túi đồ của người chơi theo thứ tự tăng dần hoặc giảm dần. Tôi đã viết đoạn mã để xử lý tính năng này bằng ngôn ngữ Java.
+Túi đồ bao gồm ba loại vật phẩm chính là vật phẩm bổ trợ, vũ khí và vật phẩm giải đố. Vật phẩm là một đối tượng có các thuộc tính như: tên, loại và số lượng. Đoạn mã nhận đầu vào là danh sách các vật phẩm này. Kết quả trả về sẽ là danh sách các vật phẩm được sắp xếp theo thứ tự vật phẩm hồi máu đứng đầu, tiếp theo là vũ khí và cuối cùng là công cụ giải đố. Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: Số lượng vật phẩm hiển thị phải lớn hơn hoặc bằng 0. Kết quả trả về vật phẩm hồi máu sẽ là vật phẩm đầu tiên được xếp trong danh sách, tiếp theo là vũ khí, cuối cùng là vật phẩm giải đố.
+Dựa vào các trường hợp kiểm thử được cung cấp dưới đây. Hãy kiểm thử đoạn mã, cho biết kết quả và giải thích chi tiết cho từng trường hợp tương ứng.
+Sau đây là các trường hợp kiểm thử:
+```java
+//TH1
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Potion", "Healing", 5));
+inventory.add(new Item("Herb", "Healing", 3));
+inventory.add(new Item("Gun", "Weapon", 1));
+inventory.add(new Item("Key", "Puzzle", 4));
+inventory.add(new Item("Map", "Puzzle", 6));
+inventory.add(new Item("Sword", "Weapon", 2));
+Collections.sort(inventory, new Comparator<Item>() {
+    @Override
+    public int compare(Item o1, Item o2) {
+        int priority1 = getTypePriority(o1.type);
+        int priority2 = getTypePriority(o2.type);
 
+        if (priority1 != priority2) {
+            return Integer.compare(priority1, priority2);
+        }
+
+        return Integer.compare(o2.quantity, o1.quantity);
+    }
+
+    private int getTypePriority(String type) {
+        switch (type) {
+            case "Healing": return 0;
+            case "Weapon": return 1;
+            case "Puzzle": return 2;
+            default: return 3;
+        }
+    }
+});
+
+for (Item item : inventory) {
+    System.out.println(item);
+}
+
+//TH2
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Potion", "Healing", 5));
+inventory.add(new Item("Herb", "Healing", 5));
+inventory.add(new Item("Sword", "Weapon", 5));
+inventory.add(new Item("Gun", "Weapon", 5));
+inventory.add(new Item("Map", "Puzzle", 5));
+inventory.add(new Item("Key", "Puzzle", 5));
+Collections.sort(inventory, new Comparator<Item>() {
+    @Override
+    public int compare(Item o1, Item o2) {
+        int priority1 = getTypePriority(o1.type);
+        int priority2 = getTypePriority(o2.type);
+
+        if (priority1 != priority2) {
+            return Integer.compare(priority1, priority2);
+        }
+
+        return Integer.compare(o2.quantity, o1.quantity);
+    }
+
+    private int getTypePriority(String type) {
+        switch (type) {
+            case "Healing": return 0;
+            case "Weapon": return 1;
+            case "Puzzle": return 2;
+            default: return 3;
+        }
+    }
+});
+
+for (Item item : inventory) {
+    System.out.println(item);
+}
+
+
+//TH3
+List<Item> inventory = new ArrayList<>();
+inventory.add(new Item("Small Potion", "Healing", 2));
+inventory.add(new Item("Large Potion", "Healing", Null));
+inventory.add(new Item("Null", "Weapon", 4));
+inventory.add(new Item("Axe", "Null", 8));
+inventory.add(new Item("Secret Key", "Puzzle", 1));
+inventory.add(new Item("Null", "Puzzle", 7));
+Collections.sort(inventory, new Comparator<Item>() {
+    @Override
+    public int compare(Item o1, Item o2) {
+        int priority1 = getTypePriority(o1.type);
+        int priority2 = getTypePriority(o2.type);
+
+        if (priority1 != priority2) {
+            return Integer.compare(priority1, priority2);
+        }
+
+        return Integer.compare(o2.quantity, o1.quantity);
+    }
+
+    private int getTypePriority(String type) {
+        switch (type) {
+            case "Healing": return 0;
+            case "Weapon": return 1;
+            case "Puzzle": return 2;
+            default: return 3;
+        }
+    }
+});
+
+for (Item item : inventory) {
+    System.out.println(item);
+}
+```
+Dưới đây là đoạn mã cần được kiểm thử:
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Item {
+    String name;
+    String type;
+    int quantity;
+
+    public Item(String name, String type, int quantity) {
+        this.name = name;
+        this.type = type;
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + type + ") - " + quantity;
+    }
+}
+
+public class InventorySorter {
+    public static void main(String[] args) {
+
+    }
+}
+```
+###
 
 
 
@@ -530,8 +665,390 @@ public class PrintQueue {
         return totalWaitTime;
     }
 }
+```
 
-##### 8: Khoa - Hệ thống kiểm tra số lượng vé còn hay không để xác nhận đặt vé thành công #####
+
+
+##### 8 : Khang - Tính toán sản phẩm có lợi nhuận cao nhất #####
+Tôi là một lập trình viên làm việc tự do. Tôi đang nhận một dự án phát triển một hệ thống quản lý kho hàng cho một công ty bán hàng, được viết bằng ngôn ngữ Java. Tôi đã triển khai một tính năng giúp tính toán lợi nhuận cao nhất của sản phẩm dựa trên số lượng, giá vốn, và giá bán.
+Hệ thống sẽ nhận vào danh sách sản phẩm với thông tin bao gồm: Số lượng sản phẩm có sẵn trong kho, giá vốn (chi phí nhập mỗi sản phẩm), giá bán (giá ban ra thị trường của mỗi sản phẩm).
+Mục tiêu là xác định cách tối ưu hóa lợi nhuận từ các sản phẩm trong kho bằng cách tính toán.
+Hệ thống cần đảm bảo rằng: - Số lượng sản phẩm phải lớn hơn 0 - Giá vốn và giá bán phải lớn hơn 0 và tính theo đơn vị tiền tệ Việt Nam đồng.
+Hãy kiểm tra kết quả của đoạn mã dưới đây dự vào các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
+Dưới đây là đoạn mã tôi đã viết:
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Product {
+    private String name;
+    private int soluong;
+    private double von;
+    private double ban;
+
+    public Product(String name, int soluong, double von, double ban) {
+        if (soluong <= 0 || von <= 0 || ban <= 0) {
+            throw new IllegalArgumentException("Số lượng, giá vốn và giá bán phải lớn hơn 0.");
+        }
+        this.name = name;
+        this.soluong = soluong;
+        this.von = von;
+        this.ban = ban;
+    }
+
+    public double getProfit() {
+        return (ban - von) * soluong;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class InventoryCalculator {
+    public static Product getMaxProfitProduct(List<Product> products) {
+        if (products == null || products.isEmpty()) {
+            throw new IllegalArgumentException("Danh sách sản phẩm không được trống.");
+        }
+        return products.stream()
+                .max((p1, p2) -> Double.compare(p1.getProfit(), p2.getProfit()))
+                .orElseThrow();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Product> products = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Nhập tên sản phẩm (bỏ trống để kết thúc): ");
+            String name = scanner.nextLine().trim();
+            if (name.isEmpty()) {
+                break;
+            }
+
+            try {
+                System.out.print("Nhập số lượng: ");
+                int soluong = Integer.parseInt(scanner.nextLine().trim());
+
+                System.out.print("Nhập giá vốn: ");
+                double von = Double.parseDouble(scanner.nextLine().trim());
+
+                System.out.print("Nhập giá bán: ");
+                double ban = Double.parseDouble(scanner.nextLine().trim());
+
+                products.add(new Product(name, soluong, von, ban));
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số hợp lệ cho số lượng, giá vốn và giá bán.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        scanner.close();
+
+        if (!products.isEmpty()) {
+            Product maxProfitProduct = getMaxProfitProduct(products);
+            System.out.println("Sản phẩm có lợi nhuận cao nhất: " + maxProfitProduct.getName());
+        } else {
+            System.out.println("Không có sản phẩm nào để tính toán.");
+        }
+    }
+}
+```
+
+Các trường hợp cần kiểm thử (nhập dữ liệu theo thứ tự):
+``` java
+// Trường hợp 1  
+Laptop 10 15000000 18000000  
+Điện thoại 20 7000000 9000000  
+Máy tính bảng 15 10000000 12000000  
+
+// Trường hợp 2   
+Bàn phím 50 200000 300000  
+Chuột 40 150000 250000  
+
+// Trường hợp 3  
+// Không nhập gì cả 
+ 
+```
+
+
+
+##### (Done) 9 : Hào - combo sát thương cao nhất trong k lần đánh #####
+Tôi là một lập trình viên chuyên về lập trình trò chơi. Tôi đang xây dựng một hàm viết bằng ngôn ngữ Java để phục vụ cho chức năng tính sát thương cao nhất mà người chơi gây ra trong một chuỗi `k` lần gây sát thương liên tiếp. Tôi muốn kiểm tra xem hàm mà tôi viết có hoạt động đúng như mong đợi không bằng cách kiểm tra bằng các trường hợp kiểm thử.
+Hàm của tôi nhận vào hai tham số là một mảng các số nguyên đại diện cho các lần gây sát thương và một số nguyên `k` đại diện cho số lần liên tiếp cần tính. Đoạn mã trả về kết quả là một mảng, trong đó tổng lượng sát thương gây ra bởi người chơi là lớn nhất.
+Các ràng buộc mà đoạn mã cần tuân theo là: `k` phải là số nguyên dương, kết quả trả về phải được in ra màn hình dưới dạng chuỗi, trường hợp sát thương gây ra là âm thì sẽ được tính như lượng hồi máu.
+Việc kiểm thử đoạn mã nên thực hiện cẩn thận vì đây sẽ là tính năng quan trọng trong trò chơi mà tôi đang phát triển.
+Dựa vào đoạn mã và các trường hợp kiểm thử dưới đây, hãy giúp tôi thực hiện việc kiểm thử đầu ra của đoạn mã, đưa ra kết quả và giải thích chi tiết đối với mỗi trường hợp.
+Dưới đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.Arrays;
+
+public class MaxDamageCombo {
+    public static int[] maxDamageComboList(int[] damageRecorded, int k) {
+        if (damageRecorded.length < k) {
+            return new int[0];
+        }
+
+        int currentTotalDamage = 0;
+        for (int i = 0; i < k; i++) {
+            currentTotalDamage += damageRecorded[i];
+        }
+
+        int maxSum = currentTotalDamage;
+        int startComboSkill = 0;
+
+        for (int i = k; i < damageRecorded.length; i++) {
+            currentTotalDamage += damageRecorded[i] - damageRecorded[i - k];
+
+            if (currentTotalDamage > maxSum) {
+                maxSum = currentTotalDamage;
+                startComboSkill = i - k + 1;
+            }
+        }
+
+        return Arrays.copyOfRange(damageRecorded, startComboSkill, startComboSkill + k);
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+Các trường hợp kiểm thử như sau:
+```java
+// TH 1
+int[] damageRecorded1 = {2, 1, 5, 1, 3, 2}; 
+int k1 = 3; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded1, k1)));
+
+// TH 2
+int[] damageRecorded2 = {-2, -1, -3, -4, -1}; 
+int k2 = 2; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded2, k2)));
+
+// TH 3
+int[] damageRecorded3 = {1, 2}; 
+int k3 = 3; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded3, k3)));
+
+// TH 4
+int[] damageRecorded4 = {}; 
+int k4 = 3; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded4, k4)));
+```
+
+
+
+##### 10 : Lộc - tối ưu nguồn tiền build pc #####
+Tôi là một lập trình viên chuyên làm website cho các công ty lớn. Tôi đang xây dựng một hàm viết bằng ngôn ngữ Java để phục vụ cho chức năng tính toán, tối ưu nguồn tiền khi xây dựng hệ thống máy tính. Tôi muốn kiểm tra xem hàm mà tôi viết có hoạt động đúng như mong đợi không bằng cách kiểm tra bằng các trường hợp kiểm thử.
+Hàm của tôi nhận vào một mảng các phần cứng của một bộ máy tính, gồm có 4 thành phần chính là CPU, Main, Ram và Card màn hình. Đoạn mã trả về kết quả là một danh sách các thành phần linh kiện và p/p(hiệu năng trên giá thành) tốt nhất.
+Các ràng buộc mà đoạn mã cần tuân theo là: Mảng nhập vào phải có dạng theo thứ tự là tên, loại thiết bị, giá, điểm sức mạnh của thiết bị đó. Đầu ra sẽ là một mảng gồm các thành phần linh kiện gồm tên, giá, điểm số của thiết bị đó và điểm p/p.
+Việc kiểm thử đoạn mã nên thực hiện cẩn thận vì đây sẽ là tính năng quan trọng trong website mà tôi đang phát triển.
+Dựa vào đoạn mã và các trường hợp kiểm thử dưới đây, hãy giúp tôi thực hiện việc kiểm thử đầu ra của đoạn mã, đưa ra kết quả và giải thích chi tiết đối với mỗi trường hợp.
+Dưới đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.Arrays;
+
+public class MaxDamageCombo {
+    public static int[] maxDamageComboList(int[] damageRecorded, int k) {
+        if (damageRecorded.length < k) {
+            return new int[0];
+        }
+
+        int currentTotalDamage = 0;
+        for (int i = 0; i < k; i++) {
+            currentTotalDamage += damageRecorded[i];
+        }
+
+        int maxSum = currentTotalDamage;
+        int startComboSkill = 0;
+
+        for (int i = k; i < damageRecorded.length; i++) {
+            currentTotalDamage += damageRecorded[i] - damageRecorded[i - k];
+
+            if (currentTotalDamage > maxSum) {
+                maxSum = currentTotalDamage;
+                startComboSkill = i - k + 1;
+            }
+        }
+
+        return Arrays.copyOfRange(damageRecorded, startComboSkill, startComboSkill + k);
+    }
+
+    public static void main(String[] args) {
+
+    }
+}import java.util.*;
+
+class Component {
+    String name, type;
+    double price, performance, ppRatio;
+
+    public Component(String name, String type, double price, double performance) {
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.performance = performance;
+        this.ppRatio = performance / price;
+    }
+
+    @Override
+    public String toString() {
+        return type + ": " + name + " | Giá: " + price + " | Điểm: " + performance + " | P/P: " + ppRatio;
+    }
+}
+
+class PCBuilder {
+    private static final List<String> REQUIRED_TYPES = Arrays.asList("CPU", "RAM", "Mainboard", "Card màn hình");
+    
+    public static Map<String, Component> getBestComponents(Component[] components) {
+        Map<String, Component> bestPC = new LinkedHashMap<>();
+        
+        for (Component c : components) {
+            bestPC.putIfAbsent(c.type, c);
+            if (c.ppRatio > bestPC.get(c.type).ppRatio) {
+                bestPC.put(c.type, c);
+            }
+        }
+        
+        return bestPC;
+    }
+    
+    public static boolean isValidPC(Map<String, Component> bestPC) {
+        return bestPC.keySet().containsAll(REQUIRED_TYPES);
+    }
+    
+    public static void printBestPC(Map<String, Component> bestPC) {
+        if (!isValidPC(bestPC)) {
+            System.out.println("Không đủ linh kiện để lắp một bộ PC hoàn chỉnh!");
+            return;
+        }
+        for (String type : REQUIRED_TYPES) {
+            System.out.println(bestPC.get(type));
+        }
+    }
+}
+
+class BestPCBuilder {
+    public static void main(String[] args) {
+
+    }
+}
+
+```
+Các trường hợp kiểm thử như sau:
+```java
+// TH 1
+Component[] components = {
+    new Component("Intel i5-12400F", "CPU", 4500000, 15000),
+    new Component("Intel i7-13700K", "CPU", 9000000, 23000),
+    new Component("AMD Ryzen 5 5600X", "CPU", 5000000, 16000),
+    new Component("AMD Ryzen 7 5800X", "CPU", 7500000, 20000),
+    new Component("Intel i9-13900K", "CPU", 13000000, 28000),
+    
+    new Component("Corsair Vengeance 16GB", "RAM", 1600000, 3200),
+    new Component("G.Skill Trident Z 16GB", "RAM", 1800000, 3600),
+    new Component("Kingston Fury 32GB", "RAM", 3200000, 3200),
+    new Component("Corsair Dominator 32GB", "RAM", 3500000, 3600),
+    new Component("ADATA XPG 16GB", "RAM", 1500000, 3000),
+    
+    new Component("MSI B660M", "Mainboard", 2500000, 3000),
+    new Component("ASUS TUF Gaming B550", "Mainboard", 3500000, 3500),
+    new Component("Gigabyte Z690 AORUS", "Mainboard", 6000000, 5000),
+    new Component("ASRock B450M", "Mainboard", 2000000, 2800),
+    new Component("MSI MAG Z790", "Mainboard", 7500000, 5200),
+    
+    new Component("RTX 3060", "Card màn hình", 7000000, 18000),
+    new Component("RTX 3070", "Card màn hình", 11000000, 25000),
+    new Component("RTX 3080", "Card màn hình", 16000000, 32000),
+    new Component("RX 6600 XT", "Card màn hình", 8000000, 20000),
+    new Component("RX 6800 XT", "Card màn hình", 14000000, 30000)
+};
+
+Map<String, Component> bestPC = PCBuilder.getBestComponents(components);
+PCBuilder.printBestPC(bestPC);
+
+// TH 2
+Component[] components = {
+    new Component("Intel i5-12400F", "CPU", 4500000, 15000),
+    new Component("Intel i7-13700K", "CPU", 9000000, 23000),
+    
+    new Component("Corsair Vengeance 16GB", "RAM", 1600000, 3200),
+    new Component("G.Skill Trident Z 16GB", "RAM", 1800000, 3600),
+    new Component("Kingston Fury 32GB", "RAM", 3200000, 3200),
+    new Component("Corsair Dominator 32GB", "RAM", 3500000, 3600),
+    new Component("ADATA XPG 16GB", "RAM", 1500000, 3000),
+    
+    new Component("MSI B660M", "Mainboard", 2500000, 3000),
+    new Component("ASUS TUF Gaming B550", "Mainboard", 3500000, 3500),
+    new Component("Gigabyte Z690 AORUS", "Mainboard", 6000000, 5000),
+    new Component("ASRock B450M", "Mainboard", 2000000, 2800),
+    new Component("MSI MAG Z790", "Mainboard", 7500000, 5200),
+    
+    new Component("RTX 3060", "Card màn hình", 7000000, 18000),
+    new Component("RTX 3070", "Card màn hình", 11000000, 25000),
+    new Component("RTX 3080", "Card màn hình", 16000000, 32000),
+    new Component("RX 6600 XT", "Card màn hình", 8000000, 20000),
+    new Component("RX 6800 XT", "Card màn hình", 14000000, 30000)
+};
+
+Map<String, Component> bestPC = PCBuilder.getBestComponents(components);
+PCBuilder.printBestPC(bestPC);
+
+// TH 3
+Component[] components = {
+    new Component("Intel i5-12400F", "CPU", 4500000, 15000),
+    new Component("Intel i7-13700K", "CPU", 9000000, 23000),
+    new Component("AMD Ryzen 5 5600X", "CPU", 5000000, 16000),
+    new Component("AMD Ryzen 7 5800X", "CPU", 7500000, 20000),
+    new Component("Intel i9-13900K", "CPU", 13000000, 28000),
+    
+    new Component("Corsair Vengeance 16GB", "RAM", 1600000, 3200),
+    new Component("G.Skill Trident Z 16GB", "RAM", 1800000, 3600),
+    new Component("Kingston Fury 32GB", "RAM", 3200000, 3200),
+    new Component("Corsair Dominator 32GB", "RAM", 3500000, 3600),
+    new Component("ADATA XPG 16GB", "RAM", 1500000, 3000),
+    
+    new Component("MSI B660M", "Mainboard", 2500000, 3000),
+    new Component("ASUS TUF Gaming B550", "Mainboard", 3500000, 3500),
+    new Component("Gigabyte Z690 AORUS", "Mainboard", 6000000, 5000),
+    new Component("ASRock B450M", "Mainboard", 2000000, 2800),
+    new Component("MSI MAG Z790", "Mainboard", 7500000, 5200),
+};
+
+Map<String, Component> bestPC = PCBuilder.getBestComponents(components);
+PCBuilder.printBestPC(bestPC);
+
+// TH 4
+Component[] components = {
+    new Component("Intel i5-12400F", "CPU", 4500000, 15000),
+    new Component("Intel i7-13700K", "CPU", 9000000, 23000),
+    new Component("AMD Ryzen 5 5600X", "CPU", 5000000, 16000),
+    new Component("AMD Ryzen 7 5800X", "CPU", 7500000, 20000),
+    new Component("Intel i9-13900K", "CPU", 13000000, 28000),
+    
+    new Component("Corsair Vengeance 16GB", "RAM", 1600000, 3200),
+    new Component("G.Skill Trident Z 16GB", "RAM", 1800000, 3600),
+    new Component("Kingston Fury 32GB", "RAM", 3200000, 3200),
+    new Component("Corsair Dominator 32GB", "RAM", 3500000, 3600),
+    new Component("ADATA XPG 16GB", "RAM", 1500000, 3000),
+    
+    new Component("MSI B660M", "Mainboard", 2500000, -3000),
+    new Component("ASUS TUF Gaming B550", "Mainboard", -3500000, 3500),
+    new Component("Gigabyte Z690 AORUS", "Mainboard", -6000000, 5000),
+    new Component("ASRock B450M", "Mainboard", -2000000, 2800),
+    new Component("MSI MAG Z790", "Mainboard", 7500000, 5200),
+};
+
+Map<String, Component> bestPC = PCBuilder.getBestComponents(components);
+PCBuilder.printBestPC(bestPC);
+```
+
+
+
+##### 11: Khoa - Hệ thống kiểm tra số lượng vé còn hay không để xác nhận đặt vé thành công #####
 Tôi là một nhà phát triển phần mềm đang làm việc tại một công ty chuyên về hệ thống đặt vé xem phim trực tuyến, tôi đang cùng nhóm triển khai dự án quản lý vé nhằm tối ưu hóa quy trình và ngăn chặn tình trạng bán vé vượt mức. Trong quá trình phát triển ứng dụng đặt vé bằng Java, chúng tôi nhận thấy cần thiết phải có một hệ thống kiểm tra số lượng vé khả dụng trước khi xác nhận đặt vé để đảm bảo tính chính xác và công bằng.
 Hệ thống sẽ nhận đầu vào gồm ID phim, suất chiếu và số lượng vé yêu cầu. Sau đó, nó sẽ kiểm tra kho vé để xác định xem số lượng vé còn lại có đủ đáp ứng yêu cầu hay không. Nếu đủ vé, quy trình đặt vé sẽ tiếp tục; ngược lại, hệ thống sẽ thông báo số lượng vé còn lại và yêu cầu người dùng điều chỉnh.
 Điều quan trọng là hệ thống phải đảm bảo xử lý nhanh chóng, chính xác và ngăn ngừa các lỗi đặt vé trùng lặp hoặc vượt quá số lượng. Việc triển khai tính năng này là rất quan trọng để nâng cao trải nghiệm người dùng, giảm thiểu sai sót và đảm bảo quá trình đặt vé diễn ra suôn sẻ.
