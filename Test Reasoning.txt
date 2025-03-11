@@ -531,6 +531,9 @@ public class PrintQueue {
     }
 }
 ```
+
+
+
 ##### 8 : Khang - Tính toán sản phẩm có lợi nhuận cao nhất #####
 Tôi là một lập trình viên làm việc tự do. Tôi đang nhận một dự án phát triển một hệ thống quản lý kho hàng cho một công ty bán hàng, được viết bằng ngôn ngữ Java. Tôi đã triển khai một tính năng giúp tính toán lợi nhuận cao nhất của sản phẩm dựa trên số lượng, giá vốn, và giá bán.
 Hệ thống sẽ nhận vào danh sách sản phẩm với thông tin bao gồm: Số lượng sản phẩm có sẵn trong kho, giá vốn (chi phí nhập mỗi sản phẩm), giá bán (giá ban ra thị trường của mỗi sản phẩm).
@@ -633,4 +636,70 @@ Chuột 40 150000 250000
 // Trường hợp 3  
 // Không nhập gì cả 
  
+```
+
+
+
+##### (Done) 9 : Hào - combo sát thương cao nhất trong k lần đánh #####
+Tôi là một lập trình viên chuyên về lập trình trò chơi. Tôi đang xây dựng một hàm viết bằng ngôn ngữ Java để phục vụ cho chức năng tính sát thương cao nhất mà người chơi gây ra trong một chuỗi `k` lần gây sát thương liên tiếp. Tôi muốn kiểm tra xem hàm mà tôi viết có hoạt động đúng như mong đợi không bằng cách kiểm tra bằng các trường hợp kiểm thử.
+Hàm của tôi nhận vào hai tham số là một mảng các số nguyên đại diện cho các lần gây sát thương và một số nguyên `k` đại diện cho số lần liên tiếp cần tính. Đoạn mã trả về kết quả là một mảng, trong đó tổng lượng sát thương gây ra bởi người chơi là lớn nhất.
+Các ràng buộc mà đoạn mã cần tuân theo là: `k` phải là số nguyên dương, kết quả trả về phải được in ra màn hình dưới dạng chuỗi, trường hợp sát thương gây ra là âm thì sẽ được tính như lượng hồi máu.
+Việc kiểm thử đoạn mã nên thực hiện cẩn thận vì đây sẽ là tính năng quan trọng trong trò chơi mà tôi đang phát triển.
+Dựa vào đoạn mã và các trường hợp kiểm thử dưới đây, hãy giúp tôi thực hiện việc kiểm thử đầu ra của đoạn mã, đưa ra kết quả và giải thích chi tiết đối với mỗi trường hợp.
+Dưới đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.Arrays;
+
+public class MaxDamageCombo {
+    public static int[] maxDamageComboList(int[] damageRecorded, int k) {
+        if (damageRecorded.length < k) {
+            return new int[0];
+        }
+
+        int currentTotalDamage = 0;
+        for (int i = 0; i < k; i++) {
+            currentTotalDamage += damageRecorded[i];
+        }
+
+        int maxSum = currentTotalDamage;
+        int startComboSkill = 0;
+
+        for (int i = k; i < damageRecorded.length; i++) {
+            currentTotalDamage += damageRecorded[i] - damageRecorded[i - k];
+
+            if (currentTotalDamage > maxSum) {
+                maxSum = currentTotalDamage;
+                startComboSkill = i - k + 1;
+            }
+        }
+
+        return Arrays.copyOfRange(damageRecorded, startComboSkill, startComboSkill + k);
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+Các trường hợp kiểm thử như sau:
+```java
+// TH 1
+int[] damageRecorded1 = {2, 1, 5, 1, 3, 2}; 
+int k1 = 3; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded1, k1)));
+
+// TH 2
+int[] damageRecorded2 = {-2, -1, -3, -4, -1}; 
+int k2 = 2; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded2, k2)));
+
+// TH 3
+int[] damageRecorded3 = {1, 2}; 
+int k3 = 3; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded3, k3)));
+
+// TH 4
+int[] damageRecorded4 = {}; 
+int k4 = 3; 
+System.out.println(Arrays.toString(maxDamageComboList(damageRecorded4, k4)));
 ```
