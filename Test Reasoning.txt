@@ -1106,3 +1106,58 @@ public class TicketBookingSystem {
     }
 }
 ```
+
+
+
+##### 12 : Khải - Loại bỏ dấu đoạn chữ tiếng Việt #####
+Tôi là một gia sư dạy lập trình, tôi đang làm các bài lập trình mẫu cho những học sinh của tôi. Tôi có một chương trình được viết bằng ngôn ngữ Java nó dùng để loại bỏ những kí tự có dấu trong tiếng việt, tôi cần bạn kiểm thử để khi chương trình vận hành sẽ đảm bảo tính chuẩn xác, hiệu suất cao, và ít hao phí tài nguyên máy tính.
+Chương trình này sẽ nhận vào một chuỗi các kí tự tiếng Việt, việc của nó sẽ là phát hiện những kí tự có dấu ví dụ như 'á', 'ề', 'ợ',... thay thế chúng bằng kí tự không có dấu 'a', 'e', 'o'. Ví dụ truyền vào chuỗi "Chào bạn 123!", kết quả sẽ là "Chao ban 123!"
+Hệ thống chỉ hoạt đúng khi những điều kiện sau được đảm bảo, chuỗi nhập vào không được là chuỗi rỗng, những kí tự được can thiệp phải là kí tự chữ và là kí tự có dấu, các kí tự khác sẽ không bị ảnh hưởng, các chữ cái được in hoa cũng phải giữ trạng thái in hóa của chúng. 
+Việc kiểm thử cần diễn ra trong sự cẩn trọng vì kết quả kiểm thử sẽ ảnh hưởng trực tiếp đến những kiến thức nền tảng tôi đang dạy cho các học sinh.
+Hãy bắt đầu kiểm thử và cho ra kết quả của đoạn mã tôi cung cấp, dựa vào các trường hợp cho sau đây và kèm theo giải thích cụ thể cho từng trường hợp.
+Đây là đoạn mã tôi đã viết
+```java
+public class RemoveVietnameseLetters {
+    
+    public static String removeDiacritics(String text) {
+        String[][] vietnameseChars = {
+            {"à", "á", "ả", "ã", "ạ", "ă", "ằ", "ắ", "ẳ", "ẵ", "ặ", "â", "ầ", "ấ", "ẩ", "ẫ", "ậ"},{"è", "é", "ẻ", "ẽ", "ẹ", "ê", "ề", "ế", "ể", "ễ", "ệ"},{"ì", "í", "ỉ", "ĩ", "ị"},
+            {"ò", "ó", "ỏ", "õ", "ọ", "ô", "ồ", "ố", "ổ", "ỗ", "ộ", "ơ", "ờ", "ớ", "ở", "ỡ", "ợ"},{"ù", "ú", "ủ", "ũ", "ụ", "ư", "ừ", "ứ", "ử", "ữ", "ự"},{"ỳ", "ý", "ỷ", "ỹ", "ỵ"},{"đ"}
+        };
+        
+        String[] replacementChars = {"a", "e", "i", "o", "u", "y", "d"};
+        
+        for (int i = 0; i < vietnameseChars.length; i++) {
+            for (String character : vietnameseChars[i]) {
+                text = text.replace(character, replacementChars[i]);
+                text = text.replace(character.toUpperCase(), replacementChars[i].toUpperCase());
+            }
+        }
+        return text;
+    }
+    
+    public static void main(String[] args) {
+
+    }
+}
+```
+Đây là các trường hợp cần kiểm thử
+```java
+//TH1
+String input = "Xin chào!$$!@";
+String output = removeDiacritics(input);
+System.out.println("Văn bản gốc: " + input);
+System.out.println("Văn bản không dấu: " + output);
+
+//TH2
+String input = "Công nghệ thông tin 8386";
+String output = removeDiacritics(input);
+System.out.println("Văn bản gốc: " + input);
+System.out.println("Văn bản không dấu: " + output);
+
+//TH3
+String input = "Email của tôi: khai$123@gmail.com";
+String output = removeDiacritics(input);
+System.out.println("Văn bản gốc: " + input);
+System.out.println("Văn bản không dấu: " + output);
+```

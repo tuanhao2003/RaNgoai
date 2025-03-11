@@ -472,3 +472,42 @@ public class TicketBookingSystem {
     }
 }
 ```
+
+
+
+##### 8 : Khải - Loại bỏ kí tự dấu trong chuỗi tiếng Việt #####
+Tôi là một gia sư dạy lập trình. Tôi đang viết một chương trình sử dụng ngôn ngữ Java dùng để loại bỏ những kí tự có dấu trong tiếng Việt, đây là bài lập trình mẫu cho những học sinh của tôi.
+Chương trình này sẽ nhận vào một chuỗi các kí tự tiếng Việt, việc của nó sẽ là phát hiện những kí tự có dấu như 'á', 'ề', 'ợ',... thay thế chúng bằng kí tự không có dấu 'a', 'e', 'o'. Ví dụ truyền vào chuỗi "Chào bạn 123!", kết quả sẽ là "Chao ban 123!".
+Tuy chương trình đã chạy đúng những gì tôi mong đợi, nhưng cách triển khai quá dài dòng dẫn đến hiệu suất không được tối ưu, vẫn còn đòi hỏi khai báo mảng kí tự tiếng Việt trước khá không thực tế.
+Một số ràng buộc cần phải tuân theo khi tái cấu trúc: chuỗi nhập vào không được là chuỗi rỗng, những kí tự được can thiệp phải là kí tự chữ và là kí tự có dấu trong tiếng Việt, các trường hợp khác sẽ không bị ảnh hưởng, đặc biệt các chữ cái được in hoa cũng phải giữ nguyên trạng thái in hoa của chúng.
+Tôi cần tái cấu trúc lại đoạn mã để xử lý các vấn đề còn tồn đọng và vẫn giữ đúng các ràng buộc, đảm bảo đầu vào và đầu ra. Việc tái cấu trúc để sửa các trường hợp trên là rất quan trọng vì chương trình này sẽ làm mẫu cho các học sinh của tôi lấy làm nền tảng cho việc học tập.
+Hãy giúp tôi tái cấu trúc lại đoạn mã để giải quyết các vấn đề như hướng dẫn đã nêu trên, các thay đổi và chỉnh sửa cần phải được chú thích rõ ràng ở cuối.
+Đây là đoạn mã tôi đã thực hiện.
+```java
+public class RemoveVietnameseLetters {
+    
+    public static String removeDiacritics(String text) {
+        String[][] vietnameseChars = {
+            {"à", "á", "ả", "ã", "ạ", "ă", "ằ", "ắ", "ẳ", "ẵ", "ặ", "â", "ầ", "ấ", "ẩ", "ẫ", "ậ"},{"è", "é", "ẻ", "ẽ", "ẹ", "ê", "ề", "ế", "ể", "ễ", "ệ"},{"ì", "í", "ỉ", "ĩ", "ị"},
+            {"ò", "ó", "ỏ", "õ", "ọ", "ô", "ồ", "ố", "ổ", "ỗ", "ộ", "ơ", "ờ", "ớ", "ở", "ỡ", "ợ"},{"ù", "ú", "ủ", "ũ", "ụ", "ư", "ừ", "ứ", "ử", "ữ", "ự"},{"ỳ", "ý", "ỷ", "ỹ", "ỵ"},{"đ"}
+        };
+        
+        String[] replacementChars = {"a", "e", "i", "o", "u", "y", "d"};
+        
+        for (int i = 0; i < vietnameseChars.length; i++) {
+            for (String character : vietnameseChars[i]) {
+                text = text.replace(character, replacementChars[i]);
+                text = text.replace(character.toUpperCase(), replacementChars[i].toUpperCase());
+            }
+        }
+        return text;
+    }
+    
+    public static void main(String[] args) {
+        String input = "Chào bạn!";
+        String output = removeDiacritics(input);
+        System.out.println("Văn bản gốc: " + input);
+        System.out.println("Văn bản không dấu: " + output);
+    }
+}
+```
