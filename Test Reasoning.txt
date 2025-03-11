@@ -1,64 +1,104 @@
-##### 1 : Khang - Hệ Thống xếp nhóm trong lớp học #####
-Tôi là nhân viên công nghệ thông tin đang làm việc tại một công ty công nghệ. Tôi đang phát triển một hệ thống để xếp nhóm trong lớp bằng ngôn ngữ Java. Trong quá trình phát triển, tôi đã tạo ra một chương trình mô phỏng hệ thống. Tôi muốn kiểm tra xem đoạn mã đã hoạt động chính xác hay chưa. Việc kiểm tra phải được làm kỹ lưỡng vì đoạn mã này sẽ là tiền đề cho hệ thống của tôi. Đoạn mã của tôi hoạt động bằng cách nhận vào một danh sách sinh viên sau đó duyệt danh sách đó và chia các nhân viên vào các nhóm đều nhau. Sinh viên có các thuộc tính như MSSV, Họ tên và lớp.
-Các ràng buộc mà đoạn mã cần phải tuân theo là: MSSV phải và nó phải là duy nhất, họ tên và lớp không được để trống.
-Hãy kiểm tra kết quả của đoạn mã dưới đây dự trên các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
-Dưới đây là đoạn mã của tôi:
+##### 8 : Khang - Tính toán sản phẩm có lợi nhuận cao nhất #####
+Tôi là một lập trình viên làm việc tự do. Tôi đang nhận một dự án phát triển một hệ thống quản lý kho hàng cho một công ty ban hàng, được viết bằng ngôn ngữ Java. Tôi đã triển khai một tính năng giúp tính toán lợi nhuận cao nhất của sản phẩm dựa trên số lượng, giá von, và giá ban.
+Hệ thống sẽ nhận vào danh sách sản phẩm với thông tin bao gồm: Số lượng sản phẩm có sẵn trong kho, giá von (chi phí nhập mỗi sản phẩm), giá ban (giá ban ra thị trường của mỗi sản phẩm).
+Mục tiêu là xác định cách tối ưu hóa lợi nhuận từ các sản phẩm trong kho bằng cách tính toán.
+Hệ thống cần đảm bảo rằng: Số lượng sản phẩm phải lớn hơn 0, Giá von và giá ban phải lớn hơn 0 và tính theo đơn vị tiền tệ Việt Nam đồng.
+Hãy kiểm tra kết quả của đoạn mã dưới đây dự vào các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
+
+Dưới đây là đoạn mã tôi đã viết:
 ```java
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-class Student {
-    String studentID;
-    String name;
-    String className;
+class Product {
+    private String name;
+    private int soluong;
+    private double von;
+    private double ban;
 
-    public Student(String studentID, String name, String className) {
-        if (studentID == null || studentID.isEmpty()) {
-            throw new IllegalArgumentException("MSSV không được để trống.");
+    public Product(String name, int soluong, double von, double ban) {
+        if (soluong <= 0 || von <= 0 || ban <= 0) {
+            throw new IllegalArgumentException("Số lượng, giá vốn và giá bán phải lớn hơn 0.");
         }
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("Họ tên không được để trống.");
-        }
-        if (className == null || className.isEmpty()) {
-            throw new IllegalArgumentException("Lớp không được để trống.");
-        }
-        this.studentID = studentID;
         this.name = name;
-        this.className = className;
+        this.soluong = soluong;
+        this.von = von;
+        this.ban = ban;
+    }
+
+    public double getProfit() {
+        return (ban - von) * soluong;
+    }
+
+    public String getName() {
+        return name;
     }
 }
 
-class StudentGroupAllocator {
+public class InventoryCalculator {
+    public static Product getMaxProfitProduct(List<Product> products) {
+        if (products == null || products.isEmpty()) {
+            throw new IllegalArgumentException("Danh sách sản phẩm không được trống.");
+        }
+        return products.stream()
+                .max((p1, p2) -> Double.compare(p1.getProfit(), p2.getProfit()))
+                .orElseThrow();
+    }
+
     public static void main(String[] args) {
-       
+        Scanner scanner = new Scanner(System.in);
+        List<Product> products = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Nhập tên sản phẩm (bỏ trống để kết thúc): ");
+            String name = scanner.nextLine().trim();
+            if (name.isEmpty()) {
+                break;
+            }
+
+            try {
+                System.out.print("Nhập số lượng: ");
+                int soluong = Integer.parseInt(scanner.nextLine().trim());
+
+                System.out.print("Nhập giá vốn: ");
+                double von = Double.parseDouble(scanner.nextLine().trim());
+
+                System.out.print("Nhập giá bán: ");
+                double ban = Double.parseDouble(scanner.nextLine().trim());
+
+                products.add(new Product(name, soluong, von, ban));
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số hợp lệ cho số lượng, giá vốn và giá bán.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        scanner.close();
+
+        if (!products.isEmpty()) {
+            Product maxProfitProduct = getMaxProfitProduct(products);
+            System.out.println("Sản phẩm có lợi nhuận cao nhất: " + maxProfitProduct.getName());
+        } else {
+            System.out.println("Không có sản phẩm nào để tính toán.");
+        }
     }
 }
 ```
-Dưới đây là các trường hợp kiểm thử:
-```java
-        // TH 1
-        List<Student> students = new ArrayList<>();
-        students.add(new Student("SV001", "John", "Class A"));
-        students.add(new Student("SV002", "Jane", "Class B"));
-        students.add(new Student("SV003", "Doe", "Class C"));
 
-        for (Student student : students) {
-            System.out.println("Student: " + student.name + ", Class: " + student.className);
-        }
+Các trường hợp cần kiểm thử (nhập dữ liệu theo thứ tự):
+``` java
+// Trường hợp 1  
+Laptop 10 15000000 18000000  
+Điện thoại 20 7000000 9000000  
+Máy tính bảng 15 10000000 12000000  
 
-        // TH 2
-        students = new ArrayList<>();
-        students.add(new Student("SV004", "Sew", "Class A"));
-        students.add(new Student("SV005", "Jee", "Class B"));
-        students.add(new Student("SV006", "Done", "Class C"));
+// Trường hợp 2   
+Bàn phím 50 200000 300000  
+Chuột 40 150000 250000  
 
-        for (Student student : students) {
-            System.out.println("Student: " + student.name + ", Class: " + student.className);
-        }
+// Trường hợp 3  
 
-        // TH 3
-        students = new ArrayList<>();
-        for (Student student : students) {
-            System.out.println("Student: " + student.name + ", Class: " + student.className);
-        }
+ 
 ```

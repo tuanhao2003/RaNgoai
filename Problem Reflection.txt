@@ -1,6 +1,0 @@
-##### 1 : Khang - Hệ thống chia nhóm trong lớp học #####
-Tôi đang phát triển một hệ thống để xếp nhóm sinh viên trong lớp một cách thông minh. Một trong những thách thức tôi gặp phải là làm sao để chia nhóm sao cho cân bằng về số lượng, tối ưu sự đa dạng lớp học, và giảm thời gian xếp nhóm.
-
-Dữ liệu đầu vào bao gồm danh sách sinh viên đang chờ xếp nhóm, mỗi sinh viên có các thuộc tính như MSSV (mã số sinh viên), họ tên, và lớp. Tôi muốn bạn viết chương trình Python khác nhau để thực hiện việc xếp nhóm tự động dựa trên các tiêu chí này.
-
-Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này, tôi muốn bạn triển khai ba phương pháp xếp nhóm khác nhau, sau đó phân tích ưu và nhược điểm của từng phương pháp để tôi có thể chọn cách tiếp cận phù hợp nhất.
