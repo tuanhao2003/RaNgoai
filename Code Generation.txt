@@ -38,3 +38,9 @@ Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng n
 Tôi là một nhà phát triển phần mềm đang làm việc tại một công ty chuyên về hệ thống đặt vé xem phim trực tuyến, tôi đang cùng nhóm triển khai dự án quản lý vé nhằm tối ưu hóa quy trình và ngăn chặn tình trạng bán vé vượt mức. Trong quá trình phát triển ứng dụng đặt vé bằng Java, chúng tôi nhận thấy cần thiết phải có một hệ thống kiểm tra số lượng vé khả dụng trước khi xác nhận đặt vé để đảm bảo tính chính xác và công bằng.
 Hệ thống sẽ nhận đầu vào gồm ID phim, suất chiếu và số lượng vé yêu cầu. Sau đó, nó sẽ kiểm tra kho vé để xác định xem số lượng vé còn lại có đủ đáp ứng yêu cầu hay không. Nếu đủ vé, quy trình đặt vé sẽ tiếp tục; ngược lại, hệ thống sẽ thông báo số lượng vé còn lại và yêu cầu người dùng điều chỉnh.
 Điều quan trọng là hệ thống phải đảm bảo xử lý nhanh chóng, chính xác và ngăn ngừa các lỗi đặt vé trùng lặp hoặc vượt quá số lượng. Việc triển khai tính năng này là rất quan trọng để nâng cao trải nghiệm người dùng, giảm thiểu sai sót và đảm bảo quá trình đặt vé diễn ra suôn sẻ.
+
+
+##### 6 : Khoa - Hệ thống phân loại thư điện tử tự động  ######
+Tôi là một nhà phát triển phần mềm, và nhóm của tôi đang làm việc trên một hệ thống hỗ trợ quản lý thư điện tử thông minh, nhằm tự động phân loại thư điện tử dựa trên nội dung. Trong quá trình phát triển, tôi nhận thấy việc phân loại thủ công mất nhiều thời gian và dễ nhầm lẫn, nên cần một hệ thống phân loại thư điện tử dựa trên từ khóa có sẵn.
+Ứng dụng được viết bằng Java, nhận vào một chuỗi nội dung thư điện tử và trả về danh mục phù hợp như "Thư quảng cáo", "Hóa đơn thanh toán", "Lịch họp", v.v. Hệ thống cần so sánh nội dung với danh sách từ khóa cố định, đảm bảo phân loại chính xác.
+Hãy tạo mã nguồn Java cho hệ thống này, với chú thích đầy đủ để dễ hiểu và bảo trì.

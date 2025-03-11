@@ -1106,3 +1106,70 @@ public class TicketBookingSystem {
     }
 }
 ```
+
+##### 12: Khoa - Hệ thống phân loại thư điện tử tự động  ######
+Tôi là một nhà phát triển phần mềm, và nhóm của tôi đang làm việc trên một hệ thống hỗ trợ quản lý thư điện tử thông minh, nhằm tự động phân loại thư điện tử dựa trên nội dung. Trong quá trình phát triển, tôi nhận thấy việc phân loại thủ công mất nhiều thời gian và dễ nhầm lẫn, nên cần một hệ thống phân loại thư điện tử dựa trên từ khóa có sẵn.
+Ứng dụng được viết bằng Java, nhận vào một chuỗi nội dung thư điện tử và trả về danh mục phù hợp như "Thư quảng cáo", "Hóa đơn thanh toán", "Lịch họp", v.v. Hệ thống cần so sánh nội dung với danh sách từ khóa cố định, đảm bảo phân loại chính xác.
+Hãy tạo mã nguồn Java cho hệ thống này, với chú thích đầy đủ để dễ hiểu và bảo trì.
+Dựa vào các trường hợp kiểm thử tôi sẽ cho dưới đây, hãy kiểm thử đoạn mã kèm theo bên dưới sau đó đưa ra kết quả và giải thích cụ thể từng trường hợp kiểm thử. Dưới đây các trường hợp để kiểm thử:
+```java
+// TH1
+EmailClassifier classifier = new EmailClassifier();
+testEmail(classifier, "Chào bạn, chúng tôi đang có chương trình khuyến mãi hấp dẫn!");
+testEmail(EmailClassifier classifier, String email) {
+        System.out.println("Nội dung: " + email);
+        System.out.println("Phân loại: " + classifier.classifyEmail(email));}
+
+//TH2
+EmailClassifier classifier = new EmailClassifier();
+testEmail(classifier, "Xin chào, đây là hóa đơn thanh toán cho dịch vụ của bạn trong tháng này.")
+testEmail(EmailClassifier classifier, String email) {
+        System.out.println("Nội dung: " + email);
+        System.out.println("Phân loại: " + classifier.classifyEmail(email));}
+
+//TH3
+EmailClassifier classifier = new EmailClassifier();
+testEmail(classifier, "Buổi họp quan trọng sẽ diễn ra vào ngày mai lúc 10h sáng.")
+testEmail(EmailClassifier classifier, String email) {
+        System.out.println("Nội dung: " + email);
+        System.out.println("Phân loại: " + classifier.classifyEmail(email));}
+```
+Sau đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+class EmailClassifier {
+    private Map<String, String> categories;
+
+    // Khởi tạo danh mục thư với từ khóa hardcode
+    public EmailClassifier() {
+        categories = new HashMap<>();
+        categories.put("khuyến mãi", "Thư quảng cáo");
+        categories.put("giảm giá", "Thư quảng cáo");
+        categories.put("hóa đơn", "Hóa đơn thanh toán");
+        categories.put("nợ", "Hóa đơn thanh toán");
+        categories.put("họp", "Lịch họp");
+        categories.put("tuyển dụng", "Cơ hội việc làm");
+        categories.put("phỏng vấn", "Cơ hội việc làm");
+        categories.put("bảo mật", "Cảnh báo bảo mật");
+    }
+
+    // Phương thức phân loại thư
+    public String classifyEmail(String emailContent) {
+        for (Map.Entry<String, String> entry : categories.entrySet()) {
+            if (emailContent.toLowerCase().contains(entry.getKey())) {
+                return entry.getValue();
+            }
+        }
+        return "Khác"; // Nếu không tìm thấy danh mục phù hợp
+    }
+}
+
+public class EmailFilterApp {
+    public static void main(String[] args) {
+        
+    }
+}
+```
