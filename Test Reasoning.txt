@@ -289,7 +289,7 @@ inventory.add(new Item("Axe", "Null", 8));
 inventory.add(new Item("Secret Key", "Puzzle", 1));
 inventory.add(new Item("Null", "Puzzle", 7));
 ```
-###fix
+$$$fix
 Tôi là một lập trình viên phần mềm, nhóm của tôi đang thực hiện một hệ thống xử lý dữ liệu cho chức năng túi đồ trong một trò chơi. Một trong những yêu cầu của hệ thống là sắp xếp vật phẩm trong túi đồ của người chơi theo thứ tự tăng dần hoặc giảm dần. Tôi đã viết đoạn mã để xử lý tính năng này bằng ngôn ngữ Java.
 Túi đồ bao gồm ba loại vật phẩm chính là vật phẩm bổ trợ, vũ khí và vật phẩm giải đố. Vật phẩm là một đối tượng có các thuộc tính như: tên, loại và số lượng. Đoạn mã nhận đầu vào là danh sách các vật phẩm này. Kết quả trả về sẽ là danh sách các vật phẩm được sắp xếp theo thứ tự vật phẩm hồi máu đứng đầu, tiếp theo là vũ khí và cuối cùng là công cụ giải đố. Hệ thống cần đáp ứng các yêu cầu sau để hoạt động ổn định: Số lượng vật phẩm hiển thị phải lớn hơn hoặc bằng 0. Kết quả trả về vật phẩm hồi máu sẽ là vật phẩm đầu tiên được xếp trong danh sách, tiếp theo là vũ khí, cuối cùng là vật phẩm giải đố.
 Dựa vào các trường hợp kiểm thử được cung cấp dưới đây. Hãy kiểm thử đoạn mã, cho biết kết quả và giải thích chi tiết cho từng trường hợp tương ứng.
@@ -431,17 +431,12 @@ public class InventorySorter {
     }
 }
 ```
-###
+$$$
 
 
 
-##### 5 : Khải - Chi phí vận chuyển rẻ nhất #####
-Tôi một học sinh trung học tập làm quen với lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển 
-hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Tôi cần kiểm tra tính chuẩn xác của đoạn mã. Việc kiểm 
-định phải được diễn ra cẩn thận và chi tiết vì nó giúp tôi hiểu rõ hơn về lập trình. Chương trình sẽ nhận vào 1 
-mảng danh sách các nhà vận chuyển bao gồm đơn giá trên khoảng cách và đơn giá trên khối lượng, và thông tin của 
-đơn hàng gồm khoảng cách và khối lượng, tiến hành tính toán để có được giá tiền vận chuyển. Để tính ra được kết 
-quả hợp lệ dữ liệu khoảng cách phải lớn hơn 0, khối lượng phải lớn hơn 0. Dựa vào các trường hợp kiểm thử tôi 
+##### (Done) 5 : Khải - Chi phí vận chuyển rẻ nhất #####
+Tôi một học sinh trung học tập làm quen với lập trình. Tôi đang làm một chương trình tính giá tiền vận chuyển hàng của các nhà cung cấp khác nhau bằng ngôn ngữ Java. Tôi cần kiểm tra tính chuẩn xác của đoạn mã. Việc kiểm định phải được diễn ra cẩn thận và chi tiết vì nó giúp tôi hiểu rõ hơn về lập trình. Chương trình sẽ nhận vào 1 mảng danh sách các nhà vận chuyển bao gồm đơn giá trên khoảng cách và đơn giá trên khối lượng, và thông tin của đơn hàng gồm khoảng cách và khối lượng, tiến hành tính toán để có được giá tiền vận chuyển. Để tính ra được kết quả hợp lệ dữ liệu khoảng cách phải lớn hơn 0, khối lượng phải lớn hơn 0. Dựa vào các trường hợp kiểm thử tôi 
 sẽ cho dưới đây, hãy kiểm thử đoạn mã kèm theo bên dưới sau đó đưa ra kết quả và giải thích cụ thể từng trường 
 hợp kiểm thử. Dưới đây các trường hợp để kiểm thử:
 ```java
@@ -497,8 +492,9 @@ public class TransportCostOptimizer {
         return cheapestProvider;
     }
 }
-
-
+$$$fix
+đầu vào sai, đầu vào nên được viết là đầu vào của cái hàm mình gọi trong main, main phải để trống, mấy cái ghi trong main đem ra ngoài trường hợp kiểm thử hết.
+$$$
 
 ##### (done) 6 : Hào - gợi ý sản phẩm trong siêu thị bán lẻ dựa trên số tiền #####
 Tôi là quản lý của một hệ thống siêu thị bán lẻ. Tôi tự tìm hiểu và đã có một ít kiến thức về lập trình. Hiện tôi đang phát triển trang web đặt hàng trực tuyến cho siêu thị của tôi được viết bằng ngôn ngữ java . Tôi đang thực hiện một chức năng là gợi ý sản phẩm dựa trên số tiền hiện có trong tài khoản của khách hàng.  
@@ -1109,7 +1105,76 @@ public class TicketBookingSystem {
 
 
 
-##### 12 : Khải - Loại bỏ dấu đoạn chữ tiếng Việt #####
+##### 12: Khoa - Hệ thống phân loại thư điện tử tự động  ######
+Tôi là một nhà phát triển phần mềm, và nhóm của tôi đang làm việc trên một hệ thống hỗ trợ quản lý thư điện tử thông minh, nhằm tự động phân loại thư điện tử dựa trên nội dung. Trong quá trình phát triển, tôi nhận thấy việc phân loại thủ công mất nhiều thời gian và dễ nhầm lẫn, nên cần một hệ thống phân loại thư điện tử dựa trên từ khóa có sẵn.
+Ứng dụng được viết bằng Java, nhận vào một chuỗi nội dung thư điện tử và trả về danh mục phù hợp như "Thư quảng cáo", "Hóa đơn thanh toán", "Lịch họp", v.v. Hệ thống cần so sánh nội dung với danh sách từ khóa cố định, đảm bảo phân loại chính xác.
+Hãy tạo mã nguồn Java cho hệ thống này, với chú thích đầy đủ để dễ hiểu và bảo trì.
+Dựa vào các trường hợp kiểm thử tôi sẽ cho dưới đây, hãy kiểm thử đoạn mã kèm theo bên dưới sau đó đưa ra kết quả và giải thích cụ thể từng trường hợp kiểm thử. Dưới đây các trường hợp để kiểm thử:
+```java
+// TH1
+EmailClassifier classifier = new EmailClassifier();
+testEmail(classifier, "Chào bạn, chúng tôi đang có chương trình khuyến mãi hấp dẫn!");
+testEmail(EmailClassifier classifier, String email) {
+        System.out.println("Nội dung: " + email);
+        System.out.println("Phân loại: " + classifier.classifyEmail(email));}
+
+//TH2
+EmailClassifier classifier = new EmailClassifier();
+testEmail(classifier, "Xin chào, đây là hóa đơn thanh toán cho dịch vụ của bạn trong tháng này.")
+testEmail(EmailClassifier classifier, String email) {
+        System.out.println("Nội dung: " + email);
+        System.out.println("Phân loại: " + classifier.classifyEmail(email));}
+
+//TH3
+EmailClassifier classifier = new EmailClassifier();
+testEmail(classifier, "Buổi họp quan trọng sẽ diễn ra vào ngày mai lúc 10h sáng.")
+testEmail(EmailClassifier classifier, String email) {
+        System.out.println("Nội dung: " + email);
+        System.out.println("Phân loại: " + classifier.classifyEmail(email));}
+```
+Sau đây là đoạn mã mà tôi đã viết:
+```java
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+class EmailClassifier {
+    private Map<String, String> categories;
+
+    // Khởi tạo danh mục thư với từ khóa hardcode
+    public EmailClassifier() {
+        categories = new HashMap<>();
+        categories.put("khuyến mãi", "Thư quảng cáo");
+        categories.put("giảm giá", "Thư quảng cáo");
+        categories.put("hóa đơn", "Hóa đơn thanh toán");
+        categories.put("nợ", "Hóa đơn thanh toán");
+        categories.put("họp", "Lịch họp");
+        categories.put("tuyển dụng", "Cơ hội việc làm");
+        categories.put("phỏng vấn", "Cơ hội việc làm");
+        categories.put("bảo mật", "Cảnh báo bảo mật");
+    }
+
+    // Phương thức phân loại thư
+    public String classifyEmail(String emailContent) {
+        for (Map.Entry<String, String> entry : categories.entrySet()) {
+            if (emailContent.toLowerCase().contains(entry.getKey())) {
+                return entry.getValue();
+            }
+        }
+        return "Khác"; // Nếu không tìm thấy danh mục phù hợp
+    }
+}
+
+public class EmailFilterApp {
+    public static void main(String[] args) {
+        
+    }
+}
+```
+
+
+
+##### 13 : Khải - Loại bỏ dấu đoạn chữ tiếng Việt #####
 Tôi là một gia sư dạy lập trình, tôi đang làm các bài lập trình mẫu cho những học sinh của tôi. Tôi có một chương trình được viết bằng ngôn ngữ Java nó dùng để loại bỏ những kí tự có dấu trong tiếng việt, tôi cần bạn kiểm thử để khi chương trình vận hành sẽ đảm bảo tính chuẩn xác, hiệu suất cao, và ít hao phí tài nguyên máy tính.
 Chương trình này sẽ nhận vào một chuỗi các kí tự tiếng Việt, việc của nó sẽ là phát hiện những kí tự có dấu ví dụ như 'á', 'ề', 'ợ',... thay thế chúng bằng kí tự không có dấu 'a', 'e', 'o'. Ví dụ truyền vào chuỗi "Chào bạn 123!", kết quả sẽ là "Chao ban 123!"
 Hệ thống chỉ hoạt đúng khi những điều kiện sau được đảm bảo, chuỗi nhập vào không được là chuỗi rỗng, những kí tự được can thiệp phải là kí tự chữ và là kí tự có dấu, các kí tự khác sẽ không bị ảnh hưởng, các chữ cái được in hoa cũng phải giữ trạng thái in hóa của chúng. 

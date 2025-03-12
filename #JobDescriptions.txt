@@ -468,7 +468,7 @@ Tôi là một nhà nghiên cứu trong lĩnh vực <lĩnh vực cụ thể>
 [CONTEXT]
 Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán <mô tả bài toán> trong bối cảnh <bối cảnh thực tế>. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
 
-Trong quá trình phát triển một ứng dụng <loại ứng dụng> được viết bằng ngôn ngữ Java, tôi cần đảm bảo rằng kết quả đầu ra <tính chất quan trọng, ví dụ: chính xác, ổn định, hiệu suất cao>. 
+Trong quá trình phát triển một ứng dụng <loại ứng dụng> được viết bằng ngôn ngữ Java, tôi cần đảm bảo rằng <tính chất quan trọng, ví dụ: chính xác, ổn định, hiệu suất cao>. 
 
 [INPUT]
 Hệ thống nhận vào <mô tả đầu vào>. Kết quả trả về là <Cấu trúc trả về>

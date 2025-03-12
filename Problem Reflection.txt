@@ -46,7 +46,7 @@ Tôi là lập trình viên làm việc tự do, nhóm của tôi đang nhận m
 $$$
 
 
-##### 4 : Lộc - tối ưu nguồn tiền build pc #####
+##### (Done) 4 : Lộc - tối ưu nguồn tiền build pc #####
 Tôi là một lập trình viên làm việc tự do. Nhóm của tôi đang làm việc trên một dự án xây dựng hệ thống bán máy tính. Trong quá trình phát triển ứng dụng này, tôi được phản hồi từ rất nhiều người dùng rằng họ cần một chức năng tính toán hiệu năng trên giá thành để thuận tiện xây dựng hệ thống máy tính của họ nên tôi cần một hệ thống có thể tính toán được điểm hiệu năng trên giá thành để người dùng tham khảo.
 Trong quá trình phát triển một ứng dụng bán máy tính được viết bằng ngôn ngữ Java, tôi cần đảm bảo rằng kết quả đầu ra chính xác, ổn định. 
 Hệ thống nhận vào một mảng danh sách gồm lần lượt tên linh kiện, giá, điểm hiệu năng. Linh kiện gồm 4 loại là cpu, main, ram, card màn hình. Kết quả trả về là một danh sách các linh kiện có tên, giá, điểm hiệu năng và điểm hiệu năng trên giá thành tốt nhất
@@ -54,6 +54,13 @@ Ban đầu tôi định dùng cách gán sẵn một mảng trong đoạn mã đ
 Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: số tiền linh kiện không được nhỏ hơn không, để xây dựng được một bộ máy tính cần đầy đủ 4 loại linh kiện, nếu không kết quả phải trả về là "không đủ linh kiện để hoàn thành máy tính"
 Việc tìm được nhiều các tiếp cận khác nhau cho bài toán này là rất quan trọng vì nếu như không thể được thêm linh kiện thì rất khó khăn cho việc mở rộng và phát triển các chức năng khác của phần mềm.
 Hãy cho tôi một số phương pháp khác tốt hơn để tiếp cận vấn đề này.
+$$$fix
+Tôi là một lập trình viên làm việc tự do. Nhóm của tôi đang làm việc trên dự án xây dựng hệ thống bán linh kiện máy tính, được viết bằng ngôn ngữ lập trình Java. Trong quá trình phát triển hệ thống này, tôi nhận được nhiều phản hồi từ người dùng thử nghiệm hệ thống rằng họ cần một chức năng tính toán hiệu năng trên giá thành để tối ưu cho máy tính mà họ cần lắp đặt. Vì thế, tôi cần tạo ra một hệ thống tính điểm dựa trên tương quan giữa hiệu năng và giá thành để người dùng tham khảo.
+Đoạn mã mà tôi đã viết nhận vào một mảng danh sách gồm lần lượt tên linh kiện, giá, điểm hiệu năng. Linh kiện gồm 4 loại là cpu, bo mạch chủ, ram, card màn hình. Kết quả trả về là một danh sách các linh kiện có tên, giá, điểm hiệu năng và điểm hiệu năng trên giá thành tốt nhất.
+Ban đầu, tôi định dùng cách gán sẵn một mảng trong đoạn mã để dễ tạo mã nhưng cách này có một số nhược điểm là không thể thêm được linh kiện mới, tôi cần vài cách tiếp cận khác để giải quyết vấn đề này.Việc tìm được nhiều các tiếp cận khác nhau cho bài toán này là rất quan trọng vì nếu như không thể được thêm linh kiện thì rất khó khăn cho việc mở rộng và phát triển các chức năng khác của phần mềm. Thêm vào đó, việc có nhiều cách tiếp cận khác nhau sẽ giúp tôi có góc nhìn đa chiều hơn về vấn đề này.
+Hệ thống cần đáp ứng các yêu cầu sau: số tiền linh kiện không được nhỏ hơn 0, để xây dựng được một bộ máy tính cần đầy đủ 4 loại linh kiện, nếu không kết quả phải trả về là "không đủ linh kiện để hoàn thành máy tính".
+Hãy cho tôi ba phương pháp khác tốt hơn để tiếp cận vấn đề này. Hãy viết ba đoạn mã tương ứng với ba phương pháp đã đưa ra và so sánh sự khác nhau giữa các đoạn mã.
+$$$
 
 
 
@@ -64,7 +71,12 @@ Bên cạnh đó, hệ thống cũng cần đảm bảo tính nhất quán và t
 
 
 
-##### 6 : Khải - Loại bỏ kí tự dấu trong tiếng Việt #####
+##### 6 : Khoa - Hệ thống phân loại thư điện tử tự động  ######
+Tôi là một nhà phát triển phần mềm, và nhóm của tôi đang làm việc trên một hệ thống hỗ trợ quản lý thư điện tử thông minh, nhằm tự động phân loại thư điện tử dựa trên nội dung. Trong quá trình phát triển, tôi nhận thấy việc phân loại thủ công mất nhiều thời gian và dễ nhầm lẫn, nên cần một hệ thống phân loại thư điện tử dựa trên từ khóa có sẵn. Việc này giúp tăng tốc độ xử lý, giảm nhầm lẫn và cải thiện khả năng quản lý thư điện tử. Hệ thống cần đảm bảo nhận diện chính xác từ khóa, phân loại thư theo danh mục phù hợp, dễ mở rộng khi cần cập nhật từ khóa mới và có hiệu suất tốt để xử lý lượng lớn thư điện tử. Ứng dụng được viết bằng Java, nhận vào một chuỗi nội dung thư điện tử và trả về danh mục phù hợp như "Thư quảng cáo", "Hóa đơn thanh toán", "Lịch họp", v.v. Hệ thống cần so sánh nội dung với danh sách từ khóa cố định, đảm bảo phân loại chính xác. Hãy tạo mã nguồn Java cho hệ thống này, với chú thích đầy đủ để dễ hiểu và bảo trì.
+
+
+
+##### 7 : Khải - Loại bỏ kí tự dấu trong tiếng Việt #####
 Tôi là một gia sư dạy lập trình. Tôi đang trong quá trình làm các bài lập trình mẫu cho những học sinh của tôi. Tôi cần một chương trình viết bằng ngôn ngữ Java, chức năng chính là loại bỏ những kí tự có dấu trong tiếng việt, mục đích chính của đoạn mã này là để làm cơ sở học lập trình cho các học sinh của tôi.
 Dữ liệu nhận vào sẽ là một chuỗi các kí tự trong đó bao gồm nhưng không giới hạn các kí tự tiếng Việt có dấu như 'á', 'ề', 'ợ',... việc của chương trình sẽ phải phát hiện những kí tự ấy và thay thế chúng bằng kí tự chữ cái latinh không có dấu 'a', 'e', 'o'. Ví dụ truyền vào chuỗi "Chào bạn 123!", kết quả sẽ là "Chao ban 123!". Tôi cần bạn giúp tôi tạo ra chương trình bằng ngôn ngữ Java để giải quyết việc này.
 Chương trình phải thỏa những điều kiện sau, chuỗi nhập vào không được là chuỗi rỗng, những kí tự được can thiệp phải là kí tự chữ và là kí tự có dấu, các kí tự khác sẽ không bị ảnh hưởng, các chữ cái được in hoa cũng phải giữ trạng thái in hóa của chúng.
