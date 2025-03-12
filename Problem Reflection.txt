@@ -69,5 +69,16 @@ Trong quá trình phát triển hệ thống đặt vé xem phim trực tuyến,
 Hiện tại, hệ thống cần một cơ chế kiểm tra số lượng vé còn lại trước khi xác nhận giao dịch. Điều này đòi hỏi một quy trình kiểm tra nhanh chóng, chính xác nhằm xác định xem số lượng vé yêu cầu có khả dụng hay không. Nếu không đủ vé, hệ thống phải có cơ chế thông báo số lượng vé còn lại và hướng dẫn người dùng điều chỉnh yêu cầu đặt vé.
 Bên cạnh đó, hệ thống cũng cần đảm bảo tính nhất quán và tránh các lỗi như đặt vé trùng lặp hoặc đặt vé vượt quá số lượng thực tế. Hãy viết thêm các đoạn mã bằng Java để giải quyết các vấn đề này. Việc tối ưu hóa quy trình này sẽ giúp nâng cao hiệu suất, đảm bảo công bằng và mang lại trải nghiệm người dùng tốt hơn.
 
+
+
 ##### 6 : Khoa - Hệ thống phân loại thư điện tử tự động  ######
 Tôi là một nhà phát triển phần mềm, và nhóm của tôi đang làm việc trên một hệ thống hỗ trợ quản lý thư điện tử thông minh, nhằm tự động phân loại thư điện tử dựa trên nội dung. Trong quá trình phát triển, tôi nhận thấy việc phân loại thủ công mất nhiều thời gian và dễ nhầm lẫn, nên cần một hệ thống phân loại thư điện tử dựa trên từ khóa có sẵn. Việc này giúp tăng tốc độ xử lý, giảm nhầm lẫn và cải thiện khả năng quản lý thư điện tử. Hệ thống cần đảm bảo nhận diện chính xác từ khóa, phân loại thư theo danh mục phù hợp, dễ mở rộng khi cần cập nhật từ khóa mới và có hiệu suất tốt để xử lý lượng lớn thư điện tử. Ứng dụng được viết bằng Java, nhận vào một chuỗi nội dung thư điện tử và trả về danh mục phù hợp như "Thư quảng cáo", "Hóa đơn thanh toán", "Lịch họp", v.v. Hệ thống cần so sánh nội dung với danh sách từ khóa cố định, đảm bảo phân loại chính xác. Hãy tạo mã nguồn Java cho hệ thống này, với chú thích đầy đủ để dễ hiểu và bảo trì.
+
+
+
+##### 7 : Khải - Loại bỏ kí tự dấu trong tiếng Việt #####
+Tôi là một gia sư dạy lập trình. Tôi đang trong quá trình làm các bài lập trình mẫu cho những học sinh của tôi. Tôi cần một chương trình viết bằng ngôn ngữ Java, chức năng chính là loại bỏ những kí tự có dấu trong tiếng việt, mục đích chính của đoạn mã này là để làm cơ sở học lập trình cho các học sinh của tôi.
+Dữ liệu nhận vào sẽ là một chuỗi các kí tự trong đó bao gồm nhưng không giới hạn các kí tự tiếng Việt có dấu như 'á', 'ề', 'ợ',... việc của chương trình sẽ phải phát hiện những kí tự ấy và thay thế chúng bằng kí tự chữ cái latinh không có dấu 'a', 'e', 'o'. Ví dụ truyền vào chuỗi "Chào bạn 123!", kết quả sẽ là "Chao ban 123!". Tôi cần bạn giúp tôi tạo ra chương trình bằng ngôn ngữ Java để giải quyết việc này.
+Chương trình phải thỏa những điều kiện sau, chuỗi nhập vào không được là chuỗi rỗng, những kí tự được can thiệp phải là kí tự chữ và là kí tự có dấu, các kí tự khác sẽ không bị ảnh hưởng, các chữ cái được in hoa cũng phải giữ trạng thái in hóa của chúng.
+Mã nguồn phải được tạo ra một cách cẩn thận và sử dụng cách tiếp cận dễ hiểu vì chương trình này sẽ được dùng để giảng dạy cho các học sinh mới làm quen với lập trình.
+Vì có nhiều cách để thực hiện nên hãy tạo ra ba đoạn mã khác nhau với ba cấp độ ứng với các trình độ lập trình khác nhau. So sánh và giải thích ưu điểm, nhược điểm của mỗi đoạn mã.

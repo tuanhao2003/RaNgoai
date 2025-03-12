@@ -7,12 +7,11 @@ Tôi muốn đoạn code khi viết ra phải hoạt động chính xác, ổn �
 
 
 ##### 2 : Khải - Chương trình tính lương trong công ty #####
-Tôi là một sinh viên học lập trình, tôi đang mày mò cách tạo một ứng dụng quản lý nhân sự và tiền lương cho doanh nghiệp bằng
-ngôn ngữ Java. Tôi cần chương trình tính toán lương thưởng dựa trên các đầu vào: mức lương cơ bản cho trước với mỗi nhân viên,
-phụ cấp, lương tăng ca ngày thường: 150%, ngày nghỉ: 200%, ngày lễ: 300%, lương thưởng, và các khoảng khấu trừ để cuối cùng 
-ra giá trị lương thực nhận. Hãy tạo một mã nguồn dựa trên mô tả trên nên nhớ tiền lương cho mỗi nhân viên rất quan trọng cần 
-phải được tính toán kỹ lương và chính xác, mã nguồn nên được chú thích đầy đủ.
-
+Tôi là một sinh viên học lập trình, tôi đang mày mò cách tạo một ứng dụng quản lý nhân sự và tiền lương cho doanh nghiệp bằng ngôn ngữ Java, tôi gặp khó khăn trong việc tạo ra chương trình tính lương cho nhân viên. 
+Tôi cần tạo một chương trình tính toán lương thưởng dựa trên các đầu vào: mức lương cơ bản cho trước với mỗi nhân viên, phụ cấp, lương khi nhân viên đó tăng ca, ngày thường: 150%, ngày nghỉ: 200%, ngày lễ: 300%, lương thưởng, và các khoảng khấu trừ. Tiến hành tính toán để cuối cùng ra giá trị lương thực nhận. 
+Hệ thống phải theo sát những ràng buộc sau: số ngày công chỉ tính những ngày nhân viên có đi làm, lương tăng ca cần được tính độc lập, lương cơ bản và ngày công phải lớn hơn 0.
+Tôi cần bạn tạo một mã nguồn cho tôi, nên nhớ mã tạo ra cần phải đảm bảo tính toán kỹ lương và chính xác bời vì tiền lương cho mỗi nhân viên rất quan trọng, sai số sẽ dẫn tới hậu quả nghiêm trọng.
+Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ java, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
 
 
 ##### 3 : Khang - Tính toán sản phẩm có lợi nhuận cao nhất ####
@@ -40,7 +39,17 @@ Hệ thống sẽ nhận đầu vào gồm ID phim, suất chiếu và số lư�
 Điều quan trọng là hệ thống phải đảm bảo xử lý nhanh chóng, chính xác và ngăn ngừa các lỗi đặt vé trùng lặp hoặc vượt quá số lượng. Việc triển khai tính năng này là rất quan trọng để nâng cao trải nghiệm người dùng, giảm thiểu sai sót và đảm bảo quá trình đặt vé diễn ra suôn sẻ.
 
 
+
 ##### 6 : Khoa - Hệ thống phân loại thư điện tử tự động  ######
 Tôi là một nhà phát triển phần mềm, và nhóm của tôi đang làm việc trên một hệ thống hỗ trợ quản lý thư điện tử thông minh, nhằm tự động phân loại thư điện tử dựa trên nội dung. Trong quá trình phát triển, tôi nhận thấy việc phân loại thủ công mất nhiều thời gian và dễ nhầm lẫn, nên cần một hệ thống phân loại thư điện tử dựa trên từ khóa có sẵn.
 Ứng dụng được viết bằng Java, nhận vào một chuỗi nội dung thư điện tử và trả về danh mục phù hợp như "Thư quảng cáo", "Hóa đơn thanh toán", "Lịch họp", v.v. Hệ thống cần so sánh nội dung với danh sách từ khóa cố định, đảm bảo phân loại chính xác.
 Hãy tạo mã nguồn Java cho hệ thống này, với chú thích đầy đủ để dễ hiểu và bảo trì.
+
+
+
+##### 7 : Khải - Loại bỏ kí tự dấu trong tiếng Việt #####
+Tôi là một gia sư dạy lập trình. Tôi đang trong quá trình làm các bài lập trình mẫu cho những học sinh của tôi. Tôi cần một chương trình viết bằng ngôn ngữ Java, chức năng chính là loại bỏ những kí tự có dấu trong tiếng việt, mục đích chính của đoạn mã này là để làm cơ sở học lập trình cho các học sinh của tôi.
+Chương trình này sẽ nhận vào một chuỗi các kí tự tiếng Việt, việc của nó sẽ là phát hiện những kí tự có dấu ví dụ như 'á', 'ề', 'ợ',... thay thế chúng bằng kí tự không có dấu 'a', 'e', 'o'. Ví dụ truyền vào chuỗi "Chào bạn 123!", kết quả sẽ là "Chao ban 123!".
+Hệ thống chỉ hoạt đúng khi những điều kiện sau được đảm bảo, chuỗi nhập vào không được là chuỗi rỗng, những kí tự được can thiệp phải là kí tự chữ và là kí tự có dấu, các kí tự khác sẽ không bị ảnh hưởng, các chữ cái được in hoa cũng phải giữ trạng thái in hóa của chúng.
+Tôi cần bạn tạo ra mã nguồn theo như mô tả. Mã nguồn phải được tạo ra một cách cẩn thận và sử dụng cách tiếp cận dễ hiểu vì chương trình này sẽ được giảng dạy cho các học sinh mới làm quen với lập trình.
+Hãy tạo ra mã nguồn cho chương trình như đã nêu trên, lưu ý rằng mã nguồn phải có chú thích chi tiết.
