@@ -1226,3 +1226,120 @@ String output = removeDiacritics(input);
 System.out.println("Văn bản gốc: " + input);
 System.out.println("Văn bản không dấu: " + output);
 ```
+
+
+
+##### 14 : Lộc - Sắp xếp điểm số và xét học bổng #####
+Tôi là một lập trình viên trong ngành giáo dục. Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán sắp xếp điểm theo thứ tự và xét học bổng trong bối cảnh trường có quá nhiều sinh viên, tính toán thủ công quá lâu. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể như sau: chính xác, ổn định, hiệu quả.
+Hệ thống nhận vào mảng danh sách các sinh viên gồm 2 thuộc tính là tên và điểm. Kết quả trả về là tên và điểm, điểm GPA theo thứ tự từ trên xuống dưới của 10 người điểm cao nhất.
+Một số ràng buộc cần đảm bảo: Điểm số sẽ không được nhỏ hơn 0, nếu sinh viên ở hạng 10 có kết quả giống nhau thì sẽ bao gồm tất cả sinh viên ở mức điểm đó.
+Việc kiểm tra kỹ lưỡng các trường hợp đầu vào là rất quan trọng vì nếu đoạn mã mà sai sẽ dẫn đến việc xét sai học bổng của sinh viên.
+Hãy thực hiện kiểm tra đầu ra của đoạn mã dưới đây bằng cách phân tích các trường hợp kiểm thử bên dưới, giải thích chi tiết vì sao mỗi đầu vào lại cho ra kết quả tương ứng. Dưới đây là đoạn mã mà tôi đã thực hiện. Đoạn mã này đã được tách ra riêng cho môi trường kiểm thử
+```java
+import java.util.*;
+
+class Student {
+    String name;
+    double gpa;
+
+    public Student(String name, double gpa) {
+        if (gpa < 0) {
+            throw new IllegalArgumentException("GPA không thể nhỏ hơn 0");
+        }
+        this.name = name;
+        this.gpa = gpa;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getGpa() {
+        return gpa;
+    }
+}
+
+public class ScholarshipEvaluator {
+    public static List<Student> getTopStudents(List<Student> students) {
+        students.sort((s1, s2) -> Double.compare(s2.getGpa(), s1.getGpa()));
+        
+        List<Student> topStudents = new ArrayList<>();
+        double lastGpa = -1;
+        int count = 0;
+
+        for (Student student : students) {
+            if (count < 10 || student.getGpa() == lastGpa) {
+                topStudents.add(student);
+                lastGpa = student.getGpa();
+                count++;
+            } else {
+                break;
+            }
+        }
+
+        return topStudents;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+Đây là các trường hợp cần kiểm thử
+```
+//TH1
+    List<Student> students = Arrays.asList(
+        new Student("Alice", 3.9),
+        new Student("Bob", 3.5),
+        new Student("Charlie", 3.7),
+        new Student("David", 3.8),
+        new Student("Emma", 3.6),
+        new Student("Frank", 4.0),
+        new Student("Grace", 3.95),
+        new Student("Hannah", 3.85),
+        new Student("Isaac", 3.2),
+        new Student("Jack", 3.3),
+        new Student("Kate", 3.75),
+        new Student("Liam", 3.4),
+        new Student("Mason", 3.5),
+        new Student("Maso", 3.5)
+    );
+
+    List<Student> topStudents = getTopStudents(students);
+    System.out.println("Top sinh viên có điểm cao nhất:");
+    for (Student s : topStudents) {
+        System.out.println(s.getName() + " - " + s.getGpa());
+    }
+//TH2
+    List<Student> students = Arrays.asList(
+
+    );
+
+    List<Student> topStudents = getTopStudents(students);
+    System.out.println("Top sinh viên có điểm cao nhất:");
+    for (Student s : topStudents) {
+        System.out.println(s.getName() + " - " + s.getGpa());
+    }
+//TH3
+    List<Student> students = Arrays.asList(
+        new Student("Alice"),
+        new Student("Bob", 3.5),
+        new Student("Charlie", 3.7),
+        new Student("David", 3.8),
+        new Student("Emma", 3.6),
+        new Student("Frank", 4.0),
+        new Student("Grace", 3.95),
+        new Student("Hannah", 3.85),
+        new Student("Isaac"),
+        new Student(, 3.3),
+        new Student("Kate", 3.75),
+        new Student("Liam", 3.4),
+        new Student("Mason", 3.5),
+        new Student("Maso", 3.5)
+    );
+
+    List<Student> topStudents = getTopStudents(students);
+    System.out.println("Top sinh viên có điểm cao nhất:");
+    for (Student s : topStudents) {
+        System.out.println(s.getName() + " - " + s.getGpa());
+    }

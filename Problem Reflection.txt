@@ -82,3 +82,14 @@ Dữ liệu nhận vào sẽ là một chuỗi các kí tự trong đó bao gồ
 Chương trình phải thỏa những điều kiện sau, chuỗi nhập vào không được là chuỗi rỗng, những kí tự được can thiệp phải là kí tự chữ và là kí tự có dấu, các kí tự khác sẽ không bị ảnh hưởng, các chữ cái được in hoa cũng phải giữ trạng thái in hóa của chúng.
 Mã nguồn phải được tạo ra một cách cẩn thận và sử dụng cách tiếp cận dễ hiểu vì chương trình này sẽ được dùng để giảng dạy cho các học sinh mới làm quen với lập trình.
 Vì có nhiều cách để thực hiện nên hãy tạo ra ba đoạn mã khác nhau với ba cấp độ ứng với các trình độ lập trình khác nhau. So sánh và giải thích ưu điểm, nhược điểm của mỗi đoạn mã.
+
+
+
+##### 8 : Lộc - Sắp xếp điểm số và xét học bổng #####
+Tôi là một lập trình viên trong ngành giáo dục. Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán sắp xếp điểm theo thứ tự và xét học bổng trong bối cảnh trường có quá nhiều sinh viên, tính toán thủ công quá lâu. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể như sau: chính xác, ổn định, hiệu quả.
+Hệ thống nhận vào mảng danh sách các sinh viên gồm 2 thuộc tính là tên và điểm. Kết quả trả về là tên và điểm, điểm GPA theo thứ tự từ trên xuống dưới của 10 người điểm cao nhất.
+Ban đầu tôi định dùng cách tạo sẵn một danh sách tất cả các sinh viên của trường để vào đoạn mã trong để sắp xếp cho nhanh nhưng cách này có một số nhược điểm là nếu sinh viên đó đã ra trường thì không thể xóa đi hoặc thêm những sinh viên mới vào, tôi cần vài cách tiếp cận khác để giải quyết vấn đề này.
+Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: điểm số sẽ không được nhỏ hơn 0, nếu sinh viên ở hạng 10 có kết quả giống nhau thì sẽ bao gồm tất cả sinh viên ở mức điểm đó.
+Việc tìm được nhiều cách tiếp cận khác nhau cho bài toán này là rất quan trọng vì việc tìm nhiều cách tiếp cận giúp tối ưu hiệu suất, đảm bảo chính xác và tăng tính linh hoạt của hệ thống.
+Tôi cần bạn tạo ra mã nguồn cho hệ thống của tôi. Mã nguồn phải được tạo ra một cách cẩn thận vì tôi cần đảm bảo hệ thống chấm điểm với độ chính xác là cao nhất.
+Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
