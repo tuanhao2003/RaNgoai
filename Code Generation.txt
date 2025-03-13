@@ -53,3 +53,23 @@ Chương trình này sẽ nhận vào một chuỗi các kí tự tiếng Việt
 Hệ thống chỉ hoạt đúng khi những điều kiện sau được đảm bảo, chuỗi nhập vào không được là chuỗi rỗng, những kí tự được can thiệp phải là kí tự chữ và là kí tự có dấu, các kí tự khác sẽ không bị ảnh hưởng, các chữ cái được in hoa cũng phải giữ trạng thái in hóa của chúng.
 Tôi cần bạn tạo ra mã nguồn theo như mô tả. Mã nguồn phải được tạo ra một cách cẩn thận và sử dụng cách tiếp cận dễ hiểu vì chương trình này sẽ được giảng dạy cho các học sinh mới làm quen với lập trình.
 Hãy tạo ra mã nguồn cho chương trình như đã nêu trên, lưu ý rằng mã nguồn phải có chú thích chi tiết.
+
+
+
+##### 8 : Lộc - Sắp xếp điểm số và xét học bổng #####
+Tôi là một lập trình viên trong ngành giáo dục. Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán sắp xếp điểm theo thứ tự và xét học bổng trong bối cảnh trường có quá nhiều sinh viên, tính toán thủ công quá lâu. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể như sau: chính xác, ổn định, hiệu quả.
+Hệ thống nhận vào mảng danh sách các sinh viên gồm 2 thuộc tính là tên và điểm. Kết quả trả về là tên và điểm, điểm GPA theo thứ tự từ trên xuống dưới của 10 người điểm cao nhất.
+Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: Hệ thống sẽ cho phép người dùng nhập tay vào danh sách các sinh viên, điểm số sẽ không được nhỏ hơn 0, nếu sinh viên ở hạng 10 có kết quả giống nhau thì sẽ bao gồm tất cả sinh viên ở mức điểm đó.
+Việc triển khai hệ thống này là rất quan trọng vì nếu có hệ thống này, việc duyệt học bổng sẽ nhanh hơn, không cần mất thời gian của thầy cô để làm thủ công.
+Tôi cần bạn tạo ra mã nguồn cho hệ thống của tôi. Mã nguồn phải được tạo ra một cách cẩn thận vì tôi cần đảm bảo hệ thống chấm điểm với độ chính xác là cao nhất.
+Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
+
+
+
+##### 9 : Lộc - Sắp xếp công việc theo thứ tự ưu tiên #####
+Tôi là một nhà phát triển làm việc trong một doanh nghiệp tài chính.
+Tôi cần phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán sắp xếp danh sách công việc theo độ ưu tiên trong bối cảnh người dùng muốn tối ưu hóa tiến độ làm việc.
+Hệ thống nhận vào một mảng các chuỗi công việc. Kết quả trả về là một mảng các chuỗi công việc đã được sắp xếp theo thứ tự ưu tiên.
+Hệ thống có một số ràng buộc cần đảm bảo: định dạng chuỗi đầu vào phải hợp lệ (chứa dấu ngoặc đơn và số ưu tiên), hệ thống phải xử lý được các công việc có độ ưu tiên trùng nhau.
+Tôi cần bạn tạo ra mã nguồn cho hệ thống của tôi. Mã nguồn phải được tạo ra một cách cẩn thận vì tôi cần đảm bảo hệ thống sắp xếp công việc với độ chính xác cao nhất.
+Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ Java, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
