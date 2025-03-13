@@ -104,3 +104,14 @@ Ban đầu tôi định dùng cách thuật toán Bubble Sort để sắp xếp,
 Hệ thống có một số ràng buộc cần đảm bảo: định dạng chuỗi đầu vào phải hợp lệ (chứa dấu ngoặc đơn và số ưu tiên), hệ thống phải xử lý được các công việc có độ ưu tiên trùng nhau.
 Việc tìm được nhiều các tiếp cận khác nhau cho bài toán này là rất quan trọng vì nó giúp tôi lựa chọn phương pháp phù hợp nhất với yêu cầu hiệu suất và độ phức tạp của ứng dụng.
 Hãy cho tôi một số phương pháp khác tốt hơn để tiếp cận vấn đề này.
+
+
+
+##### 10 : Khang - Sắp xếp lịch khám cho bệnh nhân theo mức độ nghiêm trọng #####
+Tôi là một nhà phát triển làm việc trong một bệnh viện tư nân.
+Tôi cần xây dựng một ứng dụng Java để sắp xếp danh sách lịch khám cho bệnh nhân dựa trên mức độ nghiêm trọng, nhằm tối ưu hóa thời gian và nâng cao sự hài lòng của bệnh nhân. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+Hệ thống nhận vào một mảng chuỗi lịch khám bệnh của bệnh nhân. Kết quả trả về là danh sách lịch khám đã được sắp xếp theo mức độ nghiêm trọng từ 1 đến 5 (1 là ít nghiêm trọng nhất, 5 là nghiêm trọng nhất).
+Ban đầu, tôi đã sử dụng một thuật toán sắp xếp đơn giản để xử lý danh sách, nhưng để cải thiện hiệu suất và khả năng mở rộng, tôi cần tìm kiếm các phương pháp sắp xếp tốt hơn.
+Hệ thống có một số ràng buộc cần đảm bảo: Định dạng chuỗi đầu vào phải hợp lệ (bao gồm tên bệnh nhân và mức độ nghiêm trọng), Hệ thống phải xử lý được các bệnh nhân có mức độ nghiêm trọng trùng nhau, Mảng đầu vào không được thay đổi ngoài phạm vi của hàm sắp xếp.
+Việc tìm được nhiều cách tiếp cận khác nhau cho bài toán này là rất quan trọng vì nó giúp tôi lựa chọn phương pháp phù hợp nhất với yêu cầu hiệu suất và độ chính xác của ứng dụng.
+Hãy cho tôi một số phương pháp khác tốt hơn để tiếp cận vấn đề này.
