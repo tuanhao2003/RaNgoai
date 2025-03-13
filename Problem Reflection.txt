@@ -93,3 +93,14 @@ Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: điểm s�
 Việc tìm được nhiều cách tiếp cận khác nhau cho bài toán này là rất quan trọng vì việc tìm nhiều cách tiếp cận giúp tối ưu hiệu suất, đảm bảo chính xác và tăng tính linh hoạt của hệ thống.
 Tôi cần bạn tạo ra mã nguồn cho hệ thống của tôi. Mã nguồn phải được tạo ra một cách cẩn thận vì tôi cần đảm bảo hệ thống chấm điểm với độ chính xác là cao nhất.
 Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
+
+
+
+##### 9 : Lộc - Sắp xếp công việc theo thứ tự ưu tiên #####
+Tôi là một nhà phát triển phần mềm đang làm việc trong một dự án quản lý công việc tài chính.
+Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán sắp xếp danh sách công việc theo độ ưu tiên trong bối cảnh người dùng muốn tối ưu hóa tiến độ làm việc. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+Hệ thống nhận vào một mảng các chuỗi công việc. Kết quả trả về là một mảng các chuỗi công việc đã được sắp xếp theo thứ tự ưu tiên.
+Ban đầu tôi định dùng cách thuật toán Bubble Sort để sắp xếp, nhưng cách này có một số nhược điểm là hiệu suất không cao khi xử lý mảng lớn. Tôi cần vài cách tiếp cận khác để giải quyết vấn đề này.
+Hệ thống có một số ràng buộc cần đảm bảo: định dạng chuỗi đầu vào phải hợp lệ (chứa dấu ngoặc đơn và số ưu tiên), hệ thống phải xử lý được các công việc có độ ưu tiên trùng nhau.
+Việc tìm được nhiều các tiếp cận khác nhau cho bài toán này là rất quan trọng vì nó giúp tôi lựa chọn phương pháp phù hợp nhất với yêu cầu hiệu suất và độ phức tạp của ứng dụng.
+Hãy cho tôi một số phương pháp khác tốt hơn để tiếp cận vấn đề này.

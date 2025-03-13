@@ -63,3 +63,13 @@ Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: Hệ thố
 Việc triển khai hệ thống này là rất quan trọng vì nếu có hệ thống này, việc duyệt học bổng sẽ nhanh hơn, không cần mất thời gian của thầy cô để làm thủ công.
 Tôi cần bạn tạo ra mã nguồn cho hệ thống của tôi. Mã nguồn phải được tạo ra một cách cẩn thận vì tôi cần đảm bảo hệ thống chấm điểm với độ chính xác là cao nhất.
 Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
+
+
+
+##### 9 : Lộc - Sắp xếp công việc theo thứ tự ưu tiên #####
+Tôi là một nhà phát triển làm việc trong một doanh nghiệp tài chính.
+Tôi cần phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán sắp xếp danh sách công việc theo độ ưu tiên trong bối cảnh người dùng muốn tối ưu hóa tiến độ làm việc.
+Hệ thống nhận vào một mảng các chuỗi công việc. Kết quả trả về là một mảng các chuỗi công việc đã được sắp xếp theo thứ tự ưu tiên.
+Hệ thống có một số ràng buộc cần đảm bảo: định dạng chuỗi đầu vào phải hợp lệ (chứa dấu ngoặc đơn và số ưu tiên), hệ thống phải xử lý được các công việc có độ ưu tiên trùng nhau.
+Tôi cần bạn tạo ra mã nguồn cho hệ thống của tôi. Mã nguồn phải được tạo ra một cách cẩn thận vì tôi cần đảm bảo hệ thống sắp xếp công việc với độ chính xác cao nhất.
+Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ Java, lưu ý rằng mã nguồn phải có chú thích đầy đủ.

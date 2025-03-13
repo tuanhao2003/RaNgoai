@@ -1343,3 +1343,60 @@ public class ScholarshipEvaluator {
     for (Student s : topStudents) {
         System.out.println(s.getName() + " - " + s.getGpa());
     }
+```
+
+
+
+##### 15 : Lộc - Sắp xếp công việc theo thứ tự ưu tiên #####
+Tôi là một nhà phát triển phần mềm đang làm việc trong một doanh nghiệp tài chính.
+Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán sắp xếp danh sách công việc theo độ ưu tiên trong bối cảnh người dùng muốn tối ưu hóa tiến độ làm việc. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+Đầu vào của hệ thống là một mảng các chuỗi công việc. Sau khi nhập đầu vào hệ thống sẽ sắp xếp các công việc theo thứ tự ưu tiên được chỉ định trong mỗi chuỗi. Kết quả được trả về sau khi xử lý là một mảng các chuỗi công việc đã được sắp xếp.
+Một số ràng buộc cần đảm bảo: định dạng chuỗi đầu vào phải hợp lệ (chứa dấu ngoặc đơn và số ưu tiên), hệ thống phải xử lý được các công việc có độ ưu tiên trùng nhau, và mảng đầu vào không được thay đổi ngoài phạm vi hàm sắp xếp.
+Việc kiểm tra kỹ lưỡng các trường hợp đầu vào là rất quan trọng vì nó giúp đảm bảo rằng thuật toán sắp xếp hoạt động chính xác và xử lý được các tình huống khác nhau.
+Hãy kiểm tra kết quả của đoạn mã dưới đây dựa vào các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
+```java
+public class TaskPrioritySorter {
+
+    public static void main(String[] args) {
+
+    }
+
+    public static void sortTasksByPriority(String[] tasks) {
+        int arrayLength = tasks.length;
+        for (int i = 0; i < arrayLength - 1; i++) {
+            for (int j = 0; j < arrayLength - i - 1; j++) {
+                int priorityJ = getPriority(tasks[j]);
+                int priorityJPlus1 = getPriority(tasks[j + 1]);
+
+                if (priorityJ > priorityJPlus1) {
+                    String temp = tasks[j];
+                    tasks[j] = tasks[j + 1];
+                    tasks[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println("Danh sách công việc theo thứ tự ưu tiên:");
+        for (String task : tasks) {
+            System.out.println(task);
+        }
+    }
+
+    private static int getPriority(String task) {
+        int openParenthesisIndex = task.lastIndexOf('(');
+        int closeParenthesisIndex = task.lastIndexOf(')');
+        return Integer.parseInt(task.substring(openParenthesisIndex + 1, closeParenthesisIndex));
+    }
+}
+```
+Đây là các trường hợp cần kiểm thử
+```
+//TH1
+    String[] tasks = {"Task A (3)", "Task B (1)", "Task C (2)", "Task D (4)"};
+    sortTasksByPriority(tasks);
+//TH2
+    String[] tasks = {"Task A (1)", "Task B (1)", "Task C (4)", "Task D (4)"};
+    sortTasksByPriority(tasks);
+//TH3
+String[] tasks = {"Task A ()", "Task B ()", "Task C ()", "Task D ()"};
+sortTasksByPriority(tasks);
+```
