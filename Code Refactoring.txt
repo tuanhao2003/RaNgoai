@@ -71,7 +71,7 @@ public class IronBarMaximumProfit {
 
 
 
-##### 3 : Lộc - Sắp xếp túi đồ trong game #####
+##### (Done) 3 : Lộc - Sắp xếp túi đồ trong game #####
 Tôi là một lập trình viên phần mềm. Nhóm của tôi đang làm việc trên một hệ thống xử lý dữ liệu túi đồ của trò chơi, trong đó có một bài toán cần sắp xếp vật phẩm trong túi đồ của tài khoản đó theo thứ tự tăng dần hoặc giảm dần. Tôi đang phát triển ứng dụng đó bằng Java.
 Túi đồ chứa 3 loại vật phẩm: vật phẩm hồi máu, vũ khí, công cụ giải đố, nhưng quan trọng nhất là vật phẩm hồi máu trong một tựa game sinh tồn.
 Vì thế tôi đã tạo ra một đoạn code để sắp xếp thứ tự vật phẩm sở hữu của loại vật phẩm đó, lần lượt là vật phẩm hồi máu, vũ khí, công cụ giải đố.
