@@ -1519,7 +1519,124 @@ public class TransactionLogSorter {
 
 
 
-##### 17 : Khang - Sắp xếp lịch khám cho bệnh nhân theo mức độ nghiêm trọng #####
+##### 17 : Lộc - Sắp xếp nhật ký giao dịch tài chính #####
+Tôi là một nhà phát triển phần mềm đang làm việc trong một dự án phát triển hệ thống quản lý giao dịch tài chính.
+Tôi đang phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán sắp xếp nhật ký giao dịch tài chính theo thời gian trong bối cảnh ngân hàng muốn tối ưu hóa việc quản lý và phân tích giao dịch. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+Hệ thống nhận vào một mảng các đối tượng Transaction, mỗi đối tượng chứa thông tin về thời gian giao dịch (timestamp) và số tiền giao dịch (amount). Kết quả trả về là mảng các đối tượng Transaction được sắp xếp theo thời gian tăng dần.
+Để hệ thống có thể hoạt động tốt trong môi trường kiểm thử, cần phải đáp ứng các yêu cầu sau: kiểm tra các trường hợp mảng rỗng, mảng chỉ có một phần tử, mảng đã được sắp xếp, và mảng có các giao dịch trùng thời gian.
+Việc kiểm định này rất quan trọng vì nó đảm bảo rằng người dùng nhận được nhật ký giao dịch được sắp xếp đúng theo thời gian, giúp họ quản lý và phân tích giao dịch một cách hiệu quả.
+Dựa vào các trường hợp kiểm thử sau đây, hãy kiểm thử đoạn mã bên dưới sau đó đưa ra kết quả và giải thích chi tiết cho từng trường hợp.
+```java
+import java.util.Arrays;
+
+class Transaction implements Comparable<Transaction> {
+    long timestamp;
+    double amount;
+
+    public Transaction(long timestamp, double amount) {
+        this.timestamp = timestamp;
+        this.amount = amount;
+    }
+
+    @Override
+    public int compareTo(Transaction other) {
+        return Long.compare(this.timestamp, other.timestamp);
+    }
+
+    @Override
+    public String toString() {
+        return "\nTransaction{" +
+                "timestamp=" + timestamp +
+                ", amount=" + amount +
+                '}';
+    }
+}
+
+public class TransactionLogSorter {
+
+    public static void main(String[] args) {
+
+    }
+
+    public static void processAndPrint(Transaction[] arr) {
+        mergeSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void mergeSort(Transaction[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return;
+        }
+        int mid = arr.length / 2;
+        Transaction[] left = Arrays.copyOfRange(arr, 0, mid);
+        Transaction[] right = Arrays.copyOfRange(arr, mid, arr.length);
+        mergeSort(left);
+        mergeSort(right);
+        merge(arr, left, right);
+    }
+
+    public static void merge(Transaction[] arr, Transaction[] left, Transaction[] right) {
+        int i = 0, j = 0, k = 0;
+        while (i < left.length && j < right.length) {
+            if (left[i].compareTo(right[j]) <= 0) {
+                arr[k++] = left[i++];
+            } else {
+                arr[k++] = right[j++];
+            }
+        }
+        while (i < left.length) {
+            arr[k++] = left[i++];
+        }
+        while (j < right.length) {
+            arr[k++] = right[j++];
+        }
+    }
+}
+```
+
+Đây là các trường hợp cần kiểm thử
+```
+//TH1
+    Transaction[] transactions = {
+            new Transaction(1678886400000L, 100.0),
+            new Transaction(1678886400000L, 200.0),
+            new Transaction(1678972800000L, 150.0),
+            new Transaction(1678799999999L, 50.0)
+    };
+
+    processAndPrint(transactions);
+//TH2
+    Transaction[] transactions = {
+            new Transaction(1678886400000L, 100.0),
+            new Transaction(1678886400000L, 200.0),
+            new Transaction(1678972800000L, 150.0),
+            new Transaction(1678799999999L, 0)
+    };
+
+    processAndPrint(transactions);
+//TH3
+    Transaction[] transactions = {
+            new Transaction(1678886400000L, 100.0),
+            new Transaction(1678886400000L, 200.0),
+            new Transaction(1678972800000L, 150.0),
+            new Transaction(1678799999999L,)
+    };
+
+    processAndPrint(transactions);
+//TH3
+    Transaction[] transactions = {
+            new Transaction(1678886400000L, 100.0),
+            new Transaction(1678972800000L, 200.0),
+            new Transaction(1678972800000L, 150.0),
+            new Transaction(1678799999999L, 50.0)
+    };
+
+    processAndPrint(transactions);
+```
+
+
+
+##### 18 : Khang - Sắp xếp lịch khám cho bệnh nhân theo mức độ nghiêm trọng #####
 Tôi là một nhà phát triển làm việc trong một bệnh viện tư nhân.
 Tôi cần xây dựng một ứng dụng Java để sắp xếp danh sách lịch khám cho bệnh nhân dựa trên mức độ nghiêm trọng, nhằm tối ưu hóa thời gian và nâng cao sự hài lòng của bệnh nhân. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
 Yêu cầu hệ thống: Nhận vào một mảng chuỗi lịch khám bệnh của bệnh nhân, Kết quả trả về là danh sách lịch khám đã được sắp xếp theo mức độ nghiêm trọng từ 1 đến 5 (1 là ít nghiêm trọng nhất, 5 là nghiêm trọng nhất), Định dạng chuỗi đầu vào phải hợp lệ (bao gồm thông tin bệnh nhân và mức độ nghiêm trọng), Hệ thống phải xử lý được các trường hợp bệnh nhân có mức độ nghiêm trọng trùng nhau, Đảm bảo độ chính xác cao trong quá trình sắp xếp, giúp quy trình khám bệnh diễn ra hiệu quả.
