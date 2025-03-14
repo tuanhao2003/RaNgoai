@@ -75,7 +75,18 @@ Tôi cần bạn tạo ra mã nguồn cho hệ thống của tôi. Mã nguồn p
 Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ Java, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
 
 
-##### 10 : Khang - Sắp xếp lịch khám cho bệnh nhân theo mức độ nghiêm trọng #####
+
+##### 10 : Lộc - Sắp xếp nhật ký giao dịch tài chính #####
+Tôi là một nhà phát triển phần mềm đang làm việc trong một dự án phát triển hệ thống quản lý giao dịch tài chính.
+Tôi cần phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán sắp xếp nhật ký giao dịch tài chính theo thời gian trong bối cảnh ngân hàng muốn tối ưu hóa việc quản lý và phân tích giao dịch.
+Hệ thống nhận vào một mảng các đối tượng Transaction, mỗi đối tượng chứa thông tin về thời gian giao dịch (timestamp) và số tiền giao dịch (amount). Kết quả trả về là mảng các đối tượng Transaction được sắp xếp theo thời gian tăng dần.
+Hệ thống có một số ràng buộc cần đảm bảo: thời gian giao dịch (timestamp) phải là số nguyên dương, hệ thống phải xử lý được các giao dịch có cùng thời gian, và mảng đầu vào không được thay đổi.
+Việc triển khai hệ thống này là rất quan trọng vì nó giúp ngân hàng quản lý và phân tích giao dịch một cách hiệu quả hơn, từ đó đưa ra các quyết định kinh doanh chính xác.
+Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ Java, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
+
+
+
+##### 11 : Khang - Sắp xếp lịch khám cho bệnh nhân theo mức độ nghiêm trọng #####
 Tôi là một nhà phát triển làm việc trong một bệnh viện tư nân.
 Tôi cần xây dựng một ứng dụng Java để sắp xếp danh sách lịch khám cho bệnh nhân dựa trên mức độ nghiêm trọng, nhằm tối ưu hóa thời gian và nâng cao sự hài lòng của bệnh nhân.
 Yêu cầu hệ thống: Nhận vào một mảng chuỗi lịch khám bệnh của bệnh nhân, Kết quả trả về là danh sách lịch khám đã được sắp xếp theo mức độ nghiêm trọng từ 1 đến 5 (1 là ít nghiêm trọng nhất, 5 là nghiêm trọng nhất), Định dạng chuỗi đầu vào phải hợp lệ (bao gồm thông tin bệnh nhân và mức độ nghiêm trọng), Hệ thống phải xử lý được các trường hợp bệnh nhân có mức độ nghiêm trọng trùng nhau, Đảm bảo độ chính xác cao trong quá trình sắp xếp, giúp quy trình khám bệnh diễn ra hiệu quả.
