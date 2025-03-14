@@ -91,3 +91,9 @@ Tôi là một nhà phát triển làm việc trong một bệnh viện tư nân
 Tôi cần xây dựng một ứng dụng Java để sắp xếp danh sách lịch khám cho bệnh nhân dựa trên mức độ nghiêm trọng, nhằm tối ưu hóa thời gian và nâng cao sự hài lòng của bệnh nhân.
 Yêu cầu hệ thống: Nhận vào một mảng chuỗi lịch khám bệnh của bệnh nhân, Kết quả trả về là danh sách lịch khám đã được sắp xếp theo mức độ nghiêm trọng từ 1 đến 5 (1 là ít nghiêm trọng nhất, 5 là nghiêm trọng nhất), Định dạng chuỗi đầu vào phải hợp lệ (bao gồm thông tin bệnh nhân và mức độ nghiêm trọng), Hệ thống phải xử lý được các trường hợp bệnh nhân có mức độ nghiêm trọng trùng nhau, Đảm bảo độ chính xác cao trong quá trình sắp xếp, giúp quy trình khám bệnh diễn ra hiệu quả.
 Tôi cần bạn triển khai mã nguồn Java cho hệ thống này, kèm theo chú thích đầy đủ để đảm bảo tính rõ ràng và dễ bảo trì.
+
+
+
+##### (Done) 12 : Hào - ứng dụng đặt vé xem phim mô hình ba lớp #####
+Tôi là sinh viên ngành công nghệ thông tin. Trong quá trình học môn mô hình ba lớp, tôi được giao đề tài phát triển một ứng dụng đặt vé xem phim có áp dụng kiến trúc mô hình ba lớp. Tôi cần bạn tạo ra mã nguồn cho chương trình của tôi, mã nguồn phải được tạo cẩn thận vì nó rất quan trọng, nó sẽ ảnh hưởng trực tiếp đến điểm số giữa kỳ của tôi trong môn này. Chương trình mà tôi phát triển phải có các chức năng như đăng nhập cho nhân viên, xử lý bán vé, thống kê và chức năng quản lý phim và rạp. Tôi muốn đoạn mã được tạo ra phải có một số ràng buộc nhất định như sau: đoạn mã phải được viết bằng ngôn ngữ Java, phải có áp dụng kiến trúc mô hình ba lớp, cách tổ chức dễ hiểu và có chú thích đầy đủ.
+Hãy tạo ra mã nguồn cho chương trình của tôi với các chức năng được liệt kê bên trên. Mã nguồn sau khi tạo ra phải hoạt động được và có đầy đủ các chức năng đã nêu, có chú thích và giải thích thêm các kiến thức về mô hình ba lớp bên dưới.
