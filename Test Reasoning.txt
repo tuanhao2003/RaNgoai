@@ -836,7 +836,7 @@ System.out.println(Arrays.toString(maxDamageComboList(damageRecorded4, k4)));
 
 
 
-##### 10 : Lộc - tối ưu nguồn tiền build pc #####
+##### (Done) 10 : Lộc - tối ưu nguồn tiền build pc #####
 Tôi là một lập trình viên chuyên làm website cho các công ty lớn. Tôi đang xây dựng một hàm viết bằng ngôn ngữ Java để phục vụ cho chức năng tính toán, tối ưu nguồn tiền khi xây dựng hệ thống máy tính. Tôi muốn kiểm tra xem hàm mà tôi viết có hoạt động đúng như mong đợi không bằng cách kiểm tra bằng các trường hợp kiểm thử.
 Hàm của tôi nhận vào một mảng các phần cứng của một bộ máy tính, gồm có 4 thành phần chính là CPU, Main, Ram và Card màn hình. Đoạn mã trả về kết quả là một danh sách các thành phần linh kiện và p/p(hiệu năng trên giá thành) tốt nhất.
 Các ràng buộc mà đoạn mã cần tuân theo là: Mảng nhập vào phải có dạng theo thứ tự là tên, loại thiết bị, giá, điểm sức mạnh của thiết bị đó. Đầu ra sẽ là một mảng gồm các thành phần linh kiện gồm tên, giá, điểm số của thiết bị đó và điểm p/p.
@@ -844,38 +844,7 @@ Việc kiểm thử đoạn mã nên thực hiện cẩn thận vì đây sẽ l
 Dựa vào đoạn mã và các trường hợp kiểm thử dưới đây, hãy giúp tôi thực hiện việc kiểm thử đầu ra của đoạn mã, đưa ra kết quả và giải thích chi tiết đối với mỗi trường hợp.
 Dưới đây là đoạn mã mà tôi đã viết:
 ```java
-import java.util.Arrays;
-
-public class MaxDamageCombo {
-    public static int[] maxDamageComboList(int[] damageRecorded, int k) {
-        if (damageRecorded.length < k) {
-            return new int[0];
-        }
-
-        int currentTotalDamage = 0;
-        for (int i = 0; i < k; i++) {
-            currentTotalDamage += damageRecorded[i];
-        }
-
-        int maxSum = currentTotalDamage;
-        int startComboSkill = 0;
-
-        for (int i = k; i < damageRecorded.length; i++) {
-            currentTotalDamage += damageRecorded[i] - damageRecorded[i - k];
-
-            if (currentTotalDamage > maxSum) {
-                maxSum = currentTotalDamage;
-                startComboSkill = i - k + 1;
-            }
-        }
-
-        return Arrays.copyOfRange(damageRecorded, startComboSkill, startComboSkill + k);
-    }
-
-    public static void main(String[] args) {
-
-    }
-}import java.util.*;
+import java.util.*;
 
 class Component {
     String name, type;
