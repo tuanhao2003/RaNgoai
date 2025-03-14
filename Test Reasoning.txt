@@ -1517,3 +1517,93 @@ public class TransactionLogSorter {
 
     processAndPrint(transactions);
 ```
+
+
+
+##### 17 : Khang - Sắp xếp lịch khám cho bệnh nhân theo mức độ nghiêm trọng #####
+Tôi là một nhà phát triển làm việc trong một bệnh viện tư nhân.
+Tôi cần xây dựng một ứng dụng Java để sắp xếp danh sách lịch khám cho bệnh nhân dựa trên mức độ nghiêm trọng, nhằm tối ưu hóa thời gian và nâng cao sự hài lòng của bệnh nhân. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+Yêu cầu hệ thống: Nhận vào một mảng chuỗi lịch khám bệnh của bệnh nhân, Kết quả trả về là danh sách lịch khám đã được sắp xếp theo mức độ nghiêm trọng từ 1 đến 5 (1 là ít nghiêm trọng nhất, 5 là nghiêm trọng nhất), Định dạng chuỗi đầu vào phải hợp lệ (bao gồm thông tin bệnh nhân và mức độ nghiêm trọng), Hệ thống phải xử lý được các trường hợp bệnh nhân có mức độ nghiêm trọng trùng nhau, Đảm bảo độ chính xác cao trong quá trình sắp xếp, giúp quy trình khám bệnh diễn ra hiệu quả.
+Việc kiểm tra kỹ lưỡng các trường hợp đầu vào là rất quan trọng vì nó giúp đảm bảo rằng thuật toán sắp xếp hoạt động chính xác và xử lý được các tình huống khác nhau.
+Hãy kiểm tra kết quả của đoạn mã dưới đây dựa vào các trường hợp kiểm thử được cung cấp và giải thích chi tiết cho từng trường hợp.
+
+```java
+import java.util.*;
+
+// Lớp đại diện cho lịch khám bệnh của bệnh nhân
+class Appointment implements Comparable<Appointment> {
+    private String patientName;
+    private int severityLevel;
+
+    public Appointment(String patientName, int severityLevel) {
+        this.patientName = patientName;
+        this.severityLevel = severityLevel;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public int getSeverityLevel() {
+        return severityLevel;
+    }
+
+    // Phương thức so sánh để sắp xếp theo mức độ nghiêm trọng giảm dần
+    @Override
+    public int compareTo(Appointment other) {
+        return Integer.compare(other.severityLevel, this.severityLevel);
+    }
+
+    @Override
+    public String toString() {
+        return "Patient: " + patientName + ", Severity Level: " + severityLevel;
+    }
+}
+
+public class AppointmentScheduler {
+    
+    // Kiểm tra tính hợp lệ của đầu vào
+    private static boolean isValidInput(String input) {
+        return input.matches("^[a-zA-Z ]+: [1-5]$");
+    }
+
+    public static List<Appointment> scheduleAppointments(String[] appointments) {
+        List<Appointment> appointmentList = new ArrayList<>();
+        
+        for (String entry : appointments) {
+            if (!isValidInput(entry)) {
+                System.out.println("Invalid input format: " + entry);
+                continue;
+            }
+            
+            String[] parts = entry.split(": ");
+            String patientName = parts[0].trim();
+            int severityLevel = Integer.parseInt(parts[1].trim());
+            
+            appointmentList.add(new Appointment(patientName, severityLevel));
+        }
+        
+        // Sắp xếp danh sách theo mức độ nghiêm trọng
+        Collections.sort(appointmentList);
+        return appointmentList;
+    }
+  public static void main(String[] args) {
+
+  }
+}
+```
+
+Đây là các trường hợp cần kiểm thử
+```java
+// TH1: Danh sách có mức độ nghiêm trọng khác nhau  
+String[] appointments = {"John Doe: 3", "Jane Smith: 5", "Alice Brown: 2", "Bob White: 4"};  
+scheduleAppointments(appointments);  
+
+// TH2: Các bệnh nhân có cùng mức độ nghiêm trọng  
+String[] appointments = {"John Doe: 1", "Jane Smith: 1", "Alice Brown: 4", "Bob White: 4"};  
+scheduleAppointments(appointments);  
+
+// TH3: Đầu vào không hợp lệ (thiếu mức độ nghiêm trọng)  
+String[] appointments = {"John Doe:", "Jane Smith:", "Alice Brown:", "Bob White:"};  
+scheduleAppointments(appointments);  
+```

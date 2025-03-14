@@ -83,3 +83,11 @@ Hệ thống nhận vào một mảng các đối tượng Transaction, mỗi đ
 Hệ thống có một số ràng buộc cần đảm bảo: thời gian giao dịch (timestamp) phải là số nguyên dương, hệ thống phải xử lý được các giao dịch có cùng thời gian, và mảng đầu vào không được thay đổi.
 Việc triển khai hệ thống này là rất quan trọng vì nó giúp ngân hàng quản lý và phân tích giao dịch một cách hiệu quả hơn, từ đó đưa ra các quyết định kinh doanh chính xác.
 Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ Java, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
+
+
+
+##### 11 : Khang - Sắp xếp lịch khám cho bệnh nhân theo mức độ nghiêm trọng #####
+Tôi là một nhà phát triển làm việc trong một bệnh viện tư nân.
+Tôi cần xây dựng một ứng dụng Java để sắp xếp danh sách lịch khám cho bệnh nhân dựa trên mức độ nghiêm trọng, nhằm tối ưu hóa thời gian và nâng cao sự hài lòng của bệnh nhân.
+Yêu cầu hệ thống: Nhận vào một mảng chuỗi lịch khám bệnh của bệnh nhân, Kết quả trả về là danh sách lịch khám đã được sắp xếp theo mức độ nghiêm trọng từ 1 đến 5 (1 là ít nghiêm trọng nhất, 5 là nghiêm trọng nhất), Định dạng chuỗi đầu vào phải hợp lệ (bao gồm thông tin bệnh nhân và mức độ nghiêm trọng), Hệ thống phải xử lý được các trường hợp bệnh nhân có mức độ nghiêm trọng trùng nhau, Đảm bảo độ chính xác cao trong quá trình sắp xếp, giúp quy trình khám bệnh diễn ra hiệu quả.
+Tôi cần bạn triển khai mã nguồn Java cho hệ thống này, kèm theo chú thích đầy đủ để đảm bảo tính rõ ràng và dễ bảo trì.

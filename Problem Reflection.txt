@@ -116,3 +116,13 @@ Hệ thống được tạo ra cần đáp ứng các yêu cầu sau: đảm b�
 Liệu còn cách nào khác để tiếp cận vấn đề này không, nếu tôi muốn tối ưu hóa hiệu suất cho mảng giao dịch lớn hoặc muốn sử dụng các cấu trúc dữ liệu khác để cải thiện tính bảo trì?
 Do có nhiều cách tiếp cận khác nhau để xây dựng hệ thống này, tôi muốn bạn so sánh các phương pháp và đưa ra khuyến nghị về phương pháp phù hợp nhất.
 
+
+
+##### 11 : Khang - Sắp xếp lịch khám cho bệnh nhân theo mức độ nghiêm trọng #####
+Tôi là một nhà phát triển làm việc trong một bệnh viện tư nân.
+Tôi cần xây dựng một ứng dụng Java để sắp xếp danh sách lịch khám cho bệnh nhân dựa trên mức độ nghiêm trọng, nhằm tối ưu hóa thời gian và nâng cao sự hài lòng của bệnh nhân. Để đảm bảo tính chính xác và độ tin cậy của hệ thống, tôi cần kiểm tra kết quả đầu ra của chương trình dựa trên các tiêu chí cụ thể.
+Hệ thống nhận vào một mảng chuỗi lịch khám bệnh của bệnh nhân. Kết quả trả về là danh sách lịch khám đã được sắp xếp theo mức độ nghiêm trọng từ 1 đến 5 (1 là ít nghiêm trọng nhất, 5 là nghiêm trọng nhất).
+Ban đầu, tôi đã sử dụng một thuật toán sắp xếp đơn giản để xử lý danh sách, nhưng để cải thiện hiệu suất và khả năng mở rộng, tôi cần tìm kiếm các phương pháp sắp xếp tốt hơn.
+Hệ thống có một số ràng buộc cần đảm bảo: Định dạng chuỗi đầu vào phải hợp lệ (bao gồm tên bệnh nhân và mức độ nghiêm trọng), Hệ thống phải xử lý được các bệnh nhân có mức độ nghiêm trọng trùng nhau, Mảng đầu vào không được thay đổi ngoài phạm vi của hàm sắp xếp.
+Việc tìm được nhiều cách tiếp cận khác nhau cho bài toán này là rất quan trọng vì nó giúp tôi lựa chọn phương pháp phù hợp nhất với yêu cầu hiệu suất và độ chính xác của ứng dụng.
+Hãy cho tôi một số phương pháp khác tốt hơn để tiếp cận vấn đề này.
