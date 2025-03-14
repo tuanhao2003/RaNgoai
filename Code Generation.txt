@@ -73,3 +73,13 @@ Hệ thống nhận vào một mảng các chuỗi công việc. Kết quả tr�
 Hệ thống có một số ràng buộc cần đảm bảo: định dạng chuỗi đầu vào phải hợp lệ (chứa dấu ngoặc đơn và số ưu tiên), hệ thống phải xử lý được các công việc có độ ưu tiên trùng nhau.
 Tôi cần bạn tạo ra mã nguồn cho hệ thống của tôi. Mã nguồn phải được tạo ra một cách cẩn thận vì tôi cần đảm bảo hệ thống sắp xếp công việc với độ chính xác cao nhất.
 Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ Java, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
+
+
+
+##### 10 : Lộc - Sắp xếp nhật ký giao dịch tài chính #####
+Tôi là một nhà phát triển phần mềm đang làm việc trong một dự án phát triển hệ thống quản lý giao dịch tài chính.
+Tôi cần phát triển một ứng dụng được viết bằng ngôn ngữ Java nhằm giải quyết bài toán sắp xếp nhật ký giao dịch tài chính theo thời gian trong bối cảnh ngân hàng muốn tối ưu hóa việc quản lý và phân tích giao dịch.
+Hệ thống nhận vào một mảng các đối tượng Transaction, mỗi đối tượng chứa thông tin về thời gian giao dịch (timestamp) và số tiền giao dịch (amount). Kết quả trả về là mảng các đối tượng Transaction được sắp xếp theo thời gian tăng dần.
+Hệ thống có một số ràng buộc cần đảm bảo: thời gian giao dịch (timestamp) phải là số nguyên dương, hệ thống phải xử lý được các giao dịch có cùng thời gian, và mảng đầu vào không được thay đổi.
+Việc triển khai hệ thống này là rất quan trọng vì nó giúp ngân hàng quản lý và phân tích giao dịch một cách hiệu quả hơn, từ đó đưa ra các quyết định kinh doanh chính xác.
+Hãy tạo ra mã nguồn cho hệ thống mà tôi mô tả bên trên bằng ngôn ngữ Java, lưu ý rằng mã nguồn phải có chú thích đầy đủ.
