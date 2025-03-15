@@ -1498,7 +1498,6 @@ Hãy kiểm tra kết quả của đoạn mã dưới đây dựa vào các trư
 ```java
 import java.util.*;
 
-// Lớp đại diện cho lịch khám bệnh của bệnh nhân
 class Appointment implements Comparable<Appointment> {
     private String patientName;
     private int severityLevel;
@@ -1516,7 +1515,6 @@ class Appointment implements Comparable<Appointment> {
         return severityLevel;
     }
 
-    // Phương thức so sánh để sắp xếp theo mức độ nghiêm trọng giảm dần
     @Override
     public int compareTo(Appointment other) {
         return Integer.compare(other.severityLevel, this.severityLevel);
@@ -1530,7 +1528,6 @@ class Appointment implements Comparable<Appointment> {
 
 public class AppointmentScheduler {
     
-    // Kiểm tra tính hợp lệ của đầu vào
     private static boolean isValidInput(String input) {
         return input.matches("^[a-zA-Z ]+: [1-5]$");
     }
@@ -1551,11 +1548,11 @@ public class AppointmentScheduler {
             appointmentList.add(new Appointment(patientName, severityLevel));
         }
         
-        // Sắp xếp danh sách theo mức độ nghiêm trọng
         Collections.sort(appointmentList);
         return appointmentList;
     }
-  public static void main(String[] args) {
+
+    public static void main(String[] args) {
 
   }
 }
@@ -1564,14 +1561,27 @@ public class AppointmentScheduler {
 Đây là các trường hợp cần kiểm thử
 ```java
 // TH1: Danh sách có mức độ nghiêm trọng khác nhau  
-String[] appointments = {"John Doe: 3", "Jane Smith: 5", "Alice Brown: 2", "Bob White: 4"};  
-scheduleAppointments(appointments);  
+        String[] appointments = {"John Doe: 3", "Jane Smith: 5", "Alice Brown: 2", "Bob White: 4"};  
+        List<Appointment> sortedAppointments = scheduleAppointments(appointments);
+        
+        System.out.println("Sorted Appointments:");
+        for (Appointment appointment : sortedAppointments) {
+            System.out.println(appointment);
+        }
 
 // TH2: Các bệnh nhân có cùng mức độ nghiêm trọng  
-String[] appointments = {"John Doe: 1", "Jane Smith: 1", "Alice Brown: 4", "Bob White: 4"};  
-scheduleAppointments(appointments);  
+        String[] appointments = {"John Doe: 1", "Jane Smith: 1", "Alice Brown: 4", "Bob White: 4"};  
+        List<Appointment> sortedAppointments = scheduleAppointments(appointments);
+        System.out.println("Sorted Appointments:");
+        for (Appointment appointment : sortedAppointments) {
+            System.out.println(appointment);
+        }
 
 // TH3: Đầu vào không hợp lệ (thiếu mức độ nghiêm trọng)  
-String[] appointments = {"John Doe:", "Jane Smith:", "Alice Brown:", "Bob White:"};  
-scheduleAppointments(appointments);  
+        String[] appointments = {"John Doe:", "Jane Smith:", "Alice Brown:", "Bob White:"};  
+        List<Appointment> sortedAppointments = scheduleAppointments(appointments);
+        System.out.println("Sorted Appointments:");
+        for (Appointment appointment : sortedAppointments) {
+            System.out.println(appointment);
+        }  
 ```
