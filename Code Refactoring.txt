@@ -809,7 +809,6 @@ Hãy giúp tôi tái cấu trúc đoạn mã bằng cách tách hàm một cách
 ```java
 import java.util.*;
 
-// Lớp đại diện cho lịch khám bệnh của bệnh nhân
 class Appointment implements Comparable<Appointment> {
     private String patientName;
     private int severityLevel;
@@ -827,7 +826,6 @@ class Appointment implements Comparable<Appointment> {
         return severityLevel;
     }
 
-    // Phương thức so sánh để sắp xếp theo mức độ nghiêm trọng giảm dần
     @Override
     public int compareTo(Appointment other) {
         return Integer.compare(other.severityLevel, this.severityLevel);
@@ -841,7 +839,6 @@ class Appointment implements Comparable<Appointment> {
 
 public class AppointmentScheduler {
     
-    // Kiểm tra tính hợp lệ của đầu vào
     private static boolean isValidInput(String input) {
         return input.matches("^[a-zA-Z ]+: [1-5]$");
     }
@@ -862,7 +859,6 @@ public class AppointmentScheduler {
             appointmentList.add(new Appointment(patientName, severityLevel));
         }
         
-        // Sắp xếp danh sách theo mức độ nghiêm trọng
         Collections.sort(appointmentList);
         return appointmentList;
     }
